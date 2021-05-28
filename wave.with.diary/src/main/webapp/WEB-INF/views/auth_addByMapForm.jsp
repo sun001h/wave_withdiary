@@ -62,7 +62,7 @@
 </script>
 </head>
 <body>
-	<form action="auth/addByMap" method="POST" enctype="multipart/form-data">
+	<form action="${contextPath}/auth/addByMap" method="POST" enctype="multipart/form-data">
 		<table align="center" border="1">
 			<tr>
 				<th>이메일</th>

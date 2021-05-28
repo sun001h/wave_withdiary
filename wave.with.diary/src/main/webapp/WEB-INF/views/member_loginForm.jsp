@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,7 @@
 </c:choose>
 </head>
 <body>
-	<form action="login" method="POST">
+	<form action="${contextPath}/login" method="POST">
 		이메일: <input type="text" name="email" /><br> 
 		비밀번호: <input type="password" name="pwd" /><br>
 		<input type="submit" value="로그인" />

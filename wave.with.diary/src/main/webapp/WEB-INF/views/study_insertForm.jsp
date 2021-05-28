@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +26,7 @@
 </head>
 <body>
 	<h2>스터디 일정 작성</h2>
-	<form action="study/insertResult" method="get">
+	<form action="${contextPath}/study/insertResult" method="get">
 	<div>
 		멤버코드:
 		<!-- value 값 수정 필요  WD2105040001-->

@@ -7,7 +7,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 request.setCharacterEncoding("UTF-8");
-%>    
+%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +46,7 @@ request.setCharacterEncoding("UTF-8");
 <body>
 
 <h2>글 작성</h2>
-<form name="form1" method="post" action="board/insert">
+<form name="form1" method="post" action="${contextPath}/board/insert">
 	<div>
 		제목
 		<input name="title" id="title" size="80" placeholder="제목을 입력해주세요">

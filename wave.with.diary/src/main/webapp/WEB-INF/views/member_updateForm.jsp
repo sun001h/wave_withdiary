@@ -4,6 +4,7 @@
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,7 @@
 </head>
 <body>
 <h2 align="center">회원 프로필 수정</h2>
-<form action="member/update" method="POST" enctype="multipart/form-data">
+<form action="${contextPath}/member/update" method="POST" enctype="multipart/form-data">
 <input type="hidden" name="memberCode" value="${vo.memberCode }" />
 <table align="center" border="1">
 <tr>

@@ -8,6 +8,7 @@
 <%
 request.setCharacterEncoding("UTF-8");
 %>    
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,14 +19,14 @@ request.setCharacterEncoding("UTF-8");
 	function del(D_articleNumber) {
 		var chk = confirm("정말 삭제하시겠습니까?");
 		if (chk) {
-			location.href='board/delete?D_articleNumber='+D_articleNumber;
+			location.href='${contextPath}/board/delete?D_articleNumber='+D_articleNumber;
 		}
 	}	
 </script>
 </head>
 <body>
 <h2>게시글 보기</h2>
-<form name="form1" method="post" action="update">
+<form name="form1" method="post" action="${contextPath}/board/update">
 <input type="hidden" name="d_articlenumber" value="${vo.d_articlenumber}">
 	<div>
 		작성일자 : <fmt:formatDate value="${vo.dateCreated}" pattern = "yyyyMMdd"/>
@@ -47,9 +48,9 @@ request.setCharacterEncoding("UTF-8");
 	</div>
 	<div style="width:650px; text-align: center;">
 		<input type="submit" value="수정" >
-		<input type="button" value="삭제" onclick="location.href='board/delete?d_articlenumber=${vo.d_articlenumber}'">
+		<input type="button" value="삭제" onclick="location.href='${contextPath}/board/delete?d_articlenumber=${vo.d_articlenumber}'">
 <%-- 		<a href="delete?d_articlenumber=${view.d_articlenumber}">삭제</a> --%>
-		<input type="button" value="목록" onclick="location.href='board/list';">
+		<input type="button" value="목록" onclick="location.href='${contextPath}/board/list';">
 	
 <!--  	<c:if test="${sessionScope.membercode == vo.membercode}">-->
 

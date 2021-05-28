@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <html>
 	<head>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -12,14 +13,14 @@
 			
 			// 수정 
 			$(".update_btn").on("click", function(){
-				formObj.attr("action", "updateView");
+				formObj.attr("action", "${contextPath}/board/updateForm");
 				formObj.attr("method", "get");
 				formObj.submit();				
 			})
 			
 			// 삭제
 			$(".delete_btn").on("click", function(){
-				formObj.attr("action", "delete");
+				formObj.attr("action", "${contextPath}/board/delete");
 				formObj.attr("method", "post");
 				formObj.submit();
 			})
@@ -27,7 +28,7 @@
 			// 취소
 			$(".list_btn").on("click", function(){
 				
-				location.href = "list";
+				location.href = "${contextPath}/board/list";
 			})
 		})
 	</script>

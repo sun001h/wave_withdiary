@@ -4,6 +4,7 @@
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,11 +25,11 @@
 				<td>${list.subject }</td>
 				<td>${list.content }</td>
 				<td>${list.studyTime }</td>
-				<td><a href="study/view?studyNO=${list.studyNO }">상세보기</a></td>
+				<td><a href="${contextPath}/study/view?studyNO=${list.studyNO }">상세보기</a></td>
 			</tr>
 		</c:forEach>
 	</table>
-	<form action="study/insertForm" method="get">
+	<form action="${contextPath}/study/insertForm" method="get">
 		<input type="submit" value="일정추가" />
 	</form>
 </body>

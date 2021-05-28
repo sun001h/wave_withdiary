@@ -4,6 +4,7 @@
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,6 @@
 </head>
 <body>
 <p align="center">이메일 인증이 완료되었습니다.</p>
-<p align="center"><a href="loginForm">로그인 하러 가기</a></p>
+<p align="center"><a href="${contextPath}/loginForm">로그인 하러 가기</a></p>
 </body>
 </html>

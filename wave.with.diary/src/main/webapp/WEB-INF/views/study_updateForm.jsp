@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +25,7 @@ $(document).ready(function(){
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 </head>
 <body>
-<form action="study/update" method="post">
+<form action="${contextPath}/study/update" method="post">
 <h2 align="center">스터디 일정 수정</h2>
 <input type="hidden" name="studyNO" value="${vo.studyNO }" />
 <%-- <input type="hidden" name="writer" value="${vo.writer }" />
@@ -44,7 +46,7 @@ $(document).ready(function(){
 	</tr>
 </table>
 	<input type="submit" value="작성완료" />
-	<a href="study/list">리스트로 돌아가기</a>
+	<a href="${contextPath}/study/list">리스트로 돌아가기</a>
 </form>
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>

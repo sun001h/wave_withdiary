@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +53,7 @@
 		<tr>
 			<th>프로필사진</th>
 			<td><img
-				src="download?email=${vo.email}&profile_img=${vo.profile_img }"
+				src="${contextPath}/download?email=${vo.email}&profile_img=${vo.profile_img }"
 				id="preview" width="200" height="200"  /><br></td>
 		</tr>
 		
@@ -80,7 +81,7 @@
 	</table>
 	<br>
 	<p align="center">
-		<a href="updateForm?memberCode=${vo.memberCode }">수정하기</a>
+		<a href="${contextPath}/member/updateForm?memberCode=${vo.memberCode }">수정하기</a>
 	</p>
 
 </body>

@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 <title>스터디 내용 상세보기</title>
 </head>
 <body>
-<form action="study/delete" method="post">
+<form action="${contextPath}/study/delete" method="post">
 <table align="center" border="1">
 	<tr>
 		<th>과목</th>
@@ -21,9 +22,9 @@
 		<th>${vo.studyTime }</th>
 	</tr>
 </table>
-<p align="center"><a href="study/updateForm?studyNO=${vo.studyNO }">수정하기</a></p>
+<p align="center"><a href="${contextPath}/study/updateForm?studyNO=${vo.studyNO }">수정하기</a></p>
 <input type="submit" value="삭제" />
-<a href="study/list">리스트로 돌아가기</a>
+<a href="${contextPath}/study/list">리스트로 돌아가기</a>
 </form>
 </body>
 </html>

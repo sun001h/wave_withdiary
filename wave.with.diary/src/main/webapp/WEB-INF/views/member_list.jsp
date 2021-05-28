@@ -4,6 +4,7 @@
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,9 +26,10 @@
 	<th>소개</th>
 </tr>
 
+<!-- 여기 코드 추가 작업 예정입니다 -->
 <c:forEach var="list" items="${list }">
 	<tr>
-		<td><a href="adminprofile?memberCode=${list.memberCode }">${list.memberCode }</a></td>
+		<td><a href="${contextPath}/adminprofile?memberCode=${list.memberCode }">${list.memberCode }</a></td>
 		<td>${list.email }</td>
 		<td>${list.pwd }</td>
 		<td>${list.birthyear }</td>
