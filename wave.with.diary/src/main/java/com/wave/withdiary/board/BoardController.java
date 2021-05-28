@@ -21,20 +21,20 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 	@Autowired
-	private BoardService service;
+	private BoardService boardService;
 	
 	
-	@RequestMapping(value = "/boardwriteForm", method = RequestMethod.GET)
-	public String boardwrite(Model model, BoardVO vo) {
+	@RequestMapping(value = "/board/writeForm", method = RequestMethod.GET)
+	public String writeForm(Model model, BoardVO vo) {
 		
 		logger.info("글 작성 화면");
 
 
-		return "boardwrite";
+		return "board_writeForm";
 	}
 
-	@RequestMapping(value="/boardinsert", method = RequestMethod.POST)
-	public String boardinsert(Model model, BoardVO vo) {
+	@RequestMapping(value="/board/insert", method = RequestMethod.POST)
+	public String insert(Model model, BoardVO vo) {
 		//String membercode = (String) Session.getAttribute("MEMBERCODE");
 		logger.info("글 작성하기");
 		//vo.setMembercode(membercode);
@@ -43,56 +43,56 @@ public class BoardController {
 		vo.setScheduleDate("20210526");
 		vo.setViewcnt(0);
 		
-		service.insert(vo);
-		return "redirect:boardlist";
+		boardService.insert(vo);
+		return "redirect:board_list";
 	}
 	
-	@RequestMapping(value = "/boardview", method = RequestMethod.GET)
-	public String boardview(Model model, int d_articlenumber, String clear) {
+	@RequestMapping(value = "/board/view", method = RequestMethod.GET)
+	public String view(Model model, int d_articlenumber, String clear) {
 		
 		logger.info("글 상세보기");
 
-		BoardVO vo = service.read(d_articlenumber);
+		BoardVO vo = boardService.read(d_articlenumber);
 		model.addAttribute("vo", vo);
 
-		return "boardview";
+		return "board_view";
 	}	
 	
-	@RequestMapping(value = "/boardupdateView", method = RequestMethod.GET)
+	@RequestMapping(value = "/board/updateView", method = RequestMethod.GET)
 	public String updateView(Model model, BoardVO vo) {
 		logger.info("updateView");
 		
-		model.addAttribute("update", service.read(vo.getd_articlenumber()));
+		model.addAttribute("update", boardService.read(vo.getd_articlenumber()));
 		
-		return "boardupdateView";
+		return "board_updateView";
 	}
 	
-	@RequestMapping(value = "/boardupdate", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/board/update", method = {RequestMethod.GET,RequestMethod.POST})
 	public String update(Model model, BoardVO vo) {
 		
 		logger.info("글 수정하기");
-		service.update(vo);
-		return "redirect:boardview?d_articlenumber="+vo.getd_articlenumber()+"&clear=y";
+		boardService.update(vo);
+		return "redirect:board_view?d_articlenumber="+vo.getd_articlenumber()+"&clear=y";
 	}	
 
-	@RequestMapping(value = "/boarddelete")
-	public String boarddelete(int d_articlenumber) {
+	@RequestMapping(value = "/board/delete")
+	public String delete(int d_articlenumber) {
 		
 		logger.info("글 삭제하기");
 
-		service.delete(d_articlenumber);
-		return "redirect:boardlist";
+		boardService.delete(d_articlenumber);
+		return "redirect:board_list";
 	}	
 	
-	@RequestMapping(value = "/boardlist", method = RequestMethod.GET)
-	public String boardlist(Model model) {
+	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
+	public String list(Model model) {
 		
 		logger.info("글 목록 조회");
 
-		List<BoardVO> list = service.listAll();
+		List<BoardVO> list = boardService.listAll();
 		model.addAttribute("list", list);
 
-		return "boardlist";
+		return "board_list";
 	}
 	
 	

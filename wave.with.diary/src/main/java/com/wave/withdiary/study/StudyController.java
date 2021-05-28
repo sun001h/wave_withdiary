@@ -1,9 +1,7 @@
 package com.wave.withdiary.study;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class StudyController {
@@ -22,13 +19,13 @@ public class StudyController {
 	private static final Logger logger = LoggerFactory.getLogger(StudyController.class);
 
 	@Autowired
-	private StudyService service;
+	private StudyService studyService;
 
 	@RequestMapping(value = "/study/list", method = RequestMethod.GET)
 	public String list(Locale locale, Model model) {
 		logger.info("스터디 리스트 폼 {}.", locale);
 
-		List<StudyDTO> list = service.listSch();
+		List<StudyDTO> list = studyService.listSch();
 
 		model.addAttribute("list", list);
 		System.out.println("사이즈 :" + list.size());
@@ -73,16 +70,16 @@ public class StudyController {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
 		System.out.println(df.format(cal.getTime()));
 
-		StudyDTO vo = new StudyDTO();
-		vo.setContent(content);
-		vo.setMemberCode(memberCode);
-		vo.setStudyDate(df.format(cal.getTime()));
-		vo.setStudyTime(studyTime);
-		vo.setSubject(subject);
-		vo.setWriter("test");
-		System.out.println(vo.toString());
+		StudyDTO dto = new StudyDTO();
+		dto.setContent(content);
+		dto.setMemberCode(memberCode);
+		dto.setStudyDate(df.format(cal.getTime()));
+		dto.setStudyTime(studyTime);
+		dto.setSubject(subject);
+		dto.setWriter("test");
+		System.out.println(dto.toString());
 
-		service.insertSch(vo);
+		studyService.insertSch(dto);
 		return "redirect:study_list";
 	}
 
@@ -92,10 +89,10 @@ public class StudyController {
 
 		System.out.println(studyNO);
 
-		StudyDTO vo = new StudyDTO();
-		vo = service.selectSch(studyNO);
+		StudyDTO dto = new StudyDTO();
+		dto = studyService.selectSch(studyNO);
 
-		model.addAttribute("vo", vo);
+		model.addAttribute("dto", dto);
 
 		return "study_scheduleView";
 	}
@@ -104,7 +101,7 @@ public class StudyController {
 	public String delete(Locale locale, Model model, int studyNO) {
 		logger.info("스터디일정 삭제{}.", locale);
 
-		service.deleteSch(studyNO);
+		studyService.deleteSch(studyNO);
 
 		return "redirect:study_list";
 	}
@@ -113,22 +110,22 @@ public class StudyController {
 	public String updateForm(Locale locale, Model model, int studyNO) {
 		logger.info("스터디일정 수정 입력{}.", locale);
 
-		StudyDTO vo = new StudyDTO();
-		vo = service.selectSch(studyNO);
+		StudyDTO dto = new StudyDTO();
+		dto = studyService.selectSch(studyNO);
 
-		/* System.out.println(vo.toString()); */
+		/* System.out.println(dto.toString()); */
 
-		model.addAttribute("vo", vo);
+		model.addAttribute("dto", dto);
 
 		return "study_updateForm";
 	}
 
 	@RequestMapping(value = "/study/update", method = RequestMethod.POST)
-	public String update(Locale locale, Model model, StudyDTO vo) {
+	public String update(Locale locale, Model model, StudyDTO dto) {
 		logger.info("스터디일정 수정완료{}.", locale);
 
-		System.out.println(vo.toString());
-		service.updateSch(vo);
-		return "redirect:study_scheduleView?studyNO=" + vo.getStudyNO();
+		System.out.println(dto.toString());
+		studyService.updateSch(dto);
+		return "redirect:study_scheduleView?studyNO=" + dto.getStudyNO();
 	}
 }
