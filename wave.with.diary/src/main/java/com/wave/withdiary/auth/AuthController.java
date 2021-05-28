@@ -135,14 +135,14 @@ public class AuthController {
 		return resEntity;
 	}
 	
-	@RequestMapping(value = "/sendMail", method = RequestMethod.GET)
+	@RequestMapping(value = "/auth/sendMail", method = RequestMethod.GET)
 	public String sendMail(Locale locale, Model model) {
 		logger.info("회원 가입 완료 및 이메일 인증 안내창 {}.", locale);
 		
-		return "sendMail";
+		return "auth_sendMail";
 	}
 	
-	@RequestMapping(value = "/signUpConfirm", method = RequestMethod.GET)
+	@RequestMapping(value = "/auth/signUpConfirm", method = RequestMethod.GET)
 	public String signUpConfirm(Locale locale, Model model, String email, String authKey) {
 		logger.info("이메일 인증 완료 {}.", locale);
 
@@ -181,7 +181,7 @@ public class AuthController {
 		// 멤버테이블에 insert하기
 		memberService.addMember(vo);
 		
-		return "main";
+		return "auth_main";
 	}
 	
 	
