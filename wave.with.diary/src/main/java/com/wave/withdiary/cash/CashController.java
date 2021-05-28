@@ -121,7 +121,7 @@ public class CashController {
 		dto.setMemberCode(vo.getMemberCode());
 		boolean isS=acService.insertAccount(dto);
 		if(isS) {
-			return "redirect:cash/listpage";
+			return "redirect:listpage";
 		} else {
 			model.addAttribute("msg","가계부 추가실패");
 			return "error";
@@ -184,7 +184,7 @@ public class CashController {
 
 		boolean isS=acService.updateAccount(dto);
 		if(isS) {
-			return "redirect:cash/detail?num="+dto.getNum();
+			return "redirect:detail?num="+dto.getNum();
 		} else {
 			model.addAttribute("msg","가계부 수정실패");
 			return "error";
@@ -201,7 +201,7 @@ public class CashController {
 
 		boolean isS=acService.deleteAccount(dto.getNum());
 		if(isS) {
-			return "redirect:cash/listpage";
+			return "redirect:listpage";
 		} else {
 			model.addAttribute("msg","가계부 삭제실패");
 			return "error";

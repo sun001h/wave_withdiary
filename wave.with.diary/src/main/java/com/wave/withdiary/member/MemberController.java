@@ -65,7 +65,7 @@ public class MemberController {
 			session.setAttribute("member", vo);
 			session.setAttribute("isLogOn", true);
 			// 로그인 성공시 프로필 조회로 이동
-			mav.setViewName("redirect:profile");
+			mav.setViewName("redirect:member/profile");
 		} else {
 			rAttr.addAttribute("result","loginFailed");
 			mav.setViewName("redirect:loginForm");
