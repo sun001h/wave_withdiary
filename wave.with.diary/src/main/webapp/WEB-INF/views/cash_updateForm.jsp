@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1>가계부 수정하기</h1>
-<form action="cashUpdate" method="post">
+<form action="cash/update" method="post">
 <input type="hidden" name="num" value="${dto.num}"/>
 <table border="1">
 	<tr>
@@ -93,12 +93,12 @@ $(function() {
 </script>
 <script type="text/javascript">
 	function detailAccount(num){
-		location.href="detailaccount?num="+num;
+		location.href="cash/detail?num="+num;
 	}
 
 	function accountList(){
 		//BOM --> Location객체 : 위치관련 객체
-		location.href="accountlistpage";
+		location.href="cash/listpage";
 	}
 
 </script>

@@ -14,7 +14,7 @@
 </head>
 <body>
 <h1>가계부 작성하기</h1>
-<form action="insertaccount1" role="form" method="post">
+<form action="cash/insert" role="form" method="post">
 <table border="1">
 	<tr>
 		<th>멤버코드</th>

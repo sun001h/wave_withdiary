@@ -57,17 +57,17 @@
 	</table>
 	<script type="text/javascript">
 	function updateAccount(num){
-		location.href="cashUpdateForm?num="+num;
+		location.href="cash/updateForm?num="+num;
 	}
 	// 대화 alert(). confirm(), prompt()
 	function delAccount(num){
-		if(confirm("정말삭제할꺼야??")){
-			location.href="deleteaccount.do?num="+num;
+		if(confirm("정말 삭제하시겠습니까?")){
+			location.href="cash/delete?num="+num;
 		}
 	}
 
 	function accountList(){
-		location.href="accountlistpage.do?"
+		location.href="cash/listpage?"
 			+"page=${cri.page}&perPageNum=${cri.perPageNum}";
 	}
 

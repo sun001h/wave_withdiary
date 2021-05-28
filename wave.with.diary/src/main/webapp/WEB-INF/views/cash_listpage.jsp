@@ -35,7 +35,7 @@
 %>
 <body>
 <div id="container" align="center">
-	<form action="accountlistpage.do" method="get" name="searchFrm">
+	<form action="cash/listpage" method="get" name="searchFrm">
 		From: <input type="text" value="${param.fchdate}" id="fchdate" name="fchdate" autocomplete="off">&nbsp;&nbsp;
 		To: <input type="text"value="${param.tchdate}" id="tchdate" name="tchdate" autocomplete="off">
 		<button type="submit" id="btnSerach">검색</button>
@@ -64,7 +64,7 @@
 					<td><fmt:parseDate var="parseDate" value="<%=dto.getChdate() %>" pattern="yyyyMMdd"/>
 					<fmt:formatDate value="${parseDate}" pattern="yyyy년MM월dd일"/></td>
 					<td>
-					<a href="detailaccount.do?num=<%=dto.getNum() %>&
+					<a href="cash/detail?num=<%=dto.getNum() %>&
 												page=${cri.page}&
 												perPageNum${cri.perPageNum}"><%=dto.getHistory() %></a>
 					</td>
@@ -79,11 +79,8 @@
 	%>
 	<tr>
 		<td colspan="6">
-			<a href="insertaccount.do">글쓰기</a>
-			<a href=".">메인</a>
-			<form action="chatroom.do" method="post">
-				<button type="submit" >채팅으로</button>
-			</form>
+			<a href="cash/insert">글쓰기</a>
+			<a href="#">메인</a>
 		</td>
 	</tr>
 </table>
@@ -101,11 +98,11 @@
  		
 		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 			<li <c:out value="${pageMaker.cri.page == idx ? 'class=active' : ''}"/>> 
-			<a href='accountlistpage.do${pageMaker.makeQuery(idx)}${ff}${tt}'>${idx}</a></li>
+			<a href='cash/listpage${pageMaker.makeQuery(idx)}${ff}${tt}'>${idx}</a></li>
 		</c:forEach>
     
 		<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-			<li><a href="accountlistpage.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
+			<li><a href="cash/listpage${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
 		</c:if> 
 	</ul>
 </div>
