@@ -128,7 +128,7 @@
 				AND CHDATE BETWEEN TO_DATE(#{fchdate}) AND TO_DATE(#{tchdate})
 				</if>
 				AND MEMBERCODE =#{memberCode}
-				ORDER BY NUM DESC)WD
+				ORDER BY CHDATE DESC)WD
 			)
 			WHERE RN BETWEEN #{rowStart} and #{rowEnd}
 	</select>
