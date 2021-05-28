@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wave.schedule">
+<mapper namespace="wave.withdiary.study">
 	
 
 	<!-- 일정 추가 -->
-	<insert id="insertSch" parameterType="ScheduleDto">
+	<insert id="insertSch" parameterType="StudyDTO">
 		<![CDATA[
 			INSERT INTO WD_STUDY
 			("studyNO", "subject", "content", "writer", "studyTime", "studyDate", "memberCode")
@@ -14,7 +14,7 @@
 	</insert>
 	
 	<!-- 스터디 일정 읽기 -->
-	<select id="selectSch" resultType="ScheduleDto" parameterType="int">
+	<select id="selectSch" resultType="StudyDTO" parameterType="int">
 		<![CDATA[
 			SELECT *
 			FROM WD_STUDY 	
@@ -23,7 +23,7 @@
 	</select>
 	
 	<!-- 스터디 일정 수정하기 -->
-	<update id="updateSch" parameterType="ScheduleDto">
+	<update id="updateSch" parameterType="StudyDTO">
 		<![CDATA[
 			UPDATE WD_STUDY
 			SET "subject"=#{subject}, "content"=#{content}, "studyTime"=#{studyTime}
@@ -38,7 +38,7 @@
 	</delete>
 	
 	<!-- 스터디 일정 전체목록보기 -->
-	<select id="listSch" resultType="ScheduleDto">
+	<select id="listSch" resultType="StudyDTO">
 		<![CDATA[
 			SELECT *
 			FROM WD_STUDY

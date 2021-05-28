@@ -22,23 +22,9 @@ public class StudyController {
 	private static final Logger logger = LoggerFactory.getLogger(StudyController.class);
 
 	@Autowired
-	private IStudyService service;
+	private StudyService service;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-
-		model.addAttribute("serverTime", formattedDate);
-
-		return "home";
-	}
-
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/study/list", method = RequestMethod.GET)
 	public String list(Locale locale, Model model) {
 		logger.info("스터디 리스트 폼 {}.", locale);
 
@@ -46,17 +32,17 @@ public class StudyController {
 
 		model.addAttribute("list", list);
 		System.out.println("사이즈 :" + list.size());
-		return "list";
+		return "study_list";
 	}
 
-	@RequestMapping(value = "/insertForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/study/insertForm", method = RequestMethod.GET)
 	public String insertForm(Locale locale, Model model) {
 		logger.info("스터디 추가 입력폼 {}.", locale);
 
-		return "insertForm";
+		return "study_insertForm";
 	}
 
-	@RequestMapping(value = "/insertResult", method = RequestMethod.GET)
+	@RequestMapping(value = "/study/insertResult", method = RequestMethod.GET)
 	public String insertResult(Locale locale, Model model, String memberCode, String subject, String content,
 			String studyTime) {
 		// insertForm에서 멤버코드 , 과목 , 내용 , 공부시간(분단위)을 받아온 상태.
@@ -97,10 +83,10 @@ public class StudyController {
 		System.out.println(vo.toString());
 
 		service.insertSch(vo);
-		return "redirect:list";
+		return "redirect:study_list";
 	}
 
-	@RequestMapping(value = "/scheduleView", method = RequestMethod.GET)
+	@RequestMapping(value = "/study/scheduleView", method = RequestMethod.GET)
 	public String scheduleView(Locale locale, Model model, int studyNO) {
 		logger.info("스터디일정 상세보기 폼{}.", locale);
 
@@ -111,19 +97,19 @@ public class StudyController {
 
 		model.addAttribute("vo", vo);
 
-		return "scheduleView";
+		return "study_scheduleView";
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/study/delete", method = RequestMethod.POST)
 	public String delete(Locale locale, Model model, int studyNO) {
 		logger.info("스터디일정 삭제{}.", locale);
 
 		service.deleteSch(studyNO);
 
-		return "redirect:list";
+		return "redirect:study_list";
 	}
 
-	@RequestMapping(value = "/updateForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/study/updateForm", method = RequestMethod.GET)
 	public String updateForm(Locale locale, Model model, int studyNO) {
 		logger.info("스터디일정 수정 입력{}.", locale);
 
@@ -134,15 +120,15 @@ public class StudyController {
 
 		model.addAttribute("vo", vo);
 
-		return "updateForm";
+		return "study_updateForm";
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/study/update", method = RequestMethod.POST)
 	public String update(Locale locale, Model model, StudyDTO vo) {
 		logger.info("스터디일정 수정완료{}.", locale);
 
 		System.out.println(vo.toString());
 		service.updateSch(vo);
-		return "redirect:scheduleView?studyNO=" + vo.getStudyNO();
+		return "redirect:study_scheduleView?studyNO=" + vo.getStudyNO();
 	}
 }

@@ -12,33 +12,35 @@ public class StudyDAO implements IStudyDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	private String nameSpace = "wave.withdiary.study.";
+	
 	@Override
 	public List<StudyDTO> listSch() {
-		return sqlSession.selectList("com.wave.schedule.listSch", "listSch");
+		return sqlSession.selectList(nameSpace + "listSch", "listSch");
 	}
 
 	@Override
-	public int insertSch(StudyDTO vo) {
+	public int insertSch(StudyDTO dto) {
 		// TODO Auto-generated method stub
-		return sqlSession.insert("com.wave.schedule.insertSch", vo);
+		return sqlSession.insert(nameSpace + "insertSch", dto);
 	}
 
 	@Override
-	public int updateSch(StudyDTO vo) {
+	public int updateSch(StudyDTO dto) {
 		// TODO Auto-generated method stub
-		return sqlSession.update("com.wave.schedule.updateSch", vo);
+		return sqlSession.update(nameSpace + "updateSch", dto);
 	}
 
 	@Override
-	public int deleteSch(int studyNo) {
+	public int deleteSch(int studyNO) {
 		// TODO Auto-generated method stub
-		return sqlSession.delete("com.wave.schedule.deleteSch", studyNo);
+		return sqlSession.delete(nameSpace + "deleteSch", studyNO);
 	}
 
 	@Override
-	public StudyDTO selectSch(int studyNo) {
+	public StudyDTO selectSch(int studyNO) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("com.wave.schedule.selectSch", studyNo);
+		return sqlSession.selectOne(nameSpace + "selectSch", studyNO);
 	}
 	
 }

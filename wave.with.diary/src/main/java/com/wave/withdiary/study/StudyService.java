@@ -17,25 +17,23 @@ public class StudyService implements IStudyService {
 	}
 	
 	@Override
-	public int insertSch(StudyDTO vo) {
-		return dao.insertSch(vo);
+	public int insertSch(StudyDTO dto) {
+		return dao.insertSch(dto);
 	}
 
 	@Override
-	public int updateSch(StudyDTO vo) {
-		return dao.updateSch(vo);
+	public int updateSch(StudyDTO dto) {
+		return dao.updateSch(dto);
 	}
 
 	@Override
-	public StudyDTO selectSch(int studyNo) {
-		// TODO Auto-generated method stub
-		return dao.selectSch(studyNo);
+	public StudyDTO selectSch(int studyNO) {
+		return dao.selectSch(studyNO);
 	}
 
 	@Override
-	public int deleteSch(int studyNo) {
-		// TODO Auto-generated method stub
-		return dao.deleteSch(studyNo);
+	public int deleteSch(int studyNO) {
+		return dao.deleteSch(studyNO);
 	}
 
 }
