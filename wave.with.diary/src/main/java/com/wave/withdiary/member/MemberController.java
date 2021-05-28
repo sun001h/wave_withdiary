@@ -1,6 +1,7 @@
 package com.wave.withdiary.member;
 
 import java.io.File;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Locale;
@@ -64,11 +65,13 @@ public class MemberController {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", vo);
 			session.setAttribute("isLogOn", true);
-			System.out.println("세션 아이디: ");
-			System.out.println("최초 세션 생성 시각: ");
-			System.out.println("최초 세션 접근 시각: ");
-			System.out.println("세션 유효 시간: ");
-			
+			System.out.println("세션 아이디: " + session.getId());
+			System.out.println("최초 세션 생성 시각: " + new Date(session.getCreationTime()));
+			System.out.println("최근 세션 접근 시각: " + new Date(session.getLastAccessedTime()));
+			System.out.println("세션 유효 시간: " + session.getMaxInactiveInterval());
+			if(session.isNew()) {
+				System.out.println("새 세션이 만들어졌습니다.(로그인 세션 생성)");
+			}
 			// 로그인 성공시 프로필 조회로 이동
 			mav.setViewName("redirect:member/profile");
 		} else {
