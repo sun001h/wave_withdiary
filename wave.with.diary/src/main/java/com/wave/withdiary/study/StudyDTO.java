@@ -1,6 +1,6 @@
 package com.wave.withdiary.study;
 
-public class ScheduleDto {
+public class StudyDTO {
 	
 	private int studyNO;
 	private String subject;
@@ -12,7 +12,7 @@ public class ScheduleDto {
 	
 
 	
-	public ScheduleDto(int studyNO, String subject, String content, String writer, String studyTime, String studyDate,
+	public StudyDTO(int studyNO, String subject, String content, String writer, String studyTime, String studyDate,
 			String memberCode) {
 		super();
 		this.studyNO = studyNO;
@@ -26,7 +26,7 @@ public class ScheduleDto {
 
 
 
-	public ScheduleDto() {
+	public StudyDTO() {
 		// TODO Auto-generated constructor stub
 	}
 

@@ -7,24 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ScheduleDao implements IScheduleDao {
+public class StudyDAO implements IStudyDAO {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<ScheduleDto> listSch() {
+	public List<StudyDTO> listSch() {
 		return sqlSession.selectList("com.wave.schedule.listSch", "listSch");
 	}
 
 	@Override
-	public int insertSch(ScheduleDto vo) {
+	public int insertSch(StudyDTO vo) {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("com.wave.schedule.insertSch", vo);
 	}
 
 	@Override
-	public int updateSch(ScheduleDto vo) {
+	public int updateSch(StudyDTO vo) {
 		// TODO Auto-generated method stub
 		return sqlSession.update("com.wave.schedule.updateSch", vo);
 	}
@@ -36,7 +36,7 @@ public class ScheduleDao implements IScheduleDao {
 	}
 
 	@Override
-	public ScheduleDto selectSch(int studyNo) {
+	public StudyDTO selectSch(int studyNo) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("com.wave.schedule.selectSch", studyNo);
 	}

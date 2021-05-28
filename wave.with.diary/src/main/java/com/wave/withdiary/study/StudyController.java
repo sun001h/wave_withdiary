@@ -22,7 +22,7 @@ public class StudyController {
 	private static final Logger logger = LoggerFactory.getLogger(StudyController.class);
 
 	@Autowired
-	private IScheduleService service;
+	private IStudyService service;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -42,7 +42,7 @@ public class StudyController {
 	public String list(Locale locale, Model model) {
 		logger.info("스터디 리스트 폼 {}.", locale);
 
-		List<ScheduleDto> list = service.listSch();
+		List<StudyDTO> list = service.listSch();
 
 		model.addAttribute("list", list);
 		System.out.println("사이즈 :" + list.size());
@@ -87,7 +87,7 @@ public class StudyController {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
 		System.out.println(df.format(cal.getTime()));
 
-		ScheduleDto vo = new ScheduleDto();
+		StudyDTO vo = new StudyDTO();
 		vo.setContent(content);
 		vo.setMemberCode(memberCode);
 		vo.setStudyDate(df.format(cal.getTime()));
@@ -106,7 +106,7 @@ public class StudyController {
 
 		System.out.println(studyNO);
 
-		ScheduleDto vo = new ScheduleDto();
+		StudyDTO vo = new StudyDTO();
 		vo = service.selectSch(studyNO);
 
 		model.addAttribute("vo", vo);
@@ -127,7 +127,7 @@ public class StudyController {
 	public String updateForm(Locale locale, Model model, int studyNO) {
 		logger.info("스터디일정 수정 입력{}.", locale);
 
-		ScheduleDto vo = new ScheduleDto();
+		StudyDTO vo = new StudyDTO();
 		vo = service.selectSch(studyNO);
 
 		/* System.out.println(vo.toString()); */
@@ -138,7 +138,7 @@ public class StudyController {
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(Locale locale, Model model, ScheduleDto vo) {
+	public String update(Locale locale, Model model, StudyDTO vo) {
 		logger.info("스터디일정 수정완료{}.", locale);
 
 		System.out.println(vo.toString());

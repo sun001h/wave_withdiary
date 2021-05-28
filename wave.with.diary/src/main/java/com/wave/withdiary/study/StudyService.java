@@ -6,28 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ScheduleService implements IScheduleService {
+public class StudyService implements IStudyService {
 
 	@Autowired
-	private IScheduleDao dao;
+	private IStudyDAO dao;
 	
 	@Override
-	public List<ScheduleDto> listSch() {
+	public List<StudyDTO> listSch() {
 		return dao.listSch();
 	}
 	
 	@Override
-	public int insertSch(ScheduleDto vo) {
+	public int insertSch(StudyDTO vo) {
 		return dao.insertSch(vo);
 	}
 
 	@Override
-	public int updateSch(ScheduleDto vo) {
+	public int updateSch(StudyDTO vo) {
 		return dao.updateSch(vo);
 	}
 
 	@Override
-	public ScheduleDto selectSch(int studyNo) {
+	public StudyDTO selectSch(int studyNo) {
 		// TODO Auto-generated method stub
 		return dao.selectSch(studyNo);
 	}
