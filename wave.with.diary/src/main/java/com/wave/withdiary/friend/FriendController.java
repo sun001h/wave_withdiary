@@ -35,8 +35,8 @@ public class FriendController {
 	private FriendService friendService;
 	
 	
-	@RequestMapping(value = "/friendList", method = RequestMethod.GET)
-	public String friendList(HttpServletRequest request, Locale locale, Model model) {
+	@RequestMapping(value = "/friend/list", method = RequestMethod.GET)
+	public String list(HttpServletRequest request, Locale locale, Model model) {
 		logger.info("친구목록 {}.", locale);
 		
 		HttpSession session = request.getSession();
@@ -60,7 +60,7 @@ public class FriendController {
 		
 		model.addAttribute("list", list);
 		
-		return "friendList";
+		return "friend_list";
 	}
 	
 	

@@ -24,11 +24,11 @@
 				<td>${list.subject }</td>
 				<td>${list.content }</td>
 				<td>${list.studyTime }</td>
-				<td><a href="scheduleView?studyNO=${list.studyNO }">상세보기</a></td>
+				<td><a href="study/view?studyNO=${list.studyNO }">상세보기</a></td>
 			</tr>
 		</c:forEach>
 	</table>
-	<form action="insertForm" method="get">
+	<form action="study/insertForm" method="get">
 		<input type="submit" value="일정추가" />
 	</form>
 </body>

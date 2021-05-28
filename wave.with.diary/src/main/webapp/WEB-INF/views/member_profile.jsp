@@ -80,7 +80,7 @@
 	</table>
 	<br>
 	<p align="center">
-		<a href="updateForm?memberCode=${vo.memberCode }">수정하기</a>
+		<a href="member/updateForm?memberCode=${vo.memberCode }">수정하기</a>
 	</p>
 </body>
 </html>

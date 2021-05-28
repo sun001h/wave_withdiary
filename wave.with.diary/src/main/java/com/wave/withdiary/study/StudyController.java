@@ -80,7 +80,7 @@ public class StudyController {
 		System.out.println(dto.toString());
 
 		studyService.insertSch(dto);
-		return "redirect:study_list";
+		return "redirect:study/list";
 	}
 
 	@RequestMapping(value = "/study/view", method = RequestMethod.GET)
@@ -103,12 +103,12 @@ public class StudyController {
 
 		studyService.deleteSch(studyNO);
 
-		return "redirect:study_list";
+		return "redirect:study/list";
 	}
 
 	@RequestMapping(value = "/study/updateForm", method = RequestMethod.GET)
 	public String updateForm(Locale locale, Model model, int studyNO) {
-		logger.info("스터디일정 수정 입력{}.", locale);
+		logger.info("스터디일정 수정 입력폼{}.", locale);
 
 		StudyDTO dto = new StudyDTO();
 		dto = studyService.selectSch(studyNO);
@@ -126,6 +126,6 @@ public class StudyController {
 
 		System.out.println(dto.toString());
 		studyService.updateSch(dto);
-		return "redirect:study_view?studyNO=" + dto.getStudyNO();
+		return "redirect:study/view?studyNO=" + dto.getStudyNO();
 	}
 }

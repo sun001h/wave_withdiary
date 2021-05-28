@@ -24,7 +24,7 @@
 </head>
 <body>
 	<h2>스터디 일정 작성</h2>
-	<form action="insertResult" method="get">
+	<form action="study/insertResult" method="get">
 	<div>
 		멤버코드:
 		<!-- value 값 수정 필요  WD2105040001-->

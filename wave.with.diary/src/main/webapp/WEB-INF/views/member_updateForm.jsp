@@ -25,7 +25,7 @@
 </head>
 <body>
 <h2 align="center">회원 프로필 수정</h2>
-<form action="update" method="POST" enctype="multipart/form-data">
+<form action="member/update" method="POST" enctype="multipart/form-data">
 <input type="hidden" name="memberCode" value="${vo.memberCode }" />
 <table align="center" border="1">
 <tr>

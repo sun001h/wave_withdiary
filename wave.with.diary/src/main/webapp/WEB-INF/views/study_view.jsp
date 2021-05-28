@@ -8,7 +8,7 @@
 <title>스터디 내용 상세보기</title>
 </head>
 <body>
-<form action="delete" method="post">
+<form action="study/delete" method="post">
 <table align="center" border="1">
 	<tr>
 		<th>과목</th>
@@ -21,9 +21,9 @@
 		<th>${vo.studyTime }</th>
 	</tr>
 </table>
-<p align="center"><a href="updateForm?studyNO=${vo.studyNO }">수정하기</a></p>
+<p align="center"><a href="study/updateForm?studyNO=${vo.studyNO }">수정하기</a></p>
 <input type="submit" value="삭제" />
-<a href="list">리스트로 돌아가기</a>
+<a href="study/list">리스트로 돌아가기</a>
 </form>
 </body>
 </html>
