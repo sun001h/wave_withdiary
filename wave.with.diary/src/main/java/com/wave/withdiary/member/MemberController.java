@@ -47,7 +47,7 @@ public class MemberController {
 	public String loginForm(Locale locale, Model model) {
 		logger.info("로그인Form {}.", locale);
 		
-		return "loginForm";
+		return "member_loginForm";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -77,7 +77,7 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping(value = "/updateForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/updateForm", method = RequestMethod.GET)
 	public String updateForm(Locale locale, Model model, String memberCode) {
 		logger.info("회원 정보 수정폼 {}.", locale);
 		
@@ -86,11 +86,11 @@ public class MemberController {
 		
 		model.addAttribute("vo", vo);
 		
-		return "updateForm";
+		return "member_updateForm";
 	}
 	
 	
-	@RequestMapping(value="/update" ,method = RequestMethod.POST)
+	@RequestMapping(value="/member/update" ,method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity update(MultipartHttpServletRequest multipartRequest, 
 			HttpServletResponse response, String memberCode, String email) throws Exception {
@@ -129,7 +129,7 @@ public class MemberController {
 
 			message = "<script>";
 			message += " alert('수정완료');";
-			message += " location.href='"+multipartRequest.getContextPath()+"/profile?memberCode="+ memberCode+"'; ";
+			message += " location.href='"+multipartRequest.getContextPath()+"/member/profile?memberCode="+ memberCode+"'; ";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			
@@ -140,7 +140,7 @@ public class MemberController {
 
 			message = " <script>";
 			message +="  alert('??????????');";
-			message +=" location.href='"+multipartRequest.getContextPath()+"/profile?memberCode="+ memberCode+"'; ";
+			message +=" location.href='"+multipartRequest.getContextPath()+"/member/profile?memberCode="+ memberCode+"'; ";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();
@@ -154,7 +154,7 @@ public class MemberController {
 	//프로필 사진 수정후, 프로필에서 vo를 세션에서 가져와서 그런지 사진 깨짐
 	//(수정반영 되지 않음)
 	// 다시 로그인하면 수정한 사진으로 뜸
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/profile", method = RequestMethod.GET)
 	public String profile(HttpServletRequest request, HttpServletResponse response,
 			Model model) throws Exception{
 
@@ -163,7 +163,7 @@ public class MemberController {
 		MemberVO vo = (MemberVO) session.getAttribute("member");
 		model.addAttribute("vo", vo);
 		
-		return "profile";
+		return "member_profile";
 	}
 
 	

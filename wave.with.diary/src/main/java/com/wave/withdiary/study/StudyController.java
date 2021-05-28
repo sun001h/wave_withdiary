@@ -83,8 +83,8 @@ public class StudyController {
 		return "redirect:study_list";
 	}
 
-	@RequestMapping(value = "/study/scheduleView", method = RequestMethod.GET)
-	public String scheduleView(Locale locale, Model model, int studyNO) {
+	@RequestMapping(value = "/study/view", method = RequestMethod.GET)
+	public String view(Locale locale, Model model, int studyNO) {
 		logger.info("스터디일정 상세보기 폼{}.", locale);
 
 		System.out.println(studyNO);
@@ -94,7 +94,7 @@ public class StudyController {
 
 		model.addAttribute("dto", dto);
 
-		return "study_scheduleView";
+		return "study_view";
 	}
 
 	@RequestMapping(value = "/study/delete", method = RequestMethod.POST)
@@ -126,6 +126,6 @@ public class StudyController {
 
 		System.out.println(dto.toString());
 		studyService.updateSch(dto);
-		return "redirect:study_scheduleView?studyNO=" + dto.getStudyNO();
+		return "redirect:study_view?studyNO=" + dto.getStudyNO();
 	}
 }

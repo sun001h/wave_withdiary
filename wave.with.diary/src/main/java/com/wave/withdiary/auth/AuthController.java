@@ -46,17 +46,17 @@ public class AuthController {
 	// 이미지 처리
 	WDFileUtils wdfile = new WDFileUtils();
 	String PROFILE_IMAGE_REPO = wdfile.PROFILE_IMAGE_REPO;
+	 
 	
-	
-	@RequestMapping(value = "/addByMapForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/auth/addByMapForm", method = RequestMethod.GET)
 	public String addByMapForm(Locale locale, Model model) {
 		logger.info("회원가입 폼 {}.", locale);
 		
-		return "addByMapForm";
+		return "auth_addByMapForm";
 	}
 	
 	
-	@RequestMapping(value="/addByMap" ,method = RequestMethod.POST)
+	@RequestMapping(value="/auth/addByMap" ,method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity addByMap(MultipartHttpServletRequest multipartRequest, 
 			HttpServletResponse response, String bday, String email) throws Exception {

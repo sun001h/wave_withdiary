@@ -32,8 +32,8 @@ public class CashController {
 	@Autowired
 	private IAccountService acService;
 
-	@RequestMapping(value = "/accountlistpage", method = {RequestMethod.GET,RequestMethod.POST})
-	public String accountlistpage(HttpServletRequest request , @ModelAttribute("cri") Criteria cri, Locale locale, Model model) {
+	@RequestMapping(value = "/cash/listpage", method = {RequestMethod.GET,RequestMethod.POST})
+	public String listpage(HttpServletRequest request , @ModelAttribute("cri") Criteria cri, Locale locale, Model model) {
 		logger.info("가계부목록 페이징 {}.", locale);
 
 		HttpSession session = request.getSession();
@@ -81,11 +81,11 @@ public class CashController {
 		// 세션유지
 		model.addAttribute("mysession",vo);
 
-		return "accountlistpage";
+		return "cash_listpage";
 	}
 
-	@RequestMapping(value = "/insertaccount", method = RequestMethod.GET)
-	public String insertaccount(HttpServletRequest request ,Locale locale, Model model) {
+	@RequestMapping(value = "/cash/insertForm", method = RequestMethod.GET)
+	public String insertForm(HttpServletRequest request ,Locale locale, Model model) {
 		logger.info("가계부 쓰기폼 이동 {}.", locale);
 
 		HttpSession session = request.getSession();
@@ -107,11 +107,11 @@ public class CashController {
 		// 세션유지
 		model.addAttribute("mysession", vo);
 
-		return "insertaccount";
+		return "cash_insertForm";
 	}
 
 
-	@RequestMapping(value = "/insertaccount1", method = RequestMethod.POST)
+	@RequestMapping(value = "/cash/insert", method = RequestMethod.POST)
 	public String insert(HttpServletRequest request, Locale locale, Model model, AccountDTO dto) {
 		logger.info("가계부 추가하기 {}.", locale);
 		HttpSession session = request.getSession();
@@ -121,7 +121,7 @@ public class CashController {
 		dto.setMemberCode(vo.getMemberCode());
 		boolean isS=acService.insertAccount(dto);
 		if(isS) {
-			return "redirect:accountlistpage";
+			return "redirect:cash/listpage";
 		} else {
 			model.addAttribute("msg","가계부 추가실패");
 			return "error";
@@ -129,8 +129,8 @@ public class CashController {
 
 	}
 
-	@RequestMapping(value = "/detailaccount", method = {RequestMethod.GET,RequestMethod.POST})
-	public String detailaccount(HttpServletRequest request, @RequestParam("num")int num, @ModelAttribute("cri") Criteria cri, Locale locale, Model model) {
+	@RequestMapping(value = "/cash/detail", method = {RequestMethod.GET,RequestMethod.POST})
+	public String detail(HttpServletRequest request, @RequestParam("num")int num, @ModelAttribute("cri") Criteria cri, Locale locale, Model model) {
 		logger.info("가계부 상세 조회하기 {}.", locale);
 
 		HttpSession session = request.getSession();
@@ -145,11 +145,11 @@ public class CashController {
 		// 세션유지
 		model.addAttribute("mysession", dto);
 
-		return "detailaccount";
+		return "cash_detail";
 	}
 
-	@RequestMapping(value = "/cashUpdateForm", method = {RequestMethod.GET,RequestMethod.POST})
-	public String cashUpdateForm(HttpServletRequest request, @RequestParam("num")int num, Locale locale, Model model) {
+	@RequestMapping(value = "/cash/updateForm", method = {RequestMethod.GET,RequestMethod.POST})
+	public String updateForm(HttpServletRequest request, @RequestParam("num")int num, Locale locale, Model model) {
 		logger.info("가계부 수정하기 폼이동 {}.", locale);
 
 		HttpSession session = request.getSession();
@@ -169,11 +169,11 @@ public class CashController {
 
 		// 세션유지
 		model.addAttribute("mysession",dto);
-		return "cashUpdateForm";
+		return "cash_updateForm";
 	}
 
-	@RequestMapping(value = "/cashUpdate", method = {RequestMethod.GET,RequestMethod.POST})
-	public String cashUpdate(@ModelAttribute("cri") Criteria cri, RedirectAttributes rttr,AccountDTO dto, Locale locale, Model model) {
+	@RequestMapping(value = "/cash/update", method = {RequestMethod.GET,RequestMethod.POST})
+	public String update(@ModelAttribute("cri") Criteria cri, RedirectAttributes rttr,AccountDTO dto, Locale locale, Model model) {
 		logger.info("가계부 수정하기  {}.", locale);
 
 		// 수정하기 페이징 유지(디테일 안에서 하는 것이라 상관무
@@ -184,7 +184,7 @@ public class CashController {
 
 		boolean isS=acService.updateAccount(dto);
 		if(isS) {
-			return "redirect:detailaccount?num="+dto.getNum();
+			return "redirect:cash/detail?num="+dto.getNum();
 		} else {
 			model.addAttribute("msg","가계부 수정실패");
 			return "error";
@@ -192,7 +192,7 @@ public class CashController {
 
 	}
 
-	@RequestMapping(value = "/deleteaccount", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/cash/delete", method = {RequestMethod.GET,RequestMethod.POST})
 	public String delete(@ModelAttribute("cri") Criteria cri, RedirectAttributes rttr, AccountDTO dto, Locale locale, Model model) {
 		logger.info("가계부 삭제하기  {}.", locale);
 
@@ -201,7 +201,7 @@ public class CashController {
 
 		boolean isS=acService.deleteAccount(dto.getNum());
 		if(isS) {
-			return "redirect:accountlistpage";
+			return "redirect:cash/listpage";
 		} else {
 			model.addAttribute("msg","가계부 삭제실패");
 			return "error";
