@@ -72,7 +72,7 @@ public class BoardController {
 		
 		logger.info("글 수정하기");
 		boardService.update(vo);
-		return "redirect:board/view?d_articlenumber="+vo.getd_articlenumber()+"&clear=y";
+		return "redirect:view?d_articlenumber="+vo.getd_articlenumber()+"&clear=y";
 	}	
 
 	@RequestMapping(value = "/board/delete")
@@ -81,7 +81,7 @@ public class BoardController {
 		logger.info("글 삭제하기");
 
 		boardService.delete(d_articlenumber);
-		return "redirect:board/list";
+		return "redirect:list";
 	}	
 	
 	@RequestMapping(value = "/board/list", method = RequestMethod.GET)

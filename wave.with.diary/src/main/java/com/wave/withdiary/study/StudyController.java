@@ -80,7 +80,7 @@ public class StudyController {
 		System.out.println(dto.toString());
 
 		studyService.insertSch(dto);
-		return "redirect:study/list";
+		return "redirect:list";
 	}
 
 	@RequestMapping(value = "/study/view", method = RequestMethod.GET)
@@ -103,7 +103,7 @@ public class StudyController {
 
 		studyService.deleteSch(studyNO);
 
-		return "redirect:study/list";
+		return "redirect:list";
 	}
 
 	@RequestMapping(value = "/study/updateForm", method = RequestMethod.GET)
@@ -126,6 +126,6 @@ public class StudyController {
 
 		System.out.println(dto.toString());
 		studyService.updateSch(dto);
-		return "redirect:study/view?studyNO=" + dto.getStudyNO();
+		return "redirect:view?studyNO=" + dto.getStudyNO();
 	}
 }
