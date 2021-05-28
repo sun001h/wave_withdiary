@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wave.withdiary.auth">
+
+	<select id="overlapped" parameterType="String" resultType="String">
+		<![CDATA[
+			select decode(count(*), 1, 'true', 0, 'false')
+			from wd_mailcode
+			where email= #{email}
+		]]>
+	</select>
+
+	<insert id="addMemberByMap" parameterType="java.util.Map">
+		<![CDATA[
+			insert into wd_mailcode
+			values(#{email}, 'WD', sysdate, mc_seq.nextval, #{pwd}, #{birthyear}, 
+				#{birthday}, #{nickname}, #{profile_img}, #{gender}, #{profile}, #{authKey}, 0)
+		]]>
+	</insert>
+		
+	<update id="updateAuthStatus" parameterType="Map">
+		<![CDATA[
+			update wd_mailcode
+			set authStatus= #{authStatus} 
+			where email= #{email} and authKey= #{authKey}
+		]]>
+	</update>
+	
+	<select id="selectMember" resultType="AuthDTO" parameterType="String">
+		<![CDATA[
+			select * from wd_mailcode where email= #{email}
+		]]>
+	</select>
+	
+	<select id="createCode" resultType="String" parameterType="String">
+		<![CDATA[
+			select joinType || 
+				substr(joinDate,1,2) || substr(joinDate,4,2) || substr(joinDate,7,2) ||
+				lpad(mc_seq,4,0) as "memberCode"
+			from wd_mailcode
+			where email = #{email}
+		]]>
+	</select>
+	
+</mapper>

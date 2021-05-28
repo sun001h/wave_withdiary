@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wave.withdiary.member">
+
+	<select id="listMembers" resultType="MemberVO">
+		<![CDATA[
+			select * from wd_member
+		]]>
+	</select>
+	
+	<select id="selectMember" resultType="MemberVO" parameterType="String">
+		<![CDATA[
+			select * from wd_member where membercode= #{memberCode}
+		]]>
+	</select>
+	
+	<insert id="addMember" parameterType="MemberVO">
+		<![CDATA[
+			insert into wd_member
+			(membercode, email, pwd, birthyear, birthday, nickname, profile_img, gender, profile)
+			values(#{memberCode}, #{email}, #{pwd}, #{birthyear}, #{birthday}, #{nickname}, 
+				#{profile_img}, #{gender}, #{profile})
+		]]>
+	</insert>
+	
+	
+	<update id="update" parameterType="java.util.Map">
+		<![CDATA[
+			update wd_member
+			set pwd =#{pwd}, nickname =#{nickname}, profile =#{profile}
+		]]>
+		
+		<if test="#{profile_img}!='' and #{profile_img}!=null">
+			, profile_img =#{profile_img}
+		</if>
+		
+		<![CDATA[
+ 			where membercode= #{memberCode}
+		]]>
+	</update>
+	
+	
+	<delete id="delete" parameterType="String">
+		<![CDATA[
+
+		]]>
+	</delete>
+	
+	<insert id="addMemberByMap" parameterType="java.util.Map">
+		<![CDATA[
+			insert into wd_member
+			(membercode, email, pwd, birthyear, birthday, nickname, profile_img, gender, profile)
+			values(#{memberCode}, #{email}, #{pwd}, #{birthyear}, #{birthday}, #{nickname}, 
+				#{profile_img}, #{gender}, #{profile})
+		]]>
+	</insert>
+	
+	<select id="loginByEmail" resultType="memberVO" parameterType="memberVO" >
+		<![CDATA[
+			select * from wd_member 
+			where email= #{email} and pwd=#{pwd}	
+		]]>
+	</select>
+	
+	<select id="overlapped" parameterType="String" resultType="String">
+		<![CDATA[
+			select decode(count(*), 1, 'true', 0, 'false')
+			from wd_member
+			where email= #{email}
+		]]>
+	</select>
+
+</mapper>

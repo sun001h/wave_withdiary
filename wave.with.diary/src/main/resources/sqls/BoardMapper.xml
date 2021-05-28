@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wave.withdiary.board">
+
+	<!-- 글 작성하기 -->
+	<insert id="insert" parameterType="BoardVO">
+	<![CDATA[
+      	INSERT INTO WD_DIARY(D_ARTICLENUMBER, TITLE, CONTENT, DATECREATED, IMGFILENAME, SCHEDULEDATE, MAP, VIEWCNT, MEMBERCODE)
+		VALUES(WD_DIARY_D_ARTICLENUMBER.nextval, #{title}, #{content}, sysdate, #{imgFileName}, 
+		#{scheduleDate}, #{map}, #{viewcnt}, #{membercode})
+	]]>	
+	</insert>	
+	
+	<!-- 글 상세보기  -->
+	<select id="view" parameterType="int" resultType="BoardVO">
+	<![CDATA[
+		SELECT D_ARTICLENUMBER, TITLE, CONTENT, DATECREATED, IMGFILENAME, SCHEDULEDATE, MAP, MEMBERCODE
+		FROM WD_DIARY
+		WHERE D_ARTICLENUMBER = #{D_articleNumber}
+	]]>	
+	</select>	
+
+	<!-- 글 수정하기 -->
+	<update id="updateArticle" parameterType="BoardVO">
+	<![CDATA[
+		UPDATE WD_DIARY 
+		SET TITLE = #{title},
+			CONTENT = #{content}
+		WHERE D_ARTICLENUMBER = #{d_articlenumber}
+	]]>
+	</update>	
+	
+	<!-- 글 삭제하기 -->
+	<delete id="deleteArticle" parameterType="int">
+	<![CDATA[
+		DELETE FROM WD_DIARY
+		WHERE D_ARTICLENUMBER = #{d_articlenumber}
+	]]>
+	</delete>	
+		
+	<!-- 글 목록 조회 -->
+	<select id="listAll" resultType="BoardVO">
+	<![CDATA[
+		SELECT D_ARTICLENUMBER, TITLE, CONTENT, DATECREATED, IMGFILENAME, SCHEDULEDATE, MAP, MEMBERCODE
+		FROM WD_DIARY
+	]]>
+	</select>
+
+	<!-- 글 조회수 증가 -->
+	<update id="increaseViewcnt" parameterType="int">
+	<![CDATA[
+		UPDATE WD_DIARY
+		SET VIEWCNT = VIEWCNT + 1 
+		WHERE D_ARTICLENUMBER = #{D_articleNumber}
+	]]>
+	</update>	
+	
+</mapper>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wave.withdiary.cash">
+
+	<!-- resultMap으로 컬럼명 변경 저장 property=dto에 있는 객체명에 저장 
+		 * resultMap은 join을 할때 활용을 한다.-->
+	<resultMap type="AccountDTO" id="AccountDTOMap">
+		<result column="NUM" property="num"/>
+		<result column="MEMBERCODE" property="memberCode"/>
+		<result column="HISTORY" property="history"/>
+		<result column="CHDATE" property="chdate"/>
+		<result column="MONEY" property="money"/>
+		<result column="CLASSIFICATIONCODE" property="classificationCode"/>
+		<result column="MEMO" property="memo"/>
+		<result column="CONSUMPTION_TYPECODE" property="consumption_typecode"/>
+		<collection property="dto" resultMap="CategoryDTOMap" ></collection>
+		<collection property="ctdto" resultMap="CategoryCtDTOMap" ></collection>
+	</resultMap>
+	
+	<!-- 카테고리(소비형식) -->
+	<resultMap type="CategoryDTO" id="CategoryDTOMap">
+		<result column="CLASSIFICATIONNAME" property="classificationName"/>
+		<result column="CLASSIFICATIONCODE" property="classificationCode"/>
+		<result column="CLASSIFICATIONREF" property="classificationRef"/>
+	</resultMap>
+	<!-- 카테고리(소비패턴) -->
+	<resultMap type="CategoryCtDTO" id="CategoryCtDTOMap">
+		<result column="CONSUMPTION_TYPENAME" property="consumption_typename"/>
+		<result column="CONSUMPTION_TYPECODE" property="consumption_typecode"/>
+		<result column="CONSUMPTION_TYPEREF" property="consumption_typeref"/>
+	</resultMap>
+	
+	<!-- 차트(소비패턴) -->
+	<resultMap type="ChartCT" id="ChartCTMap">
+		<result column="CONSUMPTION_TYPENAME" property="consumption_typename"/>
+		<result column="COUNT" property="count"/>
+	</resultMap>
+	<!-- 차트(월별지출금액비교) -->
+	<resultMap type="ChartMoney" id="ChartMoneyMap">
+		<result column="MONTH_CHDATE" property="month_chdate"/>
+		<result column="SUM_MONEY" property="sum_money"/>
+	</resultMap>
+	
+	<!-- 카테고리 -->
+	<select id="category" resultType="CategoryDTO">
+		SELECT 
+		CLASSIFICATIONNAME, CLASSIFICATIONCODE, CLASSIFICATIONREF
+		FROM WD_CASHBOOK_CATEGORY
+	</select>
+	
+	<select id="categoryct" resultType="CategoryCtDTO">
+		SELECT 
+		CONSUMPTION_TYPENAME, CONSUMPTION_TYPECODE, CONSUMPTION_TYPEREF
+		FROM WD_CASHBOOK_CATEGORY_CT
+	</select>
+	
+	<!-- 멤버 맵 -->
+	<resultMap type="MemberVO" id="memberMap">
+		<result column="MEMBERCODE" property="memberCode"></result>
+		<result column="EMAIL" property="email"></result>
+		<result column="PWD" property="pwd"></result>
+		<result column="BIRTHYEAR" property="birthyear"></result>
+		<result column="BIRTHDAY" property="birthday"></result>
+		<result column="NICKNAME" property="nickname"></result>
+		<result column="PROFILE_IMG" property="profile_img"></result>
+		<result column="GENDER" property="gender"></result>
+		<result column="PROFILE" property="profile"></result>
+	</resultMap>
+	
+	
+	
+	<!-- 상세보기 -->
+	<select id="getAccount" parameterType="int" resultMap="AccountDTOMap" >
+		SELECT NUM, MEMBERCODE, HISTORY, CHDATE, MONEY, W.CLASSIFICATIONCODE, 
+		C.CLASSIFICATIONNAME, MEMO, W.CONSUMPTION_TYPECODE, T.CONSUMPTION_TYPENAME
+		FROM WD_CASHBOOK W, WD_CASHBOOK_CATEGORY C, WD_CASHBOOK_CATEGORY_CT T
+		WHERE W.CLASSIFICATIONCODE = C.CLASSIFICATIONCODE 
+		AND W.CONSUMPTION_TYPECODE = T.CONSUMPTION_TYPECODE 
+		AND NUM=#{num} 
+	</select>
+	
+	<!-- 추가하기  -->
+	<insert id="insertaccount" parameterType="AccountDTO">
+		INSERT INTO WD_CASHBOOK
+		VALUES (WD_CASHBOOK_NUM.NEXTVAL, #{memberCode}, 
+		#{history}, #{chdate}, #{money}, #{classificationCode}, 
+		#{memo}, #{consumption_typecode})
+	</insert>
+	
+	<!-- 수정하기  -->
+	<update id="updateaccount" parameterType="AccountDTO">
+		UPDATE WD_CASHBOOK
+		SET HISTORY=#{history}, CHDATE=#{chdate}, MONEY=#{money}, 
+		CLASSIFICATIONCODE=#{classificationCode}, MEMO=#{memo}, CONSUMPTION_TYPECODE=#{consumption_typecode}
+		WHERE NUM=#{num}
+	</update>
+
+	<!-- 삭제하기 -->
+	<delete id="deleteaccount" parameterType="int">
+		DELETE FROM WD_CASHBOOK
+		WHERE NUM=#{num}
+	</delete>
+	
+	<!-- 다중 delete -->
+	<delete id="muldel" parameterType="Map">
+		DELETE FROM WD_CASHBOOK
+		WHERE NUM IN 
+		<!-- collection아이템을 i에 저장함 / ,로 끝나겠다 / 시작할때 (열고 끝날때 )닫고
+			  결과 : (1,2,3,4,5...)-->
+		<foreach collection="chk" item="i" separator="," open="(" close=")"> 
+			#{i}
+		</foreach>
+	</delete>
+	
+	<!-- 페이징처리 -->
+	<!-- 동적쿼리사용시 : 파라미터값이 Map에 담겨져야 한다. Map: rowStart, rowEnd, chdate-->
+	<select id="getAllListPage" parameterType="Map" resultMap="AccountDTOMap">
+		SELECT NUM, MEMBERCODE, HISTORY, CHDATE, MONEY, CLASSIFICATIONCODE, MEMO, CLASSIFICATIONNAME,CONSUMPTION_TYPECODE, CONSUMPTION_TYPENAME
+		FROM (
+		SELECT ROWNUM RN, WD.*FROM (
+				SELECT NUM, MEMBERCODE, HISTORY, CHDATE, MONEY, W.CLASSIFICATIONCODE, C.CLASSIFICATIONNAME, 
+				MEMO, W.CONSUMPTION_TYPECODE, T.CONSUMPTION_TYPENAME
+				FROM WD_CASHBOOK W, WD_CASHBOOK_CATEGORY C, WD_CASHBOOK_CATEGORY_CT T
+				WHERE W.CLASSIFICATIONCODE = C.CLASSIFICATIONCODE 
+				AND W.CONSUMPTION_TYPECODE = T.CONSUMPTION_TYPECODE
+				<if test="fchdate!=null">
+				AND CHDATE BETWEEN TO_DATE(#{fchdate}) AND TO_DATE(#{tchdate})
+				</if>
+				AND MEMBERCODE =#{memberCode}
+				ORDER BY NUM DESC)WD
+			)
+			WHERE RN BETWEEN #{rowStart} and #{rowEnd}
+	</select>
+	
+	<!-- 게시물 총 갯수 -->
+	<select id="listCount" resultType="int">
+		SELECT COUNT(*) FROM WD_CASHBOOK
+		WHERE MEMBERCODE=#{memberCode}
+		<if test="fchdate!=null">
+		AND CHDATE BETWEEN TO_DATE(#{fchdate}) AND TO_DATE(#{tchdate})
+		</if>
+	</select>
+	
+	<!-- 차트 (분류) -->
+	<select id="chartCount" parameterType="Map" resultMap="ChartCTMap">
+		SELECT T.CONSUMPTION_TYPENAME,count(*) AS COUNT
+		FROM WD_CASHBOOK W, WD_CASHBOOK_CATEGORY C, WD_CASHBOOK_CATEGORY_CT T
+		WHERE W.CLASSIFICATIONCODE = C.CLASSIFICATIONCODE 
+		AND W.CONSUMPTION_TYPECODE = T.CONSUMPTION_TYPECODE
+		<if test="fchdate!=null">
+		AND CHDATE BETWEEN TO_DATE(#{fchdate}) AND TO_DATE(#{tchdate})
+		</if>
+		AND MEMBERCODE =#{memberCode, jdbcType=VARCHAR}
+		GROUP BY T.CONSUMPTION_TYPENAME
+	</select>
+	
+	<!-- 차트 (월별금액비교차트) -->
+	<select id="chartMoney" parameterType="Map" resultMap="ChartMoneyMap">
+		SELECT SUBSTR(CHDATE,1,6) AS MONTH_CHDATE , SUM(MONEY) AS SUM_MONEY 
+		FROM WD_CASHBOOK 
+		WHERE MEMBERCODE = #{memberCode}
+		<if test="fchdate!=null">
+		AND CHDATE BETWEEN TO_DATE(#{fchdate}) AND TO_DATE(#{tchdate})
+		</if>
+		GROUP BY SUBSTR(CHDATE,1,6)
+		ORDER BY SUBSTR(CHDATE,1,6) ASC
+	</select>
+	
+</mapper>
