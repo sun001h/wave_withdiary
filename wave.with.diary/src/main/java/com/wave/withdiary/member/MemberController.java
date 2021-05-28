@@ -64,6 +64,11 @@ public class MemberController {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", vo);
 			session.setAttribute("isLogOn", true);
+			System.out.println("세션 아이디: ");
+			System.out.println("최초 세션 생성 시각: ");
+			System.out.println("최초 세션 접근 시각: ");
+			System.out.println("세션 유효 시간: ");
+			
 			// 로그인 성공시 프로필 조회로 이동
 			mav.setViewName("redirect:member/profile");
 		} else {
