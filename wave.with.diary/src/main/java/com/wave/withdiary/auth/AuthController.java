@@ -125,10 +125,11 @@ public class AuthController {
 
 	}
 	
-	// 이메일 중복확인 ajax처리
 	@RequestMapping(value="/auth/overlapped" ,method = RequestMethod.POST)
 	public ResponseEntity overlapped(@RequestParam("email") String email, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		logger.info("이메일 중복확인 ajax처리");
 		
 		ResponseEntity resEntity = null;
 		String result = authService.overlapped(email);
