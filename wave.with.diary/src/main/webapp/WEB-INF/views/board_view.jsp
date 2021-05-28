@@ -18,7 +18,7 @@ request.setCharacterEncoding("UTF-8");
 	function del(D_articleNumber) {
 		var chk = confirm("정말 삭제하시겠습니까?");
 		if (chk) {
-			location.href='delete?D_articleNumber='+D_articleNumber;
+			location.href='board/delete?D_articleNumber='+D_articleNumber;
 		}
 	}	
 </script>
@@ -47,9 +47,9 @@ request.setCharacterEncoding("UTF-8");
 	</div>
 	<div style="width:650px; text-align: center;">
 		<input type="submit" value="수정" >
-		<input type="button" value="삭제" onclick="location.href='delete?d_articlenumber=${vo.d_articlenumber}'">
+		<input type="button" value="삭제" onclick="location.href='board/delete?d_articlenumber=${vo.d_articlenumber}'">
 <%-- 		<a href="delete?d_articlenumber=${view.d_articlenumber}">삭제</a> --%>
-		<input type="button" value="목록" onclick="location.href='list';">
+		<input type="button" value="목록" onclick="location.href='board/list';">
 	
 <!--  	<c:if test="${sessionScope.membercode == vo.membercode}">-->
 

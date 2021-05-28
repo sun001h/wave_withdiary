@@ -30,7 +30,7 @@
 			<hr />
 			
 			<section id="container">
-				<form name="update" role="form" method="post" action="update">
+				<form name="update" role="form" method="post" action="board/update">
 					<input type="hidden" name="D_articleNumber" value="${update.D_articleNumber}" readonly="readonly"/>
 					<table>
 						<tbody>

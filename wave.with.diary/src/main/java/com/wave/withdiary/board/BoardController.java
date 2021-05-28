@@ -58,13 +58,13 @@ public class BoardController {
 		return "board_view";
 	}	
 	
-	@RequestMapping(value = "/board/updateView", method = RequestMethod.GET)
-	public String updateView(Model model, BoardVO vo) {
-		logger.info("updateView");
+	@RequestMapping(value = "/board/updateForm", method = RequestMethod.GET)
+	public String updateForm(Model model, BoardVO vo) {
+		logger.info("updateForm");
 		
 		model.addAttribute("update", boardService.read(vo.getd_articlenumber()));
 		
-		return "board_updateView";
+		return "board_updateForm";
 	}
 	
 	@RequestMapping(value = "/board/update", method = {RequestMethod.GET,RequestMethod.POST})
@@ -72,7 +72,7 @@ public class BoardController {
 		
 		logger.info("글 수정하기");
 		boardService.update(vo);
-		return "redirect:board_view?d_articlenumber="+vo.getd_articlenumber()+"&clear=y";
+		return "redirect:board/view?d_articlenumber="+vo.getd_articlenumber()+"&clear=y";
 	}	
 
 	@RequestMapping(value = "/board/delete")
@@ -81,7 +81,7 @@ public class BoardController {
 		logger.info("글 삭제하기");
 
 		boardService.delete(d_articlenumber);
-		return "redirect:board_list";
+		return "redirect:board/list";
 	}	
 	
 	@RequestMapping(value = "/board/list", method = RequestMethod.GET)

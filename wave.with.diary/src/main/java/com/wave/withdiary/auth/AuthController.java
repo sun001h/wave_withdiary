@@ -105,7 +105,7 @@ public class AuthController {
 
 			message = "<script>";
 			message += " alert('회원 추가');";
-			message += " location.href='"+multipartRequest.getContextPath()+"/sendMail'; ";
+			message += " location.href='"+multipartRequest.getContextPath()+"/auth/sendMail'; ";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			
@@ -115,7 +115,7 @@ public class AuthController {
 
 			message = " <script>";
 			message +="  alert('오류');";
-			message +=" location.href='"+multipartRequest.getContextPath()+"/addByMapForm'; ";
+			message +=" location.href='"+multipartRequest.getContextPath()+"/auth/addByMapForm'; ";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();
@@ -125,7 +125,8 @@ public class AuthController {
 
 	}
 	
-	@RequestMapping(value="/overlapped" ,method = RequestMethod.POST)
+	// 이메일 중복확인 ajax처리
+	@RequestMapping(value="/auth/overlapped" ,method = RequestMethod.POST)
 	public ResponseEntity overlapped(@RequestParam("email") String email, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception{
 		

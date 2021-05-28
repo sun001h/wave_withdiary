@@ -19,7 +19,7 @@ request.setCharacterEncoding("UTF-8");
 
 <h2>게시글 목록(수정)</h2>
 <%-- <c:if test="${sessionScope.MEMBERCODE !=null}"> --%>
-<button type="button" id="btnWrite" onclick="location.href='writeForm'">글쓰기</button>
+<button type="button" id="btnWrite" onclick="location.href='board/writeForm'">글쓰기</button>
 <%-- </c:if> --%>
 <table border="1" width="600px">
 	<tr>
@@ -32,7 +32,7 @@ request.setCharacterEncoding("UTF-8");
 	<c:forEach var="list" items="${list}">
 	<tr>
 		<td>${list.d_articlenumber}</td>
-		<td><a href="view?d_articlenumber=${list.d_articlenumber}">${list.title}</a></td>
+		<td><a href="board/view?d_articlenumber=${list.d_articlenumber}">${list.title}</a></td>
 		<td>${list.membercode}</td>
 		<td>${list.dateCreated}
 			<fmt:formatDate value="${list.dateCreated}" pattern="yyyy-MM-dd"/>

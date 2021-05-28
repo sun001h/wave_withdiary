@@ -35,7 +35,7 @@
 	    $.ajax({
 	        type:"post",
 	        async:false,  
-	        url:"overlapped",
+	        url:"auth/overlapped",
 	        dataType:"text",
 	        data: {email: _email},
 	        success:function (data,textStatus){
@@ -61,7 +61,7 @@
 </script>
 </head>
 <body>
-	<form action="addByMap" method="POST" enctype="multipart/form-data">
+	<form action="auth/addByMap" method="POST" enctype="multipart/form-data">
 		<table align="center" border="1">
 			<tr>
 				<th>이메일</th>
