@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
+<%@page import="com.wave.withdiary.file.WDFileUtils"%>
+<% 
+	request.setCharacterEncoding("utf-8");
+	WDFileUtils wdfile = new WDFileUtils();
+	String login_logo = wdfile.login_logo;
+%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -9,7 +15,6 @@
 <meta charset="UTF-8">
 <title>회원가입 폼</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
 <script type="text/javascript">
 	function readURL(input) {
 		if (input.files && input.files[0]) {
@@ -21,13 +26,8 @@
 		}
 	}
 	
-	function fn_email(){
-	    var email2 = $("#email3").val();
-        $("#email2").val(email2);
-	}
-	
 	function fn_overlapped(){
-	    var _email = $("#email1").val() + "@" + $("#email2").val();
+	    var _email = $("#email").val();
 	    if(_email==''){
 	        alert("email을 입력하세요");
 	        return;
@@ -43,9 +43,6 @@
 	            if(data=='false'){
 	                alert("사용할 수 있는 email입니다.");
 	                $("#btnOverlapped").prop("disabled", true);
-	                $("#email1").prop("disabled", true);
-	                $("#email2").prop("disabled", true);
-	                $("#email").val(_email);
 	            }else{
 	                alert("사용할 수 없는 email입니다.");
 	            }
@@ -58,65 +55,147 @@
 	        }
 	    });
 	}
-		
 </script>
+<style>
+    #content { 
+        /* 중앙 정렬 */
+        width: 1100px;
+        height: 600px;
+        margin: 0 auto;
+        /* 수평 레이아웃 구성 */
+        overflow: hidden;
+    }
+
+    #content > #left_aside {
+        float: left;
+        width: 200px;
+        height: 600px;
+
+    }
+
+    #content > #main_section {
+        float: left;
+        width: 700px;
+        height: 600px;
+    }
+
+    #logo {
+        text-align: center;
+    }
+
+    #content > #right_aside {
+        float: left;
+        width: 200px;
+        height: 600px;
+    }
+
+    #form > div {
+        float: left;
+        width: 600px;
+    }
+
+    .left_td {
+        width: 60px;
+        overflow: hidden;
+    }
+
+    .textForm {
+        border-radius: 5px;
+        border: 1px solid rgb(212, 209, 202);
+        width: 200px;
+        height: 20px;
+        margin: 2px;
+    }
+
+    textarea {
+        border-radius: 5px;
+        border: 1px solid rgb(212, 209, 202);
+    }
+
+    .request {
+        font-size: 13.3px;
+    }
+
+    .radio {
+        font-size: 13.3px;
+        font-style: "Malgun-Gothic";
+    }
+
+    #form {
+        margin-left: 35px;
+    }
+
+    #pwd, #nickname {
+        width: 280px;
+    }
+
+</style>
+
 </head>
 <body>
-	<form action="${contextPath}/auth/addByMap" method="POST" enctype="multipart/form-data">
-		<table align="center" border="1">
-			<tr>
-				<th>이메일</th>
-				<td>
-				<input size="10px" type="text" name="email1" id="email1" /> @ 
-				<input size="10px" type="text" name="email2" id="email2" />
-				<select name="email3" id="email3" onChange="fn_email()" title="직접입력">
-					<option value="">직접입력</option>
-					<option value="gmail.com">gmail.com</option>
-					<option value="naver.com">naver.com</option>
-					<option value="hanmail.net">hanmail.net</option>
-				</select>
-				<input type="hidden" name="email" id="email"/>
-				<input type="button" id="btnOverlapped" value="중복체크" onClick="fn_overlapped()" />
-				</td>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" name="pwd" /></td>
-			</tr>
-			<tr>
-				<th>생일</th>
-				<td><input type="date" name="bday" /></td>
-			</tr>
-			<tr>
-				<th>별명</th>
-				<td><input type="text" name="nickname" /></td>
-			</tr>
-			<tr>
-				<th>프로필사진</th>
-				<td><input type="file" name="profile_img"
-					onchange="readURL(this);" /></td>
-			</tr>
-			<tr>
-				<td colspan="2"><img id="preview" src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7a72114e-dc29-4856-b320-93d279fd9ede%2Fuser.png?table=block&id=679fd6fa-b188-4d55-8887-b5b14c74c259&width=1020&userId=&cache=v2" width="200"
-					height="200" /></td>
-			</tr>
-			<tr>
-				<th>성별</th>
-				<td>
-					<label><input type="radio" name="gender" value="U" />선택안함</label>
-					<label><input type="radio" name="gender" value="F" />여</label>
-					<label><input type="radio" name="gender" value="M" />남</label>
-				</td>
-			</tr>
-			<tr>
-				<th>소개</th>
-				<td><textarea cols="40" rows="10" name="profile"></textarea></td>
-			</tr>
-			<tr>
-				<td align="center" colspan="2"><input type="submit" value="가입" />
-				</td>
-			</tr>
-		</table>
-	</form>
+    <div id="content">
+        <aside id="left_aside">
+        </aside>
+        <section id="main_section">
+            <div id="logo"><img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4fdf03a0-151a-4395-8691-56170ce26f19%2F___(3).png?table=block&id=f1ba2b23-7901-4f61-8d20-286c09e128c7&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=3600&userId=&cache=v2"
+                             width="300" height="72" /><br><br></div>
+            <div id="form">
+                <form action="${contextPath}/auth/addByMap" method="POST" enctype="multipart/form-data">
+                    <table align="center">
+
+                        <tr>
+                            <td colspan="2">
+                            <input type="text" name="email" id="email" class="textForm" placeholder="　이메일"/>
+                            <input type="button" id="btnOverlapped" value="중복검사" onclick="fn_overlapped()" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="password" name="pwd" class="textForm" placeholder="　비밀번호" id="pwd"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="text" name="nickname" class="textForm" placeholder="　별명" id="nickname"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="request"><br>프로필 사진을 입력해주세요</td>
+                        </tr>
+                        <tr>
+                            <td class="left_td" align="center"><img id="preview" src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7a72114e-dc29-4856-b320-93d279fd9ede%2Fuser.png?table=block&id=679fd6fa-b188-4d55-8887-b5b14c74c259&width=1020&userId=&cache=v2" 
+                            width="50" height="50" /></td>
+                            <td>　<input type="file" name="profile_img" onchange="readURL(this);" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="request"><br>생일을 입력해주세요</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="date" name="bday" class="radio" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="request"><br>성별을 입력해주세요</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label class="radio"><input type="radio"  name="gender" value="U" />선택안함</label>
+                                <label class="radio"><input type="radio" name="gender" value="M" />남</label>
+                                <label class="radio"><input type="radio" name="gender" value="F" />여</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="request"><br>자신을 소개해 보세요</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><textarea cols="42" rows="2" name="profile" ></textarea></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="request"><br> 감사합니다!<br>
+                                버튼을 눌러 가입을 완료해주세요!　　<input type="submit" value="가입하기" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </section>
+        <aside id="right_aside">
+        </aside>
+    </div>
 </body>
 </html>
