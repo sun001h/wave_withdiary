@@ -368,23 +368,23 @@
                     alt="WD로고" width="30" height="30" 
                         />
                 </a></p>
-                <p class="item"><a href="<%=update_link %>">
+                <p class="item"><a href="${contextPath}/<%=update_link %>">
                     <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2267d25b-3b2b-4527-b119-3bb7b6eb311d%2Fgrow.png?table=block&id=cabdd96d-0190-4353-bf4e-2071ae6f5a1f&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
                         alt="마이페이지" width="30" height="30" 
                         />
                 </a></p>
-                <p class="item"><a href="<%=diary_link %>">
+                <p class="item"><a href="${contextPath}/<%=diary_link %>">
                     <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F281cbe2e-ad53-430a-bd66-e9b407a1749f%2Fdiary_(2).png?table=block&id=a65df81c-6382-4ba4-b9ad-f7544896fd87&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
                         alt="다이어리" width="30" height="30" 
                         />
                 </a></p>
 
-                <p class="item"><a href="<%=cash_link %>">
+                <p class="item"><a href="${contextPath}/<%=cash_link %>">
                     <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F34ff4e78-cc69-49e3-b417-3f6fcf0cf29e%2Fwallet.png?table=block&id=50a765fc-3846-498a-bc64-8346b9f44bd0&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2" 
                         alt="가계부" width="30" height="30" />
                 </a></p>
 
-                <p class="item"><a href="<%=study_link %>">
+                <p class="item"><a href="${contextPath}/<%=study_link %>">
                     <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe1357e10-c87a-442c-a749-f28e687e9918%2Freading.png?table=block&id=67ad5d48-93b2-42b9-8af9-f9616e336b51&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
                         alt="스터디" width="30" height="30" />
                 </a></p>
