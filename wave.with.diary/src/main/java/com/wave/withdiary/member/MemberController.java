@@ -1,9 +1,11 @@
 package com.wave.withdiary.member;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -29,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wave.withdiary.file.WDFileUtils;
+import com.wave.withdiary.friend.FriendService;
 
 @Controller
 public class MemberController {
@@ -38,15 +41,19 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	@Autowired
+	private FriendService friendService;
+	
 	// 이미지 처리
 	WDFileUtils wdfile = new WDFileUtils();
 	String PROFILE_IMAGE_REPO = wdfile.PROFILE_IMAGE_REPO;
 	
 
-	
-	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
+	// 매핑 /loginForm 에서 /로 수정
+	// 최초페이지: 로그인창
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loginForm(Locale locale, Model model) {
-		logger.info("로그인Form {}.", locale);
+		logger.info("최초페이지/로그인창 {}.", locale);
 		
 		return "member_loginForm";
 	}
@@ -73,7 +80,7 @@ public class MemberController {
 				System.out.println("새 세션이 만들어졌습니다.(로그인 세션 생성)");
 			}
 			// 로그인 성공시 프로필 조회로 이동
-			mav.setViewName("redirect:member/profile");
+			mav.setViewName("redirect:main");
 		} else {
 			rAttr.addAttribute("result","loginFailed");
 			mav.setViewName("redirect:loginForm");
@@ -95,6 +102,38 @@ public class MemberController {
 		model.addAttribute("vo", vo);
 		
 		return "member_updateForm";
+	}
+	
+	@RequestMapping(value = "/member/updateForm2", method = RequestMethod.GET)
+	public String updateForm2(Locale locale, Model model,
+			HttpServletRequest request, HttpServletResponse response) {
+		logger.info("회원 정보 수정폼2(레이아웃 입힘)", locale);
+		
+		HttpSession session = request.getSession();
+		MemberVO vo = (MemberVO) session.getAttribute("member");
+		model.addAttribute("vo", vo);
+		
+		// 친구 목록 출력
+		String memberCode = vo.getMemberCode();
+		
+		// 특정 멤버코드의 친구들을 조회함
+		List<String> friendList = friendService.friend(memberCode);
+		System.out.println(friendList);
+		System.out.println(friendList.size());
+		
+		// 그러고 나서 그 멤버코드들로 리스트를 불러옴
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		for(int i=0; i<friendList.size(); i++) {
+			MemberVO friend = new MemberVO();
+			String friendCode = friendList.get(i);
+			friend = service.selectMember(friendCode);
+			list.add(i, friend);
+		}
+		
+		model.addAttribute("friendList", list);
+		
+		
+		return "member_updateForm2";
 	}
 	
 	
@@ -137,7 +176,7 @@ public class MemberController {
 
 			message = "<script>";
 			message += " alert('수정완료');";
-			message += " location.href='"+multipartRequest.getContextPath()+"/member/profile?memberCode="+ memberCode+"'; ";
+			message += " location.href='"+multipartRequest.getContextPath()+"/main"+"'; ";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			
@@ -145,10 +184,10 @@ public class MemberController {
 		}catch(Exception e) {
 			File srcFile = new File(PROFILE_IMAGE_REPO+"\\"+"temp"+"\\"+profile_img);
 			srcFile.delete();
-
+			//무슨 차이가 있는지 모르겠음....
 			message = " <script>";
-			message +="  alert('??????????');";
-			message +=" location.href='"+multipartRequest.getContextPath()+"/member/profile?memberCode="+ memberCode+"'; ";
+			message +="  alert('수정완료');";
+			message +=" location.href='"+multipartRequest.getContextPath()+"/main"+"'; ";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();
@@ -173,18 +212,39 @@ public class MemberController {
 		
 		return "member_profile";
 	}
-
 	
-//	@RequestMapping(value = "/profile2", method = RequestMethod.GET)
-//	public String profile2(HttpServletRequest request, HttpServletResponse response,
-//			Model model, String memberCode) throws Exception{
-//
-//		logger.info("로그인 프로필 조회 {}.");
-//		MemberVO vo = service.selectMember(memberCode);
-//		model.addAttribute("vo", vo);
-//		
-//		return "profile2";
-//	}
-//	
+	
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	public String main(HttpServletRequest request, HttpServletResponse response,
+			Model model) throws Exception{
+
+		logger.info("로그인 후 최초 페이지 {}.");
+		// 프로필 출력
+		HttpSession session = request.getSession();
+		MemberVO vo = (MemberVO) session.getAttribute("member");
+		model.addAttribute("vo", vo);
+		
+		// 친구 목록 출력
+		String memberCode = vo.getMemberCode();
+		
+		// 특정 멤버코드의 친구들을 조회함
+		List<String> friendList = friendService.friend(memberCode);
+		System.out.println(friendList);
+		System.out.println(friendList.size());
+		
+		// 그러고 나서 그 멤버코드들로 리스트를 불러옴
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		for(int i=0; i<friendList.size(); i++) {
+			MemberVO friend = new MemberVO();
+			String friendCode = friendList.get(i);
+			friend = service.selectMember(friendCode);
+			list.add(i, friend);
+		}
+		
+		model.addAttribute("friendList", list);
+		
+		return "admin_main";
+	}
+
 
 }

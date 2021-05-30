@@ -43,17 +43,19 @@
         #email {
             border-radius: 5px;
             border: 1px solid rgb(212, 209, 202);
-            width: 300px;
+            width: 290px;
             height: 40px;
             margin: 2px;
+            padding-left: 10px;
         }
 
         #pwd {
             border-radius: 5px;
             border: 1px solid rgb(212, 209, 202);
-            width: 300px;
+            width: 290px;
             height: 40px;
             margin: 2px;
+            padding-left: 10px;
         }
 
         #login {
@@ -65,6 +67,21 @@
             background-color: rgb(91,200,172);
             color: white;
         }
+        
+		#signup {
+            margin: 10px auto;
+            width: 290px;
+            border-top: 1px dotted;
+            padding: 10px;
+        }
+
+        #signup_text {
+            float: right;
+            font-size: 14px;
+        }
+        
+		a:link {color: grey; text-decoration: none;}
+        a:hover { color: rgb(91,200,172); text-decoration: underline;}
 
     </style>
 <title>로그인창</title>
@@ -92,8 +109,13 @@
                     <input type="text" name="email" id="email" placeholder=" 이메일" /><br> 
                     <input type="password" name="pwd" id="pwd" placeholder=" 비밀번호" /><br>
                     <br>
-                    <input type="submit" value="로그인" id="login" /><br>
+                    <input type="submit" value="로그인" id="login" />
                 </form>
+                <div id="signup">
+                    <div id="signup_text">
+                        <a href="${contextPath}/auth/addByMapForm">회원가입</a> | <a>비밀번호 찾기</a>
+                    </div>
+                </div>
             </div>
             <div id="cell_6"></div>
             <div id="cell_7"></div>

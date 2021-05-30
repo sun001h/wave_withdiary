@@ -110,6 +110,8 @@
     textarea {
         border-radius: 5px;
         border: 1px solid rgb(212, 209, 202);
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
     .request {
@@ -126,7 +128,18 @@
     }
 
     #pwd, #nickname {
-        width: 280px;
+        width: 275px;
+        padding-left: 5px;
+    }
+
+    #email {
+        width: 201px;
+        padding-left: 5px;
+    }
+
+    textarea {
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
 </style>
@@ -145,15 +158,15 @@
 
                         <tr>
                             <td colspan="2">
-                            <input type="text" name="email" id="email" class="textForm" placeholder="　이메일"/>
+                            <input type="text" name="email" id="email" class="textForm" placeholder="이메일"/>
                             <input type="button" id="btnOverlapped" value="중복검사" onclick="fn_overlapped()" />
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="password" name="pwd" class="textForm" placeholder="　비밀번호" id="pwd"/></td>
+                            <td colspan="2"><input type="password" name="pwd" class="textForm" placeholder="비밀번호" id="pwd"/></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="text" name="nickname" class="textForm" placeholder="　별명" id="nickname"/></td>
+                            <td colspan="2"><input type="text" name="nickname" class="textForm" placeholder="별명" id="nickname"/></td>
                         </tr>
                         <tr>
                             <td colspan="2" class="request"><br>프로필 사진을 입력해주세요</td>

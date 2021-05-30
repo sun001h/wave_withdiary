@@ -104,7 +104,7 @@ public class AuthController {
 			}
 
 			message = "<script>";
-			message += " alert('회원 추가');";
+			message += " alert('가입해주셔서 감사합니다 -WITH DIARY-');";
 			message += " location.href='"+multipartRequest.getContextPath()+"/auth/sendMail'; ";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
