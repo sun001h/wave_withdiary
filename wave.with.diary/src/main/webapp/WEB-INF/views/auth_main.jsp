@@ -60,7 +60,7 @@
 
                 <p id="name"><img src="<%=login_logo %>" width="300" height="72" /></p>
                 <p id="info" >이메일 인증이 완료되었습니다. <br> 
-                    <a href="${contextPath}/loginForm">로그인 하러 가기</a> </p>
+                    <a href="${contextPath}">로그인 하러 가기</a> </p>
 
             </div>
             <div id="cell_6"></div>
