@@ -162,6 +162,5 @@
             <div id="cell_9"></div>
         </section>
     </div>
-  <button >Hover me !</button>
 </body>
 </html>
