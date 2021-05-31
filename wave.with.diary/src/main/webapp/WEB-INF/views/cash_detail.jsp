@@ -23,7 +23,7 @@
 <style>
 
 /*메인세션내부*/
-#content>#main_section>#main_section_table {
+#content>#main_section>#main_div>#main_section_table {
 	padding-top: 20px;
 	width: 900px;
 	display: flex;
@@ -38,6 +38,9 @@
 word-break: break-all;
 }
 </style>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/layout/main_layout.css" />"
+>
 </head>
 
 <body>

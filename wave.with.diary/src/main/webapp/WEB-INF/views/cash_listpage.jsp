@@ -7,11 +7,26 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@page import="com.wave.withdiary.file.WDFileUtils"%>
+<% 
+	request.setCharacterEncoding("utf-8");
+	WDFileUtils wdfile = new WDFileUtils();
+	String logo = wdfile.WD_LOGO;
+	String update_link = wdfile.update_link;
+	String diary_link = wdfile.diary_link;
+	String cash_link = wdfile.cash_link;
+	String study_link = wdfile.study_link;
+%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 메인페이지CSS -->
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/layout/main_layout.css" />"
+>
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -107,9 +122,7 @@ display: inline;
 	justify-content: center;
 }
 </style>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/layout/main_layout.css" />"
->
+
     <script>
         function changeBg(color) {
             document.body.style.backgroundColor = color;
@@ -205,7 +218,7 @@ List<ChartMoney> mlist = (List<ChartMoney>) request.getAttribute("mlist");
                 </div>
             </div>
         </aside>
-		<section id="main_section">
+        <section id="main_section">
 		<div id="main_div" style="overflow: scroll;">
 			<div id="main_section_table">
 				<div class="col-10">
@@ -378,41 +391,35 @@ List<ChartMoney> mlist = (List<ChartMoney>) request.getAttribute("mlist");
 			</div>
 			</div>
 		</section>
-		<aside id="right_aside">
-			<div class="tab_item">
-				<p class="item">
-					<a href="#"> <img
-						src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F70febc41-cd9f-441e-bc84-38c284190b45%2Flogo.png?table=block&id=0cdf4e9c-85ce-48a4-85b4-9c6e36fd885d&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=2400&userId=&cache=v2"
-						alt="WD로고" width="30" height="30" />
-					</a>
-				</p>
-				<p class="item"><a href="#">
+ <aside id="right_aside">
+            <div class="tab_item">
+                <p class="item"><a href="#">
+                    <img src="<%=logo %>"
+                    alt="WD로고" width="30" height="30" 
+                        />
+                </a></p>
+                <p class="item"><a href="${contextPath}/<%=update_link %>">
                     <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2267d25b-3b2b-4527-b119-3bb7b6eb311d%2Fgrow.png?table=block&id=cabdd96d-0190-4353-bf4e-2071ae6f5a1f&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
                         alt="마이페이지" width="30" height="30" 
                         />
                 </a></p>
-				<p class="item">
-					<a href="#"> <img
-						src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F281cbe2e-ad53-430a-bd66-e9b407a1749f%2Fdiary_(2).png?table=block&id=a65df81c-6382-4ba4-b9ad-f7544896fd87&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
-						alt="다이어리" width="30" height="30" />
-					</a>
-				</p>
+                <p class="item"><a href="${contextPath}/<%=diary_link %>">
+                    <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F281cbe2e-ad53-430a-bd66-e9b407a1749f%2Fdiary_(2).png?table=block&id=a65df81c-6382-4ba4-b9ad-f7544896fd87&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
+                        alt="다이어리" width="30" height="30" 
+                        />
+                </a></p>
 
-				<p class="item">
-					<a href="/withdiary/cash/listpage"> <img
-						src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F34ff4e78-cc69-49e3-b417-3f6fcf0cf29e%2Fwallet.png?table=block&id=50a765fc-3846-498a-bc64-8346b9f44bd0&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
-						alt="가계부" width="30" height="30" />
-					</a>
-				</p>
+                <p class="item"><a href="${contextPath}/<%=cash_link %>">
+                    <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F34ff4e78-cc69-49e3-b417-3f6fcf0cf29e%2Fwallet.png?table=block&id=50a765fc-3846-498a-bc64-8346b9f44bd0&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2" 
+                        alt="가계부" width="30" height="30" />
+                </a></p>
 
-				<p class="item">
-					<a href="#"> <img
-						src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe1357e10-c87a-442c-a749-f28e687e9918%2Freading.png?table=block&id=67ad5d48-93b2-42b9-8af9-f9616e336b51&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
-						alt="스터디" width="30" height="30" />
-					</a>
-				</p>
+                <p class="item"><a href="${contextPath}/<%=study_link %>">
+                    <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe1357e10-c87a-442c-a749-f28e687e9918%2Freading.png?table=block&id=67ad5d48-93b2-42b9-8af9-f9616e336b51&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
+                        alt="스터디" width="30" height="30" />
+                </a></p>
 
-				<!-- 배경색 바꾸기 -->
+                <!-- 배경색 바꾸기 -->
                 <div>
                     <!--주황-->
                     <a href="#" onclick="changeBg('rgb(255,226,183)')"><div class="bg_color" id="bg_color1"></div></a>
@@ -427,10 +434,9 @@ List<ChartMoney> mlist = (List<ChartMoney>) request.getAttribute("mlist");
                     <!--분홍-->
                     <a href="#" onclick="changeBg('rgb(255,232,246)')"><div class="bg_color" id="bg_color6"></div></a>
                 </div>
-			</div>
-		</aside>
-	</div>
-
+            </div>
+        </aside>
+        </div>
 	<script type="text/javascript">
 // 날짜선택 
 $(function() {

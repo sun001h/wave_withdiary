@@ -118,7 +118,7 @@
 		<section id="main_section">
 		<div id="main_div" style="overflow: scroll;">
 			<div id="main_section_table">
-				<div style="width:600px;">
+				<div style="width:400px;">
 					<!-- left column -->
 						<!-- general form elements -->
 						<!-- general form elements -->
@@ -208,6 +208,11 @@
 						alt="WD로고" width="30" height="30" />
 					</a>
 				</p>
+				<p class="item"><a href="#">
+                    <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2267d25b-3b2b-4527-b119-3bb7b6eb311d%2Fgrow.png?table=block&id=cabdd96d-0190-4353-bf4e-2071ae6f5a1f&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
+                        alt="마이페이지" width="30" height="30" 
+                        />
+                </a></p>
 				<p class="item">
 					<a href="#"> <img
 						src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F281cbe2e-ad53-430a-bd66-e9b407a1749f%2Fdiary_(2).png?table=block&id=a65df81c-6382-4ba4-b9ad-f7544896fd87&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
@@ -216,7 +221,7 @@
 				</p>
 
 				<p class="item">
-					<a href="/diary/cash/listpage"> <img
+					<a href="/withdiary/cash/listpage"> <img
 						src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F34ff4e78-cc69-49e3-b417-3f6fcf0cf29e%2Fwallet.png?table=block&id=50a765fc-3846-498a-bc64-8346b9f44bd0&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
 						alt="가계부" width="30" height="30" />
 					</a>
@@ -228,6 +233,22 @@
 						alt="스터디" width="30" height="30" />
 					</a>
 				</p>
+
+				<!-- 배경색 바꾸기 -->
+                <div>
+                    <!--주황-->
+                    <a href="#" onclick="changeBg('rgb(255,226,183)')"><div class="bg_color" id="bg_color1"></div></a>
+                    <!--노랑-->
+                    <a href="#" onclick="changeBg('rgb(255,241,182)')"><div class="bg_color" id="bg_color2"></div></a>
+                    <!--연두-->
+                    <a href="#" onclick="changeBg('rgb(234,255,182)')"><div class="bg_color" id="bg_color3"></div></a>
+                    <!--하늘-->
+                    <a href="#" onclick="changeBg('rgb(184,222,255)')"><div class="bg_color" id="bg_color4"></div></a>
+                    <!--보라-->
+                    <a href="#" onclick="changeBg('rgb(232,234,255)')"><div class="bg_color" id="bg_color5"></div></a>
+                    <!--분홍-->
+                    <a href="#" onclick="changeBg('rgb(255,232,246)')"><div class="bg_color" id="bg_color6"></div></a>
+                </div>
 			</div>
 		</aside>
 	</div>
@@ -249,7 +270,7 @@
 								,
 								showOn : "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
 								,
-								buttonImage : "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+								buttonImage : "http://download.seaicons.com/icons/paomedia/small-n-flat/24/calendar-icon.png" //버튼 이미지 경로
 								,
 								buttonImageOnly : true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
 								,
