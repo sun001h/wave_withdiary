@@ -95,8 +95,8 @@
 	height: 580px;
 	background-color: white;
 	border-radius: 10px;
+	
 }
-
 
 /* 오른쪽 사이드(101~141) */
 #content>#right_aside {
@@ -139,3 +139,4 @@
 #bg_color6 {
 	background-color: rgb(255, 232, 246);
 }
+

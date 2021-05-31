@@ -67,9 +67,6 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 
 <style>
-
-
-
 /*검색버튼*/
 .btn_click {
 	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
@@ -103,13 +100,16 @@
 display: inline;
 }
 /*메인섹션 내부*/
-#content>#main_section>#main_section_table {
+#content>#main_section>#main_div>#main_section_table {
 	padding-top:20px;
 	width: 900px;
 	display: flex;
 	justify-content: center;
 }
 </style>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/layout/main_layout.css" />"
+>
     <script>
         function changeBg(color) {
             document.body.style.backgroundColor = color;
@@ -122,13 +122,14 @@ List<ChartCT> clist = (List<ChartCT>) request.getAttribute("clist");
 List<ChartMoney> mlist = (List<ChartMoney>) request.getAttribute("mlist");
 %>
 <body>
-	<div id="content">
-		<aside id="left_aside">
-			<div id="wd_logo">
-			                <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4fdf03a0-151a-4395-8691-56170ce26f19%2F___(3).png?table=block&id=f1ba2b23-7901-4f61-8d20-286c09e128c7&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=3600&userId=&cache=v2"
+    <div id="content">
+        <aside id="left_aside">
+            <!-- 왼쪽 상단 로고 -->
+            <div id="wd_logo">
+                <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4fdf03a0-151a-4395-8691-56170ce26f19%2F___(3).png?table=block&id=f1ba2b23-7901-4f61-8d20-286c09e128c7&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=3600&userId=&cache=v2"
                     id="wd_logo_img" />
-			</div>
-			      <!-- 프로필 영역: 프로필 사진, 닉네임, 소개 -->
+            </div>
+            <!-- 프로필 영역: 프로필 사진, 닉네임, 소개 -->
             <div id="profile">
                 <br>
                 <table align="center" width="180" id="profile_table">
@@ -137,7 +138,7 @@ List<ChartMoney> mlist = (List<ChartMoney>) request.getAttribute("mlist");
                         <td align="center">
                             <img
                             src="${contextPath}/download?email=${vo.email}&profile_img=${vo.profile_img }"
-                            id="preview" /><br>
+                            id="profile_img" /><br>
                         </td>
                     </tr>
                     <!--닉네임-->
@@ -154,13 +155,58 @@ List<ChartMoney> mlist = (List<ChartMoney>) request.getAttribute("mlist");
                             </div>
                         </td>
                     </tr>
+
                 </table>
             </div>
-			<div id="friend">
-			
-			</div>
-		</aside>
-		<section id="main_section" style="overflow: scroll;">
+
+            <!-- 친구 영역: 친구 프로필 사진, 닉네임 -->
+            <div id="friend">
+                
+                <br>
+
+                <!-- 친구 공간의 아이콘+이름: 정렬 편의를 위해 테이블 사용-->
+                <table align="center">
+                    <tr>
+                        <!-- 아이콘 -->
+                        <td>
+                            <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fce878c8a-ddf1-4645-b29e-c899a83d8a2d%2F3314439.png?table=block&id=3bc61806-a0a4-4340-90d4-c9d4751a3d7e&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2" 
+                            width="30" height="30" />
+                        </td>
+                        <!-- 친구목록 글자 -->
+                        <td>
+                            <p id="friends_text">Friends</p>
+                        </td>
+                    </tr>
+                </table>
+
+                <div id="friendList">
+                    <table>
+                    
+					<c:forEach var="list" items="${friendList }">
+						<tr>
+							<c:choose>
+							<c:when test="${not empty list.profile_img && list.profile_img!='null' }">
+								<td><img
+									src="${contextPath}/download?email=${list.email}&profile_img=${list.profile_img }"
+									class="fr_preview" /><br></td>
+							</c:when>
+							<c:otherwise>
+								<td><img 
+									src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7a72114e-dc29-4856-b320-93d279fd9ede%2Fuser.png?table=block&id=679fd6fa-b188-4d55-8887-b5b14c74c259&width=1020&userId=&cache=v2"
+									width="30" height="30" />
+								</td>
+							</c:otherwise>
+							</c:choose>
+							<td>${list.nickname }</td>
+						</tr>
+					</c:forEach>
+                        
+                    </table>
+                </div>
+            </div>
+        </aside>
+		<section id="main_section">
+		<div id="main_div" style="overflow: scroll;">
 			<div id="main_section_table">
 				<div class="col-10">
 					<div class="card">
@@ -270,7 +316,6 @@ List<ChartMoney> mlist = (List<ChartMoney>) request.getAttribute("mlist");
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-md-6">
-
 								<!-- PIE CHART -->
 								<div class="card card-danger">
 									<div class="card-header">
@@ -330,6 +375,7 @@ List<ChartMoney> mlist = (List<ChartMoney>) request.getAttribute("mlist");
 					</div>
 					<!-- /.container-fluid -->
 				</div>
+			</div>
 			</div>
 		</section>
 		<aside id="right_aside">
