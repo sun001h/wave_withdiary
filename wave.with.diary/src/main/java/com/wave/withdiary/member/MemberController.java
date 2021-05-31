@@ -221,7 +221,11 @@ public class MemberController {
 		// 프로필 출력
 		HttpSession session = request.getSession();
 		MemberVO vo = (MemberVO) session.getAttribute("member");
-		vo.setProfile_img(profile_img);
+		System.out.println("vo.getProfile_img()" + vo.getProfile_img());
+		if(profile_img != null) {
+			vo.setProfile_img(profile_img);
+		}
+		System.out.println(vo.getProfile_img());
 		model.addAttribute("vo", vo);
 		
 		// 친구 목록 출력
