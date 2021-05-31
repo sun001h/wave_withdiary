@@ -135,6 +135,11 @@ display: inline;
 	border-radius: 10px;
 	padding: 5px;
 }
+/*로고 구역*/
+#logo {
+
+}
+
 </style>
 
     <script>
@@ -402,7 +407,7 @@ List<ChartMoney> mlist = (List<ChartMoney>) request.getAttribute("mlist");
 			</div>
 			</div>
 		</section>
- <aside id="right_aside">
+ 		<aside id="right_aside">
             <div class="tab_item">
                 <p class="item"><a href="#">
                     <img src="<%=logo %>"
