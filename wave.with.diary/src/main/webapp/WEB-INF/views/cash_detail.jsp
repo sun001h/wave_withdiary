@@ -8,186 +8,166 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>가계부 상세보기</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="<c:url value="/resources/cashbook/plugins/fontawesome-free/css/all.min.css"/>">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<c:url value="/resources/cashbook/dist/css/adminlte.min.css"/>">
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="<c:url value="/resources/cashbook/plugins/fontawesome-free/css/all.min.css"/>">
+<!-- Theme style -->
+<link rel="stylesheet"
+	href="<c:url value="/resources/cashbook/dist/css/adminlte.min.css"/>">
+<style>
+
+/*메인세션내부*/
+#content>#main_section>#main_section_table {
+	padding-top: 20px;
+	width: 900px;
+	display: flex;
+	justify-content: center;
+}
+/*테이블 폼*/
+#detail_table{
+	width: 450px;
+}
+/*줄바꿈속성*/
+#breaking {
+word-break: break-all;
+}
+</style>
 </head>
 
 <body>
- <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-6">
-                <!-- Input addon -->
-            <div class="card card-info">
-              <div class="card-header">
-                <h3 class="card-title">지출 정보</h3>
-              </div>
-              <div class="card-body">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">작성자</span>
-                  </div>
-                  <input type="text" class="form-control" value="${member.nickname}">
-                </div>
+    <div id="content">
+        <aside id="left_aside">
+            <div id="wd_logo"></div>
+            <div id="profile"></div>
+            <div id="friend"></div>
+        </aside>
 
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">작성일</span>
-                  </div>
-                  <input type="text" class="form-control" value="${dto.chdate }">
-                </div>
-
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">내역</span>
-                  </div>
-                  <input type="text" class="form-control" value="${dto.history }">
-                </div>
-
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">소비형식</span>
-                  </div>
-                  <input type="text" class="form-control" value="${dto.ctdto.consumption_typename}">
-                </div>
-
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="fas fa-dollar-sign"></i>
-                    </span>
-                  </div>
-                  <input type="text" class="form-control" value="${dto.money}" onkeyup="inputNumberFormat(this)">
-                  
-                </div>
-
-                <h5 class="mt-4 mb-2">With checkbox and radio inputs</h5>
-
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <input type="checkbox">
-                        </span>
-                      </div>
-                      <input type="text" class="form-control">
-                    </div>
-                    <!-- /input-group -->
-                  </div>
-                  <!-- /.col-lg-6 -->
-                  <div class="col-lg-6">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><input type="radio"></span>
-                      </div>
-                      <input type="text" class="form-control">
-                    </div>
-                    <!-- /input-group -->
-                  </div>
-                  <!-- /.col-lg-6 -->
-                </div>
-                <!-- /.row -->
-
-                <h5 class="mt-4 mb-2">With buttons</h5>
-
-                <p>Large: <code>.input-group.input-group-lg</code></p>
-
-                <div class="input-group input-group-lg mb-3">
-                  <div class="input-group-prepend">
-                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
-                      Action
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li class="dropdown-item"><a href="#">Action</a></li>
-                      <li class="dropdown-item"><a href="#">Another action</a></li>
-                      <li class="dropdown-item"><a href="#">Something else here</a></li>
-                      <li class="dropdown-divider"></li>
-                      <li class="dropdown-item"><a href="#">Separated link</a></li>
-                    </ul>
-                  </div>
-                  <!-- /btn-group -->
-                  <input type="text" class="form-control">
-                </div>
-                <!-- /input-group -->
-
-                <p>Normal</p>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <button type="button" class="btn btn-danger">Action</button>
-                  </div>
-                  <!-- /btn-group -->
-                  <input type="text" class="form-control">
-                </div>
-                <!-- /input-group -->
-
-                <p>Small <code>.input-group.input-group-sm</code></p>
-                <div class="input-group input-group-sm">
-                  <input type="text" class="form-control">
-                  <span class="input-group-append">
-                    <button type="button" class="btn btn-info btn-flat">Go!</button>
-                  </span>
-                </div>
-                <!-- /input-group -->
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-            </div>
-           </div>
-          </div>
-         </div>
-        </section>
-	<h1>가계부 상세보기</h1>
-	<form role="form" method="post" autocomplete="off">
-		<input type="hidden" id="page" name="page" value="${cri.page }" readonly="readonly"> 
-		<input type="hidden" id="perPageNum" name="perPageNum" value="${cri.perPageNum }" readonly="readonly">
+        <section id="main_section">
+<form role="form" method="post" autocomplete="off">
+		<input type="hidden" id="page" name="page" value="${cri.page }"
+			readonly="readonly"> <input type="hidden" id="perPageNum"
+			name="perPageNum" value="${cri.perPageNum }" readonly>
 	</form>
-	<table border="1">
-		<tr>
-			<th>멤버코드</th>
-			<td>${dto.memberCode}</td>
-		</tr>
-		<tr>
-			<th>날짜</th>
-			<td>${dto.chdate }</td>
-		</tr>
-		<tr>
-			<th>지출내역</th>
-			<td>${dto.history }</td>
-		</tr>
-		<tr>
-			<th>분류</th>
-			<td>${dto.ctdto.consumption_typename}</td>
-		</tr>
-		<tr>
-			<th>금액</th>
-			<td>${dto.money}</td>
-		</tr>
-		<tr>
-			<th>소비형식</th>
-			<td>${dto.dto.classificationName}</td>
-		</tr>
-		<tr>
-			<th>비고</th>
-			<td>${dto.memo}</td>
-		</tr>
-		<tr>
-			<td colspan="2"><input type="button" value="수정"
-				onclick="updateAccount(${dto.num})" /> 
-				<input type="button" value="삭제" onclick="delAccount(${dto.num})" /> 
-				<!-- <button type="button" id="accountList">목록</button> -->
-				<input type="button" value="목록" onclick="accountList()" /> 
-			</td>
-		</tr>
-	</table>
+		<div id="main_section_table">
+			<div class="row">
+				<!-- left column -->
+					<!-- Input addon -->
+					<div class="card card-info" id="detail_table">
+						<div class="card-header">
+							<h3 class="card-title">지출 정보</h3>
+						</div>
+						<div class="card-body">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+									<i class="fas fa-user"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control"
+									value="${member.nickname}" readonly>
+							</div>
+
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+									<i class="far fa-calendar-alt"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" value="${dto.chdate }" readonly="readonly">
+							</div>
+
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+									<i class="fas fa-file-invoice-dollar"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" value="${dto.history }" readonly="readonly">
+							</div>
+
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+									<i class="fas fa-clipboard-list"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control"
+									value="${dto.ctdto.consumption_typename}" readonly="readonly">
+							</div>
+
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> 
+									<i class="fas fa-dollar-sign"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" value="<fmt:formatNumber value="${dto.money}"
+												pattern="#,###" />" readonly>
+							</div>
+
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+									<i class="far fa-credit-card"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control"
+									value="${dto.dto.classificationName}" readonly="readonly">
+							</div>
+
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+									<i class="far fa-file"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" value="${dto.memo}" readonly="readonly"
+								id="breaking">
+							</div>
+							<input type="button" value="수정"
+								onclick="updateAccount(${dto.num})"
+								class="btn btn-default pull-rigth" /> <input type="button"
+								value="삭제" onclick="delAccount(${dto.num})"
+								class="btn btn-default pull-rigth" /> 
+						</div>
+					</div>
+			</div>
+		</div>
+	</section>
+
+        <aside id="right_aside">
+            <div class="tab_item">
+                <p class="item"><a href="#">
+                    <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F70febc41-cd9f-441e-bc84-38c284190b45%2Flogo.png?table=block&id=0cdf4e9c-85ce-48a4-85b4-9c6e36fd885d&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=2400&userId=&cache=v2"
+                        alt="WD로고" width="30" height="30" 
+                        />
+                </a></p>
+                <p class="item"><a href="#">
+                    <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F281cbe2e-ad53-430a-bd66-e9b407a1749f%2Fdiary_(2).png?table=block&id=a65df81c-6382-4ba4-b9ad-f7544896fd87&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
+                        alt="다이어리" width="30" height="30" 
+                        />
+                </a></p>
+
+                <p class="item"><a href="/diary/cash/listpage">
+                    <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F34ff4e78-cc69-49e3-b417-3f6fcf0cf29e%2Fwallet.png?table=block&id=50a765fc-3846-498a-bc64-8346b9f44bd0&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2" 
+                        alt="가계부" width="30" height="30" />
+                </a></p>
+
+                <p class="item"><a href="#">
+                    <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe1357e10-c87a-442c-a749-f28e687e9918%2Freading.png?table=block&id=67ad5d48-93b2-42b9-8af9-f9616e336b51&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
+                        alt="스터디" width="30" height="30" />
+                </a></p>
+            </div>
+        </aside>
+    </div>
+	
+
 	<script type="text/javascript">
 	function updateAccount(num){
 		location.href="updateForm?num="+num;
@@ -204,23 +184,26 @@
 			+"page=${cri.page}&perPageNum=${cri.perPageNum}";
 	}
 </script>
-<!-- jQuery -->
-<%-- <script src="<c:url value="/resources/cashbook/plugins/jquery/jquery.min.js"/>"></script> --%>
-<!-- Bootstrap 4 -->
-<script src="<c:url value="/resources/cashbook/plugins/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
-<!-- bs-custom-file-input -->
-<script src="<c:url value="/resources/cashbook/plugins/bs-custom-file-input/bs-custom-file-input.min.js"/>"></script>
-<!-- AdminLTE App -->
-<script src="<c:url value="/resources/cashbook/dist/js/adminlte.min.js"/>"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<c:url value="/resources/cashbook/dist/js/demo.js"/>"></script>
-<!-- Page specific script -->
-<script>
+	<!-- jQuery -->
+	<%-- <script src="<c:url value="/resources/cashbook/plugins/jquery/jquery.min.js"/>"></script> --%>
+	<!-- Bootstrap 4 -->
+	<script
+		src="<c:url value="/resources/cashbook/plugins/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
+	<!-- bs-custom-file-input -->
+	<script
+		src="<c:url value="/resources/cashbook/plugins/bs-custom-file-input/bs-custom-file-input.min.js"/>"></script>
+	<!-- AdminLTE App -->
+	<script
+		src="<c:url value="/resources/cashbook/dist/js/adminlte.min.js"/>"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="<c:url value="/resources/cashbook/dist/js/demo.js"/>"></script>
+	<!-- Page specific script -->
+	<script>
 $(function () {
   bsCustomFileInput.init();
 });
 </script>
-<script type="text/javascript">
+	<script type="text/javascript">
 function inputNumberFormat(obj) {
     obj.value = comma(uncomma(obj.value));
 }

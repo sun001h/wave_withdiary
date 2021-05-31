@@ -160,9 +160,6 @@
 		SELECT SUBSTR(CHDATE,1,6) AS MONTH_CHDATE , SUM(MONEY) AS SUM_MONEY 
 		FROM WD_CASHBOOK 
 		WHERE MEMBERCODE = #{memberCode}
-		<if test="fchdate!=null">
-		AND CHDATE BETWEEN TO_DATE(#{fchdate}) AND TO_DATE(#{tchdate})
-		</if>
 		GROUP BY SUBSTR(CHDATE,1,6)
 		ORDER BY SUBSTR(CHDATE,1,6) ASC
 	</select>

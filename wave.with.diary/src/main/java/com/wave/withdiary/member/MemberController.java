@@ -55,7 +55,7 @@ public class MemberController {
 	public String loginForm(Locale locale, Model model) {
 		logger.info("최초페이지/로그인창 {}.", locale);
 		
-		return "member_loginForm";
+		return "member_loginForm2";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)

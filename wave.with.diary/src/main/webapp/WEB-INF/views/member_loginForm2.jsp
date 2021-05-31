@@ -82,6 +82,46 @@
         
 		a:link {color: grey; text-decoration: none;}
         a:hover { color: rgb(91,200,172); text-decoration: underline;}
+/*로그인창 페이드인*/
+.fade-in-box {
+  animation: fadein 3s;
+  -moz-animation: fadein 3s; /* Firefox */
+  -webkit-animation: fadein 3s; /* Safari and Chrome */
+  -o-animation: fadein 3s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/*--------------------------------*/
     </style>
 <title>로그인창</title>
 <c:choose>
@@ -95,7 +135,7 @@
 </c:choose>
 </head>
 <body>
-    <div id="content">
+    <div id="content" class="fade-in-box">
         <section id="main_section">
             <div id="cell_1"></div>
             <div id="cell_2"></div>
@@ -122,5 +162,6 @@
             <div id="cell_9"></div>
         </section>
     </div>
+  <button >Hover me !</button>
 </body>
 </html>
