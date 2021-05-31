@@ -20,14 +20,13 @@
 <head>
 <title>메인 페이지</title>
 <script>
-	function changeBg(color) {
-		document.body.style.backgroundColor = color;
-	}
+    function changeBg(color) {
+        document.body.style.backgroundColor = color;
+    }
 </script>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/layout/main_layout.css" />"
+   href="<c:url value="/resources/layout/main_layout.css" />"
 >
-
 </head>
 <body>
     <div id="content">
@@ -101,11 +100,11 @@
 							<c:otherwise>
 								<td><img 
 									src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7a72114e-dc29-4856-b320-93d279fd9ede%2Fuser.png?table=block&id=679fd6fa-b188-4d55-8887-b5b14c74c259&width=1020&userId=&cache=v2"
-									width="30" height="30" />
+									class="fr_preview" width="30" height="30" />
 								</td>
 							</c:otherwise>
 							</c:choose>
-							<td>${list.nickname }</td>
+							<td class="friend_name">${list.nickname }</td>
 						</tr>
 					</c:forEach>
                         
@@ -116,7 +115,8 @@
 
         <section id="main_section">
             <div id="main_div">
-
+			<h1>메인 섹션</h1>
+            <p> 로그인하자마자 보이는 페이지 / 다이어리 </p>
             </div>
         </section>
 

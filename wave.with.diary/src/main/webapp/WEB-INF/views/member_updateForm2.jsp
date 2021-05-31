@@ -35,176 +35,48 @@
         document.body.style.backgroundColor = color;
     }
 </script>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/layout/main_layout.css" />"
+>
 <style>
+/** 메인섹션 css **/
+.textForm {
+	border-radius: 5px;
+	border: 1px solid rgb(212, 209, 202);
+	width: 297px;
+	height: 20px;
+	margin: 2px;
+}
 
-      #content { 
-          /* 중앙 정렬 */
-          width: 1100px;
-          margin: 0 auto;
-          /* 수평 레이아웃 구성 */
-          overflow: hidden;
-      }
+textarea {
+	border-radius: 5px;
+	border: 1px solid rgb(212, 209, 202);
+	padding-left: 5px;
+	padding-right: 5px;
+}
 
-      #content > #left_aside {
-          float: left;
-          width: 200px;
-          height: 600px;
-          background-color: rgb(248,247,244);
-      }
+#update_btn {
+	border-radius: 5px;
+	border: 1px none;
+	width: 302px;
+	height: 40px;
+	margin: 2px;
+	background-color: rgb(91, 200, 172);
+	color: white;
+}
 
-      #content > #main_section {
-          float: left;
-          width: 850px;
-          height: 600px;
-          background-color: white;
-      }
+#form {
+	vertical-align: middle;
+}
 
-      #content > #right_aside {
-          float: left;
-          width: 50px;
-          height: 600px;
-          background-color: rgb(248,247,244);
-      }
+.update_pimg {
+	float: right;
+	border-radius: 10px;
+}
 
-      .tab_item {
-          text-align: center;
-      }
-
-      /* 배경색 변경 */
-      .bg_color {
-          width: 30px;
-          height: 30px;
-          margin: auto;
-      }
-
-      #bg_color1 {
-          background-color: rgb(255,226,183);
-      }
-
-      #bg_color2 {
-          background-color: rgb(255,241,182);
-      }
-
-      #bg_color3 {
-          background-color: rgb(234,255,182);
-      }
-
-      #bg_color4 {
-          background-color: rgb(184,222,255);
-      }
-
-      #bg_color5 {
-          background-color: rgb(232,234,255);
-      }
-
-      #bg_color6 {
-          background-color: rgb(255,232,246);
-      }
-
-      #content > #left_aside > #wd_logo {
-          float: left;
-          width: 200px;
-          height: 50px;
-          text-align: center;
-      }
-
-      #wd_logo_img {
-          margin-top: 5px;
-          width: 180px;
-          height: 43px;
-      }
-
-      #content > #left_aside > #profile {
-          float: left;
-          width: 200px;
-          height: 250px;
-          overflow: hidden;
-      }
-
-      #profile_table {
-          vertical-align: middle;
-      }
-
-      #profile_img {
-          border-radius: 10px;
-          width: 85px;
-          height: 85px;
-          margin: auto;
-      }
-      
-	  .fr_preview {
-          border-radius: 10px;
-          width: 30px;
-          height: 30px;
-          margin: auto;
-      }
-
-      #profile_intro {
-          padding: 5px;
-          background-color: white;
-          border-radius: 10px;
-          height: 70px;
-      }
-
-      #content > #left_aside > #friend {
-          float: left;
-          width: 200px;
-          height: 300px;
-      }
-
-      #friends_text {
-          font-size: 18px;
-          font-weight: bold;
-      }
-
-      #friendList {
-          width: 180px;
-          height: 200px;
-          margin: auto;
-          background-color: white;
-          border-radius: 10px;
-      }
-
-
-      /** 메인섹션 css **/
-      
-      .textForm {
-          border-radius: 5px;
-          border: 1px solid rgb(212, 209, 202);
-          width: 297px;
-          height: 20px;
-          margin: 2px;
-      }
-
-      textarea {
-          border-radius: 5px;
-          border: 1px solid rgb(212, 209, 202);
-          padding-left: 5px;
-          padding-right: 5px;
-      }
-
-      #update_btn {
-          border-radius: 5px;
-          border: 1px none;
-          width: 302px;
-          height: 40px;
-          margin: 2px;
-          background-color: rgb(91,200,172);
-          color: white;
-      }
-      
-       #form {
-            vertical-align: middle;
-        }
-        
-        .update_pimg {
-        	float: right;
-        	border-radius: 10px;
-        }
-        
-        h3 {
-        	color: rgb(91,200,172);
-        }
+h3 {
+	color: rgb(91, 200, 172);
+}
 
   </style>
 
@@ -296,7 +168,7 @@
 
         <section id="main_section">
 
-
+			<div id="main_div">
             <div id="form">
             	<br><br>
                 <form action="${contextPath}/member/update" method="POST" enctype="multipart/form-data">
@@ -339,7 +211,7 @@
                             <td colspan="2" align="center"><input type="text" name="nickname" class="textForm" placeholder="별명" id="nickname" value="${vo.nickname }"/></td>
                         </tr>
                         <tr>
-                            <td colspan="2" align="center"><textarea cols="41" rows="5" name="profile" >${vo.profile }</textarea></td>
+                            <td colspan="2" align="center"><textarea cols="39" rows="5" name="profile" >${vo.profile }</textarea></td>
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
@@ -356,6 +228,7 @@
                         </tr>
                     </table>
                 </form>
+            </div>
             </div>
 
 
