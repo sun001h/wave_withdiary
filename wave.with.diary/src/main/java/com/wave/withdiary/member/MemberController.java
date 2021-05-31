@@ -132,7 +132,6 @@ public class MemberController {
 		
 		model.addAttribute("friendList", list);
 		
-		
 		return "member_updateForm2";
 	}
 	

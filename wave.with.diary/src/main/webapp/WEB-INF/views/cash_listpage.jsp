@@ -121,6 +121,20 @@ display: inline;
 	display: flex;
 	justify-content: center;
 }
+/*친구창*/
+#content>#left_aside>#friend {
+	float: left;
+	width: 200px;
+	height: 300px;
+}
+#friendList{
+	width: 170px;
+	height: 190px;
+	margin: auto;
+	background-color: white;
+	border-radius: 10px;
+	padding: 5px;
+}
 </style>
 
     <script>
@@ -147,7 +161,7 @@ List<ChartMoney> mlist = (List<ChartMoney>) request.getAttribute("mlist");
                 <br>
                 <table align="center" width="180" id="profile_table">
                     <!--프로필 사진-->
-                    <tr height="100">
+                    <tr id="p_1" height="100">
                         <td align="center">
                             <img
                             src="${contextPath}/download?email=${vo.email}&profile_img=${vo.profile_img }"
@@ -155,30 +169,27 @@ List<ChartMoney> mlist = (List<ChartMoney>) request.getAttribute("mlist");
                         </td>
                     </tr>
                     <!--닉네임-->
-                    <tr height="35">
+                    <tr id="p_2" height="35">
                         <td align="center">
                             <b>${vo.nickname }</b>
                         </td>
                     </tr>
                     <!--소개-->
-                    <tr height="80">
+                    <tr id="p_3" height="80">
                         <td>
                             <div id="profile_intro">
                             ${vo.profile }
                             </div>
                         </td>
                     </tr>
-
                 </table>
             </div>
 
             <!-- 친구 영역: 친구 프로필 사진, 닉네임 -->
             <div id="friend">
-                
                 <br>
-
                 <!-- 친구 공간의 아이콘+이름: 정렬 편의를 위해 테이블 사용-->
-                <table align="center">
+                <table id="f_1" align="center">
                     <tr>
                         <!-- 아이콘 -->
                         <td>

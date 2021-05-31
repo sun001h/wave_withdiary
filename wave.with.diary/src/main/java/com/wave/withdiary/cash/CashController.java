@@ -37,7 +37,7 @@ public class CashController {
 	private FriendService friendService;
 	@Autowired
 	private MemberService service;
-	
+
 	@RequestMapping(value = "/cash/listpage", method = { RequestMethod.GET, RequestMethod.POST })
 	public String listpage(HttpServletRequest request, @ModelAttribute("cri") Criteria cri, Locale locale,
 			Model model) {
@@ -136,6 +136,28 @@ public class CashController {
 		// 세션유지
 		model.addAttribute("mysession", vo);
 
+		// 회원프로필 출력
+		model.addAttribute("vo", vo);
+
+		// 친구 목록 출력
+		String memberCode = vo.getMemberCode();
+
+		// 특정 멤버코드의 친구들을 조회함
+		List<String> friendList = friendService.friend(memberCode);
+		System.out.println(friendList);
+		System.out.println(friendList.size());
+
+		// 그러고 나서 그 멤버코드들로 리스트를 불러옴
+		List<MemberVO> friendvo = new ArrayList<MemberVO>();
+		for (int i = 0; i < friendList.size(); i++) {
+			MemberVO friend = new MemberVO();
+			String friendCode = friendList.get(i);
+			friend = service.selectMember(friendCode);
+			friendvo.add(i, friend);
+		}
+
+		model.addAttribute("friendList", friendvo);
+
 		return "cash_insertForm";
 	}
 
@@ -154,7 +176,6 @@ public class CashController {
 			model.addAttribute("msg", "가계부 추가실패");
 			return "error";
 		}
-
 	}
 
 	@RequestMapping(value = "/cash/detail", method = { RequestMethod.GET, RequestMethod.POST })
@@ -173,6 +194,28 @@ public class CashController {
 
 		// 세션유지
 		model.addAttribute("mysession", dto);
+
+		// 회원프로필 출력
+		model.addAttribute("vo", vo);
+
+		// 친구 목록 출력
+		String memberCode = vo.getMemberCode();
+
+		// 특정 멤버코드의 친구들을 조회함
+		List<String> friendList = friendService.friend(memberCode);
+		System.out.println(friendList);
+		System.out.println(friendList.size());
+
+		// 그러고 나서 그 멤버코드들로 리스트를 불러옴
+		List<MemberVO> friendvo = new ArrayList<MemberVO>();
+		for (int i = 0; i < friendList.size(); i++) {
+			MemberVO friend = new MemberVO();
+			String friendCode = friendList.get(i);
+			friend = service.selectMember(friendCode);
+			friendvo.add(i, friend);
+		}
+
+		model.addAttribute("friendList", friendvo);
 
 		return "cash_detail";
 	}
@@ -198,6 +241,29 @@ public class CashController {
 
 		// 세션유지
 		model.addAttribute("mysession", dto);
+
+		// 회원프로필 출력
+		model.addAttribute("vo", vo);
+
+		// 친구 목록 출력
+		String memberCode = vo.getMemberCode();
+
+		// 특정 멤버코드의 친구들을 조회함
+		List<String> friendList = friendService.friend(memberCode);
+		System.out.println(friendList);
+		System.out.println(friendList.size());
+
+		// 그러고 나서 그 멤버코드들로 리스트를 불러옴
+		List<MemberVO> friendvo = new ArrayList<MemberVO>();
+		for (int i = 0; i < friendList.size(); i++) {
+			MemberVO friend = new MemberVO();
+			String friendCode = friendList.get(i);
+			friend = service.selectMember(friendCode);
+			friendvo.add(i, friend);
+		}
+
+		model.addAttribute("friendList", friendvo);
+
 		return "cash_updateForm";
 	}
 
