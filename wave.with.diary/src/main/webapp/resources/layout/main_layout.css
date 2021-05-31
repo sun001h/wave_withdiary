@@ -3,7 +3,7 @@
 #content {
 	/* 중앙 정렬 */
 	width: 1200px;
-	margin: 0 auto;
+	margin: 80px auto;
 	/* 수평 레이아웃 구성 */
 	overflow: hidden;
 }

@@ -9,7 +9,7 @@
 		<![CDATA[
 			INSERT INTO WD_STUDY
 			("studyNO", "subject", "content", "writer", "studyTime", "studyDate", "memberCode")
-			VALUES(WD_STUDY_SEQ.nextval, #{subject}, #{content}, #{writer}, #{studyTime}, #{studyDate} , #{memberCode})
+			VALUES(S_SEQ.nextval, #{subject}, #{content}, #{writer}, #{studyTime}, #{studyDate} , #{memberCode})
 		]]>
 	</insert>
 	

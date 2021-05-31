@@ -7,7 +7,7 @@
 	<insert id="insert" parameterType="BoardVO">
 	<![CDATA[
       	INSERT INTO WD_DIARY(D_ARTICLENUMBER, TITLE, CONTENT, DATECREATED, IMGFILENAME, SCHEDULEDATE, MAP, VIEWCNT, MEMBERCODE)
-		VALUES(WD_DIARY_D_ARTICLENUMBER.nextval, #{title}, #{content}, sysdate, #{imgFileName}, 
+		VALUES(D_SEQ.nextval, #{title}, #{content}, sysdate, #{imgFileName}, 
 		#{scheduleDate}, #{map}, #{viewcnt}, #{membercode})
 	]]>	
 	</insert>	
