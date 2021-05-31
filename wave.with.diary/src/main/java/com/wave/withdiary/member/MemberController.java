@@ -175,18 +175,18 @@ public class MemberController {
 
 			message = "<script>";
 			message += " alert('수정완료');";
-			message += " location.href='"+multipartRequest.getContextPath()+"/main"+"'; ";
+			message += " location.href='"+multipartRequest.getContextPath()+"/main?profile_img=" + profile_img +"'; ";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			
-			
+		// srcFile의 파일명을 변경 profile_img -> originalFileName
 		}catch(Exception e) {
 			File srcFile = new File(PROFILE_IMAGE_REPO+"\\"+"temp"+"\\"+profile_img);
 			srcFile.delete();
 			//무슨 차이가 있는지 모르겠음....
 			message = " <script>";
-			message +="  alert('수정완료');";
-			message +=" location.href='"+multipartRequest.getContextPath()+"/main"+"'; ";
+			message +="  alert('오류');";
+			message +=" location.href='"+multipartRequest.getContextPath()+"/main?profile_img=" + profile_img +"'; ";
 			message +=" </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();
@@ -215,12 +215,17 @@ public class MemberController {
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String main(HttpServletRequest request, HttpServletResponse response,
-			Model model) throws Exception{
+			Model model, String profile_img) throws Exception{
 
 		logger.info("로그인 후 최초 페이지 {}.");
 		// 프로필 출력
 		HttpSession session = request.getSession();
 		MemberVO vo = (MemberVO) session.getAttribute("member");
+		System.out.println("vo.getProfile_img()" + vo.getProfile_img());
+		if(profile_img != null) {
+			vo.setProfile_img(profile_img);
+		}
+		System.out.println(vo.getProfile_img());
 		model.addAttribute("vo", vo);
 		
 		// 친구 목록 출력

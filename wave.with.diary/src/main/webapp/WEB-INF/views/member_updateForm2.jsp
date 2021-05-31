@@ -153,11 +153,11 @@ h3 {
 							<c:otherwise>
 								<td><img 
 									src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7a72114e-dc29-4856-b320-93d279fd9ede%2Fuser.png?table=block&id=679fd6fa-b188-4d55-8887-b5b14c74c259&width=1020&userId=&cache=v2"
-									width="30" height="30" />
+									class="fr_preview" width="30" height="30" />
 								</td>
 							</c:otherwise>
 							</c:choose>
-							<td>${list.nickname }</td>
+							<td class="friend_name">${list.nickname }</td>
 						</tr>
 					</c:forEach>
                         

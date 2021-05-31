@@ -23,10 +23,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 메인페이지CSS -->
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/layout/main_layout.css" />"
->
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -82,6 +78,7 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 
 <style>
+
 /*검색버튼*/
 .btn_click {
 	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
@@ -141,7 +138,44 @@ display: inline;
 }
 
 </style>
+<!-- 메인페이지CSS -->
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/layout/main_layout.css" />"
+>
+<!-- 조정 css -->
+<style>
+#p_1 {
+	width: 176px;
+	height: 100px;
+	padding: 1px;
+}
 
+#p_2 {
+	width: 176px;
+	height: 35px;
+	padding: 1px;
+	font-size: 16px;
+}
+
+#p_3 {
+	width: 176px;
+	height: 82px;
+	padding: 1px;
+	font-size: 16px;
+}
+
+#f_1 {
+	width: 102.73px;
+	height: 66.36px;
+}
+
+#friendList {
+	width: 180px;
+	height: 200px;
+	margin: 0px 10px;
+	padding: 5px;
+}
+</style>
     <script>
         function changeBg(color) {
             document.body.style.backgroundColor = color;
@@ -222,11 +256,11 @@ List<ChartMoney> mlist = (List<ChartMoney>) request.getAttribute("mlist");
 							<c:otherwise>
 								<td><img 
 									src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7a72114e-dc29-4856-b320-93d279fd9ede%2Fuser.png?table=block&id=679fd6fa-b188-4d55-8887-b5b14c74c259&width=1020&userId=&cache=v2"
-									width="30" height="30" />
+									class="fr_preview" width="30" height="30" />
 								</td>
 							</c:otherwise>
 							</c:choose>
-							<td>${list.nickname }</td>
+							<td class="friend_name">${list.nickname }</td>
 						</tr>
 					</c:forEach>
                         
