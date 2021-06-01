@@ -5,6 +5,7 @@
 <%@page import="com.wave.withdiary.file.WDFileUtils"%>
 <%@ page session="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
 	request.setCharacterEncoding("utf-8");
 	WDFileUtils wdfile = new WDFileUtils();
@@ -120,7 +121,7 @@
 			<form name="form1" method="post" style="text-align: center;" action="${contextPath}/board/update">
 			<input type="hidden" name="d_articlenumber" value="${boardvo.d_articlenumber}">
 				<div>
-					작성일자 : <fmt:formatDate value="${boardvo.dateCreated}" pattern = "yyyyMMdd"/>
+					작성일자 : <fmt:formatDate value="${boardvo.dateCreated}" pattern = "yyyy-MM-dd"/>
 				</div>
 				<div>
 					제목

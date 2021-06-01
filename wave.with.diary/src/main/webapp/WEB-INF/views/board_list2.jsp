@@ -125,7 +125,7 @@
 			<div class="reel">
 				<c:forEach var="list" items="${list}">
 				<article>
-					<div cols="100">
+					<div>
 		
 							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a>
 		
@@ -141,7 +141,46 @@
 		
 					</div>
 				</article>
+				
+				
 				</c:forEach>
+				
+				<article >
+					<div>
+		
+							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a>
+		
+							<header>
+								<h3 class="etx">
+									<a href="view?d_articlenumber=">제목</a>
+								</h3>
+							</header>
+							<div class="etc">내용<br><br></div>
+							<p style="text-align: right;">
+							2021-05-31
+							</p>
+		
+					</div>
+				</article >
+
+				<article>
+					<div>
+		
+							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a>
+		
+							<header>
+								<h3 class="etx">
+									<a href="view?d_articlenumber=">제목</a>
+								</h3>
+							</header>
+							<div class="etc">내용<br><br></div>
+							<p style="text-align: right;">
+							2021-05-31
+							</p>
+		
+					</div>
+				</article>
+				
 			</div>
 		</section>
 
