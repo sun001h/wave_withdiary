@@ -176,11 +176,10 @@ main_div {
 						</div>
 					</div>
 				</div>
-				</form>
-				</div>
 				<div align="center">
 				<button align="center" type="button"><a href="${contextPath}/study/updateForm?studyNO=${dto.studyNO}">수정</a></button>
-				<input align="center" type="submit" value="삭제" />
+				<input type="submit" value="삭제" />
+				</form>
 				</div>
             </div>
         </section>
