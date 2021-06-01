@@ -3,7 +3,7 @@
     isELIgnored="false"
 %>
 <%@page import="com.wave.withdiary.file.WDFileUtils"%>
-
+<%@ page session="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% 
 	request.setCharacterEncoding("utf-8");
@@ -19,16 +19,38 @@
 <html>
 <head>
 <title>메인 페이지</title>
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="<c:url value="/resources/assets/css/main.css" />">
-<noscript>
-	<link rel="stylesheet" href="<c:url value="/resources/assets/css/noscript.css" />">
-</noscript>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<style>
 
+/*메인섹션 내부*/
+#table-width {
+width:80%;
+}
 
+#content>#main_section>#main_div>#main_section_table {
+	padding-top:20px;
+	width: 900px;
+	display: flex;
+	justify-content: center;
+}
 
+form {
+	align-items: center;
+	width: 100%;
+}
+
+main_div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+        h1 {
+        	color: rgb(91,200,172);
+        	padding-bottom: 10px;
+        }
+ </style>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
 	function changeBg(color) {
 		document.body.style.backgroundColor = color;
@@ -39,7 +61,9 @@
 >
 
 </head>
+
 <body>
+
     <div id="content">
         <aside id="left_aside">
             <!-- 왼쪽 상단 로고 -->
@@ -125,47 +149,41 @@
         </aside>
 
         <section id="main_section">
-            <div id="main_div" >
-			<form name="form1" method="post" style="text-align: center;" action="${contextPath}/board/insert">
-				<input type="hidden" name="membercode" id="membercode" value="${sessionScope.member.memberCode}" placeholder="회원번호를 입력해주세요">
-				<div  style="padding-top: 50px;">
-					
-					<input name="title" id="title" size="60" style=" 
-						background: #fafafa;     border: solid 2px #E5E5E5;
-    					border-radius: 0.5em;"placeholder=" 제목을 입력해주세요">
+            <div id="main_div">
+				<div class="container" id="main_section_table">
+				<form action="${contextPath}/study/delete" method="post">
+				<input type="hidden" name="studyNO" value="${dto.studyNO }" >
+					<div class="row" id="table-width"> 
+				        <h1 align="center">스터디 정보 조회</h1>
+				         <div class="col-md-12">
+				        <div class="table-responsive">
+				         <table id="mytable" class="table table-bordred table-striped">
+				    	  <thead id="tableHead">  
+					 			<th></th>
+				                <th>과목</th>
+				                <th>공부한 내용</th>
+				                <th>공부한 시간</th>
+				    	 </thead>
+				    	 <tbody>
+				        		<tr>
+				        		  	<td></td>
+									<th>${dto.subject}</th>
+									<th>${dto.content}</th>
+									<th>${dto.studyTime }</th>
+								</tr>
+						</tbody>
+						</table>
+						</div>
+					</div>
 				</div>
-				<div>
-					
-					<textarea name="content" id="content" rows="6" cols="120" style="width:550px;" placeholder="내용을 입력해주세요"></textarea>
+				</form>
 				</div>
-
-
-
-
-				<div style="width:650px; text-align: center;">
-			
-					<button type="submit" id="btnSave">저장</button>
-					<button type="reset">취소</button>
+				<div align="center">
+				<button align="center" type="button"><a href="${contextPath}/study/updateForm?studyNO=${dto.studyNO}">수정</a></button>
+				<input align="center" type="submit" value="삭제" />
 				</div>
-			</form>
             </div>
         </section>
-
-				<!-- 	Scripts -->
-				<script src="<c:url value="/resources/assets/js/jquery.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/jquery.scrollex.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/jquery.scrolly.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/jquery.browser.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/browser.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/breakpoints.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/util.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/main.js " />"></script>
-
-
-
-
-
-
 
         <aside id="right_aside">
             <div class="tab_item">
@@ -213,6 +231,26 @@
             </div>
         </aside>
     </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#mytable #checkall").click(function () {
+	        if ($("#mytable #checkall").is(':checked')) {
+	            $("#mytable input[type=checkbox]").each(function () {
+	                $(this).prop("checked", true);
+	            });
+
+	        } else {
+	            $("#mytable input[type=checkbox]").each(function () {
+	                $(this).prop("checked", false);
+	            });
+	        }
+	    });
+	    
+	    $("[data-toggle=tooltip]").tooltip();
+	});
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>

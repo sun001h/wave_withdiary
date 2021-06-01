@@ -3,7 +3,7 @@
     isELIgnored="false"
 %>
 <%@page import="com.wave.withdiary.file.WDFileUtils"%>
-
+<%@ page session="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% 
 	request.setCharacterEncoding("utf-8");
@@ -19,16 +19,25 @@
 <html>
 <head>
 <title>메인 페이지</title>
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="<c:url value="/resources/assets/css/main.css" />">
-<noscript>
-	<link rel="stylesheet" href="<c:url value="/resources/assets/css/noscript.css" />">
-</noscript>
-
-
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('input.timepicker').timepicker({
+	    timeFormat: 'hh:mm',
+	    interval: 10,
+	    startTime: '00:00',
+	    dynamic: false,
+	    dropdown: true,
+	    scrollbar: true
+		});
+});
+</script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <script>
 	function changeBg(color) {
 		document.body.style.backgroundColor = color;
@@ -37,7 +46,42 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/layout/main_layout.css" />"
 >
+<style>
+	/*메인섹션 내부*/
+#table-width {
+width:80%;
+}
 
+#content>#main_section>#main_div>#main_section_table {
+	padding-top:20px;
+	width: 900px;
+	display: flex;
+	justify-content: center;
+}
+
+form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+        h1 {
+        	color: rgb(91,200,172);
+        	padding-bottom: 10px;
+        }
+ </style>
+ <script type="text/javascript">
+	$(document).ready(function(){
+		$('input.timepicker').timepicker({
+		    timeFormat: 'hh:mm',
+		    interval: 10,
+		    startTime: '00:00',
+		    dynamic: false,
+		    dropdown: true,
+		    scrollbar: true
+			});
+	});
+</script>
 </head>
 <body>
     <div id="content">
@@ -125,47 +169,38 @@
         </aside>
 
         <section id="main_section">
-            <div id="main_div" >
-			<form name="form1" method="post" style="text-align: center;" action="${contextPath}/board/insert">
-				<input type="hidden" name="membercode" id="membercode" value="${sessionScope.member.memberCode}" placeholder="회원번호를 입력해주세요">
-				<div  style="padding-top: 50px;">
-					
-					<input name="title" id="title" size="60" style=" 
-						background: #fafafa;     border: solid 2px #E5E5E5;
-    					border-radius: 0.5em;"placeholder=" 제목을 입력해주세요">
+            <div id="main_div">
+				 <div class="container">
+				<div class="row"> 
+			        <div class="col-md-8">
+			       <h1 align="center">스터디 일정 수정</h1>
+			       <br>
+			       <%-- 입력폼 --%>
+			       <form action="${contextPath}/study/update" method="post">
+			       <input type="hidden" name="studyNO" value="${dto.studyNO }" />
+			        <div class="table-responsive">
+			              <table id="mytable" class="table table-bordred table-striped">        
+			                   <tr>
+			                   <th>과목</th>
+			                   <td><input type="text" name="subject" value="${dto.subject }" /></td>
+			                   </tr>
+			                   <tr>
+			                   <th>공부한 내용</th>
+			                   <td><input type="text" name="content" value="${dto.content }" /> </td>
+			                   </tr>
+			                   <tr>
+									<th>공부시간</th>
+									<td><input type="text" class="timepicker" name="studyTime" value="${dto.studyTime }" min="00:00" max="24:00" required /></td>
+							  </tr>
+						</table>
+					<input type="submit" value="작성완료" />
+					<button><a href="${contextPath}/study/list">리스트로 돌아가기</a></button>
+					</form>	
+					</div>
 				</div>
-				<div>
-					
-					<textarea name="content" id="content" rows="6" cols="120" style="width:550px;" placeholder="내용을 입력해주세요"></textarea>
-				</div>
-
-
-
-
-				<div style="width:650px; text-align: center;">
-			
-					<button type="submit" id="btnSave">저장</button>
-					<button type="reset">취소</button>
-				</div>
-			</form>
+			 </div>
             </div>
         </section>
-
-				<!-- 	Scripts -->
-				<script src="<c:url value="/resources/assets/js/jquery.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/jquery.scrollex.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/jquery.scrolly.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/jquery.browser.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/browser.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/breakpoints.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/util.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/main.js " />"></script>
-
-
-
-
-
-
 
         <aside id="right_aside">
             <div class="tab_item">
@@ -213,6 +248,6 @@
             </div>
         </aside>
     </div>
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
 </html>

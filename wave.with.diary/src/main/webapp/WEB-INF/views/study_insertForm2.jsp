@@ -3,7 +3,7 @@
     isELIgnored="false"
 %>
 <%@page import="com.wave.withdiary.file.WDFileUtils"%>
-
+<%@ page session="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% 
 	request.setCharacterEncoding("utf-8");
@@ -19,25 +19,64 @@
 <html>
 <head>
 <title>메인 페이지</title>
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="<c:url value="/resources/assets/css/main.css" />">
-<noscript>
-	<link rel="stylesheet" href="<c:url value="/resources/assets/css/noscript.css" />">
-</noscript>
-
-
-
 <script>
 	function changeBg(color) {
 		document.body.style.backgroundColor = color;
 	}
 </script>
+<!--부트스트랩 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<!-- 제이쿼리 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('input.timepicker').timepicker({
+		    timeFormat: 'hh:mm',
+		    interval: 10,
+		    startTime: '00:00',
+		    dynamic: false,
+		    dropdown: true,
+		    scrollbar: true
+			});
+	});
+</script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/layout/main_layout.css" />"
 >
+<style>
 
+/*메인섹션 내부*/
+#table-width {
+width:80%;
+}
+
+	#content>#main_section>#main_div>#main_section_table {
+	padding-top:20px;
+	width: 900px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+	#content>#main_section>#main_div>#main_section_table>#table_sub {
+	padding-top:20px;
+	width: 900px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+    h1 {
+        	color: rgb(91,200,172);
+        	padding-bottom: 10px;
+        }
+</style>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </head>
 <body>
     <div id="content">
@@ -125,47 +164,33 @@
         </aside>
 
         <section id="main_section">
-            <div id="main_div" >
-			<form name="form1" method="post" style="text-align: center;" action="${contextPath}/board/insert">
-				<input type="hidden" name="membercode" id="membercode" value="${sessionScope.member.memberCode}" placeholder="회원번호를 입력해주세요">
-				<div  style="padding-top: 50px;">
-					
-					<input name="title" id="title" size="60" style=" 
-						background: #fafafa;     border: solid 2px #E5E5E5;
-    					border-radius: 0.5em;"placeholder=" 제목을 입력해주세요">
+            <div id="main_div">
+          	  <div class="container" id="main_section_table">
+				<div> 
+            	<h1 align="center">스터디 일정 작성</h1>
+            	<br>
+            	<div id="table_sub">
+				<form action="${contextPath}/study/insertResult" method="post">
+					<div>공부과목 : 
+						<input type="text" name="subject" size="25" placeholder="공부과목을 입력해주세요">
+					</div>
+					<br>
+					<div>공부한 내용:
+						<input type="text" name="content" size="25" placeholder="내용을 입력해주세요">
+					</div>
+					<br>
+					<div>공부한 시간:
+						<input type="text" autocomplete="off" class="timepicker" size="25" id="studyTime" name="studyTime" min="00:00" max="24:00" required>
+					</div>
+					<br>
+						<input type="submit" class="btn btn-secondary mb-3" value="입력완료" />
+						<input type="reset" class="btn btn-secondary mb-3" value="다시입력" />
+				</form>
 				</div>
-				<div>
-					
-					<textarea name="content" id="content" rows="6" cols="120" style="width:550px;" placeholder="내용을 입력해주세요"></textarea>
-				</div>
-
-
-
-
-				<div style="width:650px; text-align: center;">
-			
-					<button type="submit" id="btnSave">저장</button>
-					<button type="reset">취소</button>
-				</div>
-			</form>
-            </div>
+            	</div>
+         	  </div>
+           </div>
         </section>
-
-				<!-- 	Scripts -->
-				<script src="<c:url value="/resources/assets/js/jquery.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/jquery.scrollex.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/jquery.scrolly.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/jquery.browser.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/browser.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/breakpoints.min.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/util.js " />"></script>
-				<script src="<c:url value="/resources/assets/js/main.js " />"></script>
-
-
-
-
-
-
 
         <aside id="right_aside">
             <div class="tab_item">

@@ -3,6 +3,7 @@
 <%@page import="com.wave.withdiary.file.WDFileUtils"%>
 <%@ page session="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
 	request.setCharacterEncoding("utf-8");
 	WDFileUtils wdfile = new WDFileUtils();
@@ -31,7 +32,14 @@
 </script>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/layout/main_layout.css" />">
-
+<style>
+/*메인세션내부*/
+#content>#main_section>#main_div>#main_section_table {
+ 	padding-top: 15px; 
+	padding-left: 50px;
+	
+}
+</style>
 </head>
 <body>
 	<div id="content">
@@ -114,18 +122,18 @@
 
 		<section id="main_section">
 			<div id="main_div">
-
+		<div id="main_section_table" >
 		<%-- 	<c:if test="${sessionScope.MEMBERCODE !=null}"> --%>
 		<button type="button" id="btnWrite" onclick="location.href='writeForm'">글쓰기</button>
 		<%-- 	</c:if> --%>
-		
+		</div>
 		
 		<!-- 	Carousel -->
 		<section class="carousel">
 			<div class="reel">
 				<c:forEach var="list" items="${list}">
 				<article>
-					<div cols="100">
+					<div>
 		
 							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a>
 		
@@ -141,7 +149,48 @@
 		
 					</div>
 				</article>
+
+
+				
+				
 				</c:forEach>
+				
+				<article >
+					<div>
+		
+							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a>
+		
+							<header>
+								<h3 class="etx">
+									<a href="view?d_articlenumber=">제목</a>
+								</h3>
+							</header>
+							<div class="etc">내용<br><br></div>
+							<p style="text-align: right;">
+							2021-05-31
+							</p>
+		
+					</div>
+				</article >
+
+				<article>
+					<div>
+		
+							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a>
+		
+							<header>
+								<h3 class="etx">
+									<a href="view?d_articlenumber=">제목</a>
+								</h3>
+							</header>
+							<div class="etc">내용<br><br></div>
+							<p style="text-align: right;">
+							2021-05-31
+							</p>
+		
+					</div>
+				</article>
+				
 			</div>
 		</section>
 

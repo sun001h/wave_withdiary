@@ -17,8 +17,6 @@ public class WDFileUtils {
 	public String friend = "friend/addForm";
 	public String diary_link = "board/list";
 	public String cash_link = "cash/listpage";
-	public String study_link = "member/updateForm2";
-	public String logout = "logout";
 	
 	
 	public String upload(MultipartHttpServletRequest multipartRequest) throws Exception{

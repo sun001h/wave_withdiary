@@ -20,6 +20,28 @@
 <head>
 <title>메인 페이지</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<style>
+/*메인섹션 내부*/
+#table-width {
+width:80%;
+}
+
+#content>#main_section>#main_div>#main_section_table {
+	padding-top:20px;
+	width: 900px;
+	display: flex;
+	justify-content: center;
+}
+form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+        h1 {
+        	color: rgb(91,200,172);
+        	padding-bottom: 10px;
+        }
+ </style>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
@@ -33,22 +55,7 @@
 
 </head>
 <body>
-<style>
-/*메인섹션 내부*/
-#table-width {
-width:80%;
-}
 
-#content>#main_section>#main_div>#main_section_table {
-	padding-top:20px;
-	width: 900px;
-	display: flex;
-	justify-content: center;
-}
-        h1 {
-        	color: rgb(91,200,172);
-        }
- </style>
     <div id="content">
         <aside id="left_aside">
             <!-- 왼쪽 상단 로고 -->
@@ -136,8 +143,9 @@ width:80%;
         <section id="main_section">
             <div id="main_div">
 				<div class="container" id="main_section_table">
-	<div class="row" id="table-width"> 
-       <h1>스터디 정보 조회</h1>
+	<div class="row" > 
+       <h1 align="center">스터디 정보 조회</h1>
+       <br>
         <div class="table-responsive">
               <table id="mytable" class="table table-bordred table-striped">
                    <thead id="tableHead">           
@@ -160,13 +168,13 @@ width:80%;
 			    </c:forEach>    
 			</table>
 		</div>
+		</div>
+		</div>
 			<form action="${contextPath}/study/insertForm" method="get">
 				<input type="submit" value="스터디 일정 추가" />
-			</form>
+			</form>	
 	</div>
-</div>
-            </div>
-        </section>
+</section>
 
         <aside id="right_aside">
             <div class="tab_item">
