@@ -40,10 +40,11 @@
 	</delete>	
 		
 	<!-- 글 목록 조회 -->
-	<select id="listAll" resultType="BoardVO">
+	<select id="listAll" parameterType="String" resultType="BoardVO">
 	<![CDATA[
 		SELECT D_ARTICLENUMBER, TITLE, CONTENT, DATECREATED, IMGFILENAME, SCHEDULEDATE, MAP, MEMBERCODE
 		FROM WD_DIARY
+		WHERE MEMBERCODE= #{memberCode}
 	]]>
 	</select>
 

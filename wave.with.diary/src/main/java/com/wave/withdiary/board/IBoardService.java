@@ -13,7 +13,7 @@ public interface IBoardService {
 	//글 삭제하기
 	public void delete(int d_articlenumber);
 	//글 목록
-	public List<BoardVO> listAll();
+	public List<BoardVO> listAll(String memberCode);
 	//글 조회수
 	public void increaseViewcnt(int d_articlenumber);
 	//글 폼?
