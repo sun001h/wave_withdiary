@@ -35,7 +35,7 @@ String study_link = wdfile.study_link;
 
 /*메인세션내부*/
 #content>#main_section>#main_div>#main_section_table {
-	padding-top: 20px;
+	padding-top: 60px;
 	width: 900px;
 	display: flex;
 	justify-content: center;
@@ -146,23 +146,22 @@ String study_link = wdfile.study_link;
 								<h3 class="card-title">지출 정보</h3>
 							</div>
 							<div class="card-body">
-								<div class="input-group mb-3">
+<%-- 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
 										<span class="input-group-text"> <i class="fas fa-user"></i>
 										</span>
 									</div>
 									<input type="text" class="form-control"
 										value="${member.nickname}" readonly>
-								</div>
-
+								</div> --%>
+								
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text"> <i
-											class="far fa-calendar-alt"></i>
+										<span class="input-group-text"> <i class="far fa-calendar-alt"></i>
 										</span>
 									</div>
-									<input type="text" class="form-control" value="${dto.chdate }"
-										readonly="readonly">
+									<input type="text" class="form-control"
+										value="${dto.chdate }" readonly>
 								</div>
 
 								<div class="input-group mb-3">
