@@ -3,7 +3,7 @@
     isELIgnored="false"
 %>
 <%@page import="com.wave.withdiary.file.WDFileUtils"%>
-<%@ page session="false" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% 
 	request.setCharacterEncoding("utf-8");
@@ -20,12 +20,12 @@
 <head>
 <title>메인 페이지</title>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="<c:url value="/resources/assets2/css/main.css" />">
-<noscript>
-	<link rel="stylesheet" href="<c:url value="/resources/assets2/css/noscript.css" />">
-</noscript>
+<!-- <meta name="viewport" -->
+<!-- 	content="width=device-width, initial-scale=1, user-scalable=no" /> -->
+<%-- <link rel="stylesheet" href="<c:url value="/resources/assets/css/main.css" />"> --%>
+<!-- <noscript> -->
+<%-- 	<link rel="stylesheet" href="<c:url value="/resources/assets/css/noscript.css" />"> --%>
+<!-- </noscript> -->
 
 
 
@@ -127,6 +127,7 @@
         <section id="main_section">
             <div id="main_div" >
 			<form name="form1" method="post" style="text-align: center;" action="${contextPath}/board/insert">
+				<input type="hidden" name="membercode" id="membercode" value="${sessionScope.member.memberCode}" placeholder="회원번호를 입력해주세요">
 				<div>
 					제목
 					<input name="title" id="title" size="80"  placeholder="제목을 입력해주세요">
@@ -135,6 +136,9 @@
 					내용
 					<textarea name="content" id="content" rows="6" cols="80" style="width:540px;" placeholder="내용을 입력해주세요"></textarea>
 				</div>
+
+
+
 
 				<div style="width:650px; text-align: center;">
 			
@@ -146,14 +150,14 @@
         </section>
 
 				<!-- 	Scripts -->
-				<script src="<c:url value="/resources/assets2/js/jquery.min.js " />"></script>
-				<script src="<c:url value="/resources/assets2/js/jquery.scrollex.min.js " />"></script>
-				<script src="<c:url value="/resources/assets2/js/jquery.scrolly.min.js " />"></script>
-				<script src="<c:url value="/resources/assets2/js/jquery.browser.min.js " />"></script>
-				<script src="<c:url value="/resources/assets2/js/browser.min.js " />"></script>
-				<script src="<c:url value="/resources/assets2/js/breakpoints.min.js " />"></script>
-				<script src="<c:url value="/resources/assets2/js/util.js " />"></script>
-				<script src="<c:url value="/resources/assets2/js/main.js " />"></script>
+<%-- 				<script src="<c:url value="/resources/assets/js/jquery.min.js " />"></script> --%>
+<%-- 				<script src="<c:url value="/resources/assets/js/jquery.scrollex.min.js " />"></script> --%>
+<%-- 				<script src="<c:url value="/resources/assets/js/jquery.scrolly.min.js " />"></script> --%>
+<%-- 				<script src="<c:url value="/resources/assets/js/jquery.browser.min.js " />"></script> --%>
+<%-- 				<script src="<c:url value="/resources/assets/js/browser.min.js " />"></script> --%>
+<%-- 				<script src="<c:url value="/resources/assets/js/breakpoints.min.js " />"></script> --%>
+<%-- 				<script src="<c:url value="/resources/assets/js/util.js " />"></script> --%>
+<%-- 				<script src="<c:url value="/resources/assets/js/main.js " />"></script> --%>
 
 
 

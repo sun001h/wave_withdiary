@@ -78,7 +78,7 @@ public class BoardController {
 		vo.setViewcnt(0);
 		
 		boardService.insert(vo);
-		return "redirect:board_list";
+		return "redirect:list";
 	}
 	
 	@RequestMapping(value = "/board/view", method = RequestMethod.GET)
