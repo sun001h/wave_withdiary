@@ -19,43 +19,66 @@
 <html>
 <head>
 <title>메인 페이지</title>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<style>
-/*메인섹션 내부*/
-#table-width {
-width:80%;
-}
-
-#content>#main_section>#main_div>#main_section_table {
-	padding-top:20px;
-	width: 900px;
-	display: flex;
-	justify-content: center;
-}
-form {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-        h1 {
-        	color: rgb(91,200,172);
-        	padding-bottom: 10px;
-        }
- </style>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
 	function changeBg(color) {
 		document.body.style.backgroundColor = color;
 	}
 </script>
+<!--부트스트랩 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<!-- 제이쿼리 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('input.timepicker').timepicker({
+		    timeFormat: 'hh:mm',
+		    interval: 10,
+		    startTime: '00:00',
+		    dynamic: false,
+		    dropdown: true,
+		    scrollbar: true
+			});
+	});
+</script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/layout/main_layout.css" />"
 >
+<style>
 
+/*메인섹션 내부*/
+#table-width {
+width:80%;
+}
+
+	#content>#main_section>#main_div>#main_section_table {
+	padding-top:20px;
+	width: 900px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+	#content>#main_section>#main_div>#main_section_table>#table_sub {
+	padding-top:20px;
+	width: 900px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+    h1 {
+        	color: rgb(91,200,172);
+        	padding-bottom: 10px;
+        }
+</style>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </head>
 <body>
-
     <div id="content">
         <aside id="left_aside">
             <!-- 왼쪽 상단 로고 -->
@@ -142,39 +165,32 @@ form {
 
         <section id="main_section">
             <div id="main_div">
-				<div class="container" id="main_section_table">
-	<div class="row" > 
-       <h1 align="center">스터디 정보 조회</h1>
-       <br>
-        <div class="table-responsive">
-              <table id="mytable" class="table table-bordred table-striped">
-                   <thead id="tableHead">           
-                   <th></th>
-                   <th>과목</th>
-                   <th>공부한 내용</th>
-                   <th>공부한 시간</th>
-                   <th>상세보기</th>
-                   </thead>
-   				<tbody>
-   				<c:forEach var="list" items="${list }">
-        		<tr>
-        		  	<td></td>
-					<td>${list.subject }</td>
-					<td>${list.content }</td>
-					<td>${list.studyTime }</td>
-				    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="view?studyNO=${list.studyNO }"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
-				</tr>
-			    </tbody>
-			    </c:forEach>    
-			</table>
-		</div>
-		</div>
-		</div>
-			<form action="${contextPath}/study/insertForm" method="get">
-				<input type="submit" value="스터디 일정 추가" />
-			</form>	
-	</div>
-</section>
+          	  <div class="container" id="main_section_table">
+				<div> 
+            	<h1 align="center">스터디 일정 작성</h1>
+            	<br>
+            	<div id="table_sub">
+				<form action="${contextPath}/study/insertResult" method="post">
+					<div>공부과목 : 
+						<input type="text" name="subject" size="25" placeholder="공부과목을 입력해주세요">
+					</div>
+					<br>
+					<div>공부한 내용:
+						<input type="text" name="content" size="25" placeholder="내용을 입력해주세요">
+					</div>
+					<br>
+					<div>공부한 시간:
+						<input type="text" autocomplete="off" class="timepicker" size="25" id="studyTime" name="studyTime" min="00:00" max="24:00" required>
+					</div>
+					<br>
+						<input type="submit" class="btn btn-secondary mb-3" value="입력완료" />
+						<input type="reset" class="btn btn-secondary mb-3" value="다시입력" />
+				</form>
+				</div>
+            	</div>
+         	  </div>
+           </div>
+        </section>
 
         <aside id="right_aside">
             <div class="tab_item">
@@ -222,25 +238,6 @@ form {
             </div>
         </aside>
     </div>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#mytable #checkall").click(function () {
-	        if ($("#mytable #checkall").is(':checked')) {
-	            $("#mytable input[type=checkbox]").each(function () {
-	                $(this).prop("checked", true);
-	            });
 
-	        } else {
-	            $("#mytable input[type=checkbox]").each(function () {
-	                $(this).prop("checked", false);
-	            });
-	        }
-	    });
-	    
-	    $("[data-toggle=tooltip]").tooltip();
-	});
-</script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

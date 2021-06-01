@@ -21,6 +21,7 @@
 <title>메인 페이지</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <style>
+
 /*메인섹션 내부*/
 #table-width {
 width:80%;
@@ -32,7 +33,13 @@ width:80%;
 	display: flex;
 	justify-content: center;
 }
+
 form {
+	align-items: center;
+	width: 100%;
+}
+
+main_div {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -54,6 +61,7 @@ form {
 >
 
 </head>
+
 <body>
 
     <div id="content">
@@ -143,38 +151,39 @@ form {
         <section id="main_section">
             <div id="main_div">
 				<div class="container" id="main_section_table">
-	<div class="row" > 
-       <h1 align="center">스터디 정보 조회</h1>
-       <br>
-        <div class="table-responsive">
-              <table id="mytable" class="table table-bordred table-striped">
-                   <thead id="tableHead">           
-                   <th></th>
-                   <th>과목</th>
-                   <th>공부한 내용</th>
-                   <th>공부한 시간</th>
-                   <th>상세보기</th>
-                   </thead>
-   				<tbody>
-   				<c:forEach var="list" items="${list }">
-        		<tr>
-        		  	<td></td>
-					<td>${list.subject }</td>
-					<td>${list.content }</td>
-					<td>${list.studyTime }</td>
-				    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="view?studyNO=${list.studyNO }"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
-				</tr>
-			    </tbody>
-			    </c:forEach>    
-			</table>
-		</div>
-		</div>
-		</div>
-			<form action="${contextPath}/study/insertForm" method="get">
-				<input type="submit" value="스터디 일정 추가" />
-			</form>	
-	</div>
-</section>
+				<form action="${contextPath}/study/delete" method="post">
+				<input type="hidden" name="studyNO" value="${dto.studyNO }" >
+					<div class="row" id="table-width"> 
+				        <h1 align="center">스터디 정보 조회</h1>
+				         <div class="col-md-12">
+				        <div class="table-responsive">
+				         <table id="mytable" class="table table-bordred table-striped">
+				    	  <thead id="tableHead">  
+					 			<th></th>
+				                <th>과목</th>
+				                <th>공부한 내용</th>
+				                <th>공부한 시간</th>
+				    	 </thead>
+				    	 <tbody>
+				        		<tr>
+				        		  	<td></td>
+									<th>${dto.subject}</th>
+									<th>${dto.content}</th>
+									<th>${dto.studyTime }</th>
+								</tr>
+						</tbody>
+						</table>
+						</div>
+					</div>
+				</div>
+				</form>
+				</div>
+				<div align="center">
+				<button align="center" type="button"><a href="${contextPath}/study/updateForm?studyNO=${dto.studyNO}">수정</a></button>
+				<input align="center" type="submit" value="삭제" />
+				</div>
+            </div>
+        </section>
 
         <aside id="right_aside">
             <div class="tab_item">
@@ -242,5 +251,6 @@ $(document).ready(function(){
 </script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
 </body>
 </html>

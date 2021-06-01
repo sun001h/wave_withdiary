@@ -19,9 +19,35 @@
 <html>
 <head>
 <title>메인 페이지</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('input.timepicker').timepicker({
+	    timeFormat: 'hh:mm',
+	    interval: 10,
+	    startTime: '00:00',
+	    dynamic: false,
+	    dropdown: true,
+	    scrollbar: true
+		});
+});
+</script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<script>
+	function changeBg(color) {
+		document.body.style.backgroundColor = color;
+	}
+</script>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/layout/main_layout.css" />"
+>
 <style>
-/*메인섹션 내부*/
+	/*메인섹션 내부*/
 #table-width {
 width:80%;
 }
@@ -32,30 +58,32 @@ width:80%;
 	display: flex;
 	justify-content: center;
 }
+
 form {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
         h1 {
         	color: rgb(91,200,172);
         	padding-bottom: 10px;
         }
  </style>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script>
-	function changeBg(color) {
-		document.body.style.backgroundColor = color;
-	}
+ <script type="text/javascript">
+	$(document).ready(function(){
+		$('input.timepicker').timepicker({
+		    timeFormat: 'hh:mm',
+		    interval: 10,
+		    startTime: '00:00',
+		    dynamic: false,
+		    dropdown: true,
+		    scrollbar: true
+			});
+	});
 </script>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/layout/main_layout.css" />"
->
-
 </head>
 <body>
-
     <div id="content">
         <aside id="left_aside">
             <!-- 왼쪽 상단 로고 -->
@@ -142,39 +170,37 @@ form {
 
         <section id="main_section">
             <div id="main_div">
-				<div class="container" id="main_section_table">
-	<div class="row" > 
-       <h1 align="center">스터디 정보 조회</h1>
-       <br>
-        <div class="table-responsive">
-              <table id="mytable" class="table table-bordred table-striped">
-                   <thead id="tableHead">           
-                   <th></th>
-                   <th>과목</th>
-                   <th>공부한 내용</th>
-                   <th>공부한 시간</th>
-                   <th>상세보기</th>
-                   </thead>
-   				<tbody>
-   				<c:forEach var="list" items="${list }">
-        		<tr>
-        		  	<td></td>
-					<td>${list.subject }</td>
-					<td>${list.content }</td>
-					<td>${list.studyTime }</td>
-				    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="view?studyNO=${list.studyNO }"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></a></p></td>
-				</tr>
-			    </tbody>
-			    </c:forEach>    
-			</table>
-		</div>
-		</div>
-		</div>
-			<form action="${contextPath}/study/insertForm" method="get">
-				<input type="submit" value="스터디 일정 추가" />
-			</form>	
-	</div>
-</section>
+				 <div class="container">
+				<div class="row"> 
+			        <div class="col-md-8">
+			       <h1 align="center">스터디 일정 수정</h1>
+			       <br>
+			       <%-- 입력폼 --%>
+			       <form action="${contextPath}/study/update" method="post">
+			       <input type="hidden" name="studyNO" value="${dto.studyNO }" />
+			        <div class="table-responsive">
+			              <table id="mytable" class="table table-bordred table-striped">        
+			                   <tr>
+			                   <th>과목</th>
+			                   <td><input type="text" name="subject" value="${dto.subject }" /></td>
+			                   </tr>
+			                   <tr>
+			                   <th>공부한 내용</th>
+			                   <td><input type="text" name="content" value="${dto.content }" /> </td>
+			                   </tr>
+			                   <tr>
+									<th>공부시간</th>
+									<td><input type="text" class="timepicker" name="studyTime" value="${dto.studyTime }" min="00:00" max="24:00" required /></td>
+							  </tr>
+						</table>
+					<input type="submit" value="작성완료" />
+					<button><a href="${contextPath}/study/list">리스트로 돌아가기</a></button>
+					</form>	
+					</div>
+				</div>
+			 </div>
+            </div>
+        </section>
 
         <aside id="right_aside">
             <div class="tab_item">
@@ -222,25 +248,6 @@ form {
             </div>
         </aside>
     </div>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#mytable #checkall").click(function () {
-	        if ($("#mytable #checkall").is(':checked')) {
-	            $("#mytable input[type=checkbox]").each(function () {
-	                $(this).prop("checked", true);
-	            });
-
-	        } else {
-	            $("#mytable input[type=checkbox]").each(function () {
-	                $(this).prop("checked", false);
-	            });
-	        }
-	    });
-	    
-	    $("[data-toggle=tooltip]").tooltip();
-	});
-</script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
 </html>

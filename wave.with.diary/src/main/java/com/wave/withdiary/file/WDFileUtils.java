@@ -16,7 +16,7 @@ public class WDFileUtils {
 	public String update_link = "member/updateForm2";
 	public String diary_link = "board/list";
 	public String cash_link = "cash/listpage";
-	public String study_link = "member/updateForm2";
+	public String study_link = "study/list";
 	
 	
 	
