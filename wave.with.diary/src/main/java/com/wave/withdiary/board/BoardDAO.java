@@ -35,8 +35,8 @@ public class BoardDAO implements IBoardDAO {
 	}
 
 	@Override //글 목록 조회
-	public List<BoardVO> listAll() {
-		return sqlSession.selectList(nameSpace + "listAll");
+	public List<BoardVO> listAll(String memberCode) {
+		return sqlSession.selectList(nameSpace + "listAll", memberCode);
 	}
 
 	@Override //글 조회수 증가
