@@ -142,13 +142,13 @@ String study_link = wdfile.study_link;
 							<h3 class="card-title">가계부 수정</h3>
 						</div>
 						<div class="card-body">
-                <div class="form-group" align="left">
+<%--                 <div class="form-group" align="left">
                   <label for="exampleInputBorder">작성자</label>
                   <input type="text" value="${member.nickname }" class="form-control form-control-border" id="exampleInputBorder" readonly="readonly">
-                </div>
+                </div> --%>
                 <div class="form-group" align="left">
-                  <label for="exampleInputBorderWidth2">지출일</label>
-                  <input type="text" class="form-control form-control-border border-width-2" id="datepicker" name="chdate" value="${dto.chdate}" required="required">
+                  <label for="exampleInputBorder">지출일</label>
+                  <input type="text" class="form-control form-control-border" id="datepicker" name="chdate" value="${dto.chdate}" required="required">
                 </div>
                 <div class="form-group" align="left">
                   <label for="exampleInputRounded0">지출내역</label>
