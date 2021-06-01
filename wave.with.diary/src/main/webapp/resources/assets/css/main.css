@@ -18,7 +18,7 @@ tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
 footer, header, hgroup, menu, nav, output, ruby,
 section, summary, time, mark, audio, video {
-	margin: 0;
+
 	padding: 0;
 	border: 0;
 	font-size: 100%;
@@ -180,13 +180,13 @@ input, select, textarea {
 		font-style: italic;
 	}
 
-	p, ul, ol, dl, table {
+/* 	p, ul, ol, dl, table {
 		margin-bottom: -1em;
-	}
+	} */
 
-	p {
+/* 	p {
 		text-align: justify;
-	}
+	} */
 
 
 
@@ -2539,7 +2539,7 @@ input, select, textarea {
 
 		.carousel .forward, .carousel .backward {
 			position: absolute;
-			top: 50%;
+			top: 40%;
 			width: 6em;
 			height: 12em;
 			margin-top: -6em;

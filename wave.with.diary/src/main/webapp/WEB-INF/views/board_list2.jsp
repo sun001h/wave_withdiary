@@ -36,7 +36,7 @@
 /*메인세션내부*/
 #content>#main_section>#main_div>#main_section_table {
  	padding-top: 15px; 
-	padding-left: 50px;
+	padding-left: 750px;
 	
 }
 </style>
@@ -155,41 +155,41 @@
 				
 				</c:forEach>
 				
-				<article >
-					<div>
+<!-- 				<article > -->
+<!-- 					<div> -->
 		
-							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a>
+<%-- 							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a> --%>
 		
-							<header>
-								<h3 class="etx">
-									<a href="view?d_articlenumber=">제목</a>
-								</h3>
-							</header>
-							<div class="etc">내용<br><br></div>
-							<p style="text-align: right;">
-							2021-05-31
-							</p>
+<!-- 							<header> -->
+<!-- 								<h3 class="etx"> -->
+<!-- 									<a href="view?d_articlenumber=">제목</a> -->
+<!-- 								</h3> -->
+<!-- 							</header> -->
+<!-- 							<div class="etc">내용<br><br></div> -->
+<!-- 							<p style="text-align: right;"> -->
+<!-- 							2021-05-31 -->
+<!-- 							</p> -->
 		
-					</div>
-				</article >
+<!-- 					</div> -->
+<!-- 				</article > -->
 
-				<article>
-					<div>
+<!-- 				<article> -->
+<!-- 					<div> -->
 		
-							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a>
+<%-- 							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a> --%>
 		
-							<header>
-								<h3 class="etx">
-									<a href="view?d_articlenumber=">제목</a>
-								</h3>
-							</header>
-							<div class="etc">내용<br><br></div>
-							<p style="text-align: right;">
-							2021-05-31
-							</p>
+<!-- 							<header> -->
+<!-- 								<h3 class="etx"> -->
+<!-- 									<a href="view?d_articlenumber=">제목</a> -->
+<!-- 								</h3> -->
+<!-- 							</header> -->
+<!-- 							<div class="etc">내용<br><br></div> -->
+<!-- 							<p style="text-align: right;"> -->
+<!-- 							2021-05-31 -->
+<!-- 							</p> -->
 		
-					</div>
-				</article>
+<!-- 					</div> -->
+<!-- 				</article> -->
 				
 			</div>
 		</section>
