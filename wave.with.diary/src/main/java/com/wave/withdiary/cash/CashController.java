@@ -65,6 +65,7 @@ public class CashController {
 		map.put("memberCode", vo.getMemberCode());
 		System.out.println(vo.getMemberCode());
 
+		// map으로 묶어서 리스트 전달
 		List<AccountDTO> list = acService.getAllListPage(map);
 		model.addAttribute("list", list);
 		System.out.println("사이즈:" + list.size());

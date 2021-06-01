@@ -173,7 +173,7 @@ String study_link = wdfile.study_link;
                   <input type="text" name="money" class="form-control rounded-0" id="exampleInputRounded0" value="${dto.money}" required="required">
                 </div>
                 <div class="form-group" align="left">
-                  <label for="exampleSelectBorderWidth2">결재수단</label>
+                  <label for="exampleSelectBorderWidth2">결제수단</label>
                   <select class="custom-select form-control-border border-width-2" id="exampleSelectBorderWidth2" name="classificationCode" required="required">
 					<option value="">선택</option>
 					<option value="100">현금</option>
