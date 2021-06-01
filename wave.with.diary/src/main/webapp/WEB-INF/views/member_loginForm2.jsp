@@ -145,8 +145,8 @@
                 <form id="loginForm" action="${contextPath}/login" method="POST">
                     <p id="name"><img src="<%=login_logo %>"
                                     width="300" height="72" /></p>
-                    <input type="text" name="email" id="email" placeholder=" 이메일" /><br> 
-                    <input type="password" name="pwd" id="pwd" placeholder=" 비밀번호" /><br>
+                    <input type="text" name="email" id="email" placeholder=" 이메일" required="required" /><br> 
+                    <input type="password" name="pwd" id="pwd" placeholder=" 비밀번호" required="required" /><br>
                     <br>
                     <input type="submit" value="로그인" id="login" />
                 </form>

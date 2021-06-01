@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wave.withdiary.member.MemberVO;
+
 @Service
 public class FriendService implements IFriendService {
 
@@ -16,5 +18,14 @@ public class FriendService implements IFriendService {
 		return dao.friend(memberCode);
 	}
 
+	@Override
+	public int addFriend(FriendDTO friendDTO) {
+		return dao.addFriend(friendDTO);
+	}
+
+	@Override
+	public MemberVO selectByEmail(String email) {
+		return dao.selectByEmail(email);
+	}
 
 }

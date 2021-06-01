@@ -22,7 +22,7 @@ public class AuthDAO implements IAuthDAO {
 
 	@Override
 	public String overlapped(String email) {
-		String result =  sqlSession.selectOne(nameSpace+ "overlapped", email);
+		String result = sqlSession.selectOne(nameSpace+ "overlapped", email);
 		return result;
 	}
 

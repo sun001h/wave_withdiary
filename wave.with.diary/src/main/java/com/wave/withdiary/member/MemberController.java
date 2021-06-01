@@ -91,6 +91,16 @@ public class MemberController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(Locale locale, Model model, 
+			HttpServletRequest request, HttpServletResponse response) {
+		logger.info("로그아웃 {}.", locale);
+		HttpSession session = request.getSession();
+		session.invalidate();
+
+		return "redirect:.";
+	}
+	
 	
 	@RequestMapping(value = "/member/updateForm", method = RequestMethod.GET)
 	public String updateForm(Locale locale, Model model, String memberCode) {

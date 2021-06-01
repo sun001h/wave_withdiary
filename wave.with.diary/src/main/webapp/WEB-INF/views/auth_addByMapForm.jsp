@@ -158,15 +158,15 @@
 
                         <tr>
                             <td colspan="2">
-                            <input type="text" name="email" id="email" class="textForm" placeholder="이메일"/>
+                            <input type="text" name="email" id="email" class="textForm" placeholder="이메일" required="required" />
                             <input type="button" id="btnOverlapped" value="중복검사" onclick="fn_overlapped()" />
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="password" name="pwd" class="textForm" placeholder="비밀번호" id="pwd"/></td>
+                            <td colspan="2"><input type="password" name="pwd" class="textForm" placeholder="비밀번호" id="pwd" required="required"/></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="text" name="nickname" class="textForm" placeholder="별명" id="nickname"/></td>
+                            <td colspan="2"><input type="text" name="nickname" class="textForm" placeholder="별명" id="nickname" required="required"/></td>
                         </tr>
                         <tr>
                             <td colspan="2" class="request"><br>프로필 사진을 입력해주세요</td>
@@ -174,20 +174,20 @@
                         <tr>
                             <td class="left_td" align="center"><img id="preview" src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7a72114e-dc29-4856-b320-93d279fd9ede%2Fuser.png?table=block&id=679fd6fa-b188-4d55-8887-b5b14c74c259&width=1020&userId=&cache=v2" 
                             width="50" height="50" /></td>
-                            <td>　<input type="file" name="profile_img" onchange="readURL(this);" /></td>
+                            <td>　<input type="file" name="profile_img" onchange="readURL(this);" required="required" /></td>
                         </tr>
                         <tr>
-                            <td colspan="2" class="request"><br>생일을 입력해주세요</td>
+                            <td colspan="2" class="request" required="required"><br>생일을 입력해주세요</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="date" name="bday" class="radio" /></td>
+                            <td colspan="2"><input type="date" name="bday" class="radio" required="required"/></td>
                         </tr>
                         <tr>
                             <td colspan="2" class="request"><br>성별을 입력해주세요</td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <label class="radio"><input type="radio"  name="gender" value="U" />선택안함</label>
+                                <label class="radio"><input type="radio" name="gender" value="U" />선택안함</label>
                                 <label class="radio"><input type="radio" name="gender" value="M" />남</label>
                                 <label class="radio"><input type="radio" name="gender" value="F" />여</label>
                             </td>

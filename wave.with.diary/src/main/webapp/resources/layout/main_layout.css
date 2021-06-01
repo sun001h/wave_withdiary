@@ -90,6 +90,9 @@ body {
 	font-weight: bold;
 }
 
+a.friend_link:link {color: grey; text-decoration: none;}
+a.friend_link:hover { color: rgb(91,200,172); text-decoration: underline;}
+
 
 /* 메인섹션(89~103) */
 #content>#main_section {

@@ -11,4 +11,19 @@
 		]]>
 	</select>
 	
+	<insert id="addFriend" parameterType="FriendDTO">
+		<![CDATA[
+			insert into wd_friend
+			(f_seq, membercode, friendcode)
+			values(f_seq.nextval, #{memberCode}, #{friendCode})
+		]]>	
+	</insert>
+	
+	<select id="selectByEmail" resultType="memberVO" parameterType="String" >
+		<![CDATA[
+			select * from wd_member 
+			where email= #{email}	
+		]]>
+	</select>
+	
 </mapper>
