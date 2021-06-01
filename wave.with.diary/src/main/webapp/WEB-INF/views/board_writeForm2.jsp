@@ -20,12 +20,12 @@
 <head>
 <title>메인 페이지</title>
 <meta charset="UTF-8">
-<!-- <meta name="viewport" -->
-<!-- 	content="width=device-width, initial-scale=1, user-scalable=no" /> -->
-<%-- <link rel="stylesheet" href="<c:url value="/resources/assets/css/main.css" />"> --%>
-<!-- <noscript> -->
-<%-- 	<link rel="stylesheet" href="<c:url value="/resources/assets/css/noscript.css" />"> --%>
-<!-- </noscript> -->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="<c:url value="/resources/assets/css/main.css" />">
+<noscript>
+	<link rel="stylesheet" href="<c:url value="/resources/assets/css/noscript.css" />">
+</noscript>
 
 
 
@@ -129,12 +129,14 @@
 			<form name="form1" method="post" style="text-align: center;" action="${contextPath}/board/insert">
 				<input type="hidden" name="membercode" id="membercode" value="${sessionScope.member.memberCode}" placeholder="회원번호를 입력해주세요">
 				<div>
-					제목
-					<input name="title" id="title" size="80"  placeholder="제목을 입력해주세요">
+					
+					<input name="title" id="title" size="50" style=" 
+						background: #fafafa;     border: solid 2px #E5E5E5;
+    					border-radius: 0.5em;" placeholder="제목을 입력해주세요">
 				</div>
 				<div>
-					내용
-					<textarea name="content" id="content" rows="6" cols="80" style="width:540px;" placeholder="내용을 입력해주세요"></textarea>
+					
+					<textarea name="content" id="content" rows="6" cols="120" style="width:540px;" placeholder="내용을 입력해주세요"></textarea>
 				</div>
 
 
@@ -150,14 +152,14 @@
         </section>
 
 				<!-- 	Scripts -->
-<%-- 				<script src="<c:url value="/resources/assets/js/jquery.min.js " />"></script> --%>
-<%-- 				<script src="<c:url value="/resources/assets/js/jquery.scrollex.min.js " />"></script> --%>
-<%-- 				<script src="<c:url value="/resources/assets/js/jquery.scrolly.min.js " />"></script> --%>
-<%-- 				<script src="<c:url value="/resources/assets/js/jquery.browser.min.js " />"></script> --%>
-<%-- 				<script src="<c:url value="/resources/assets/js/browser.min.js " />"></script> --%>
-<%-- 				<script src="<c:url value="/resources/assets/js/breakpoints.min.js " />"></script> --%>
-<%-- 				<script src="<c:url value="/resources/assets/js/util.js " />"></script> --%>
-<%-- 				<script src="<c:url value="/resources/assets/js/main.js " />"></script> --%>
+				<script src="<c:url value="/resources/assets/js/jquery.min.js " />"></script>
+				<script src="<c:url value="/resources/assets/js/jquery.scrollex.min.js " />"></script>
+				<script src="<c:url value="/resources/assets/js/jquery.scrolly.min.js " />"></script>
+				<script src="<c:url value="/resources/assets/js/jquery.browser.min.js " />"></script>
+				<script src="<c:url value="/resources/assets/js/browser.min.js " />"></script>
+				<script src="<c:url value="/resources/assets/js/breakpoints.min.js " />"></script>
+				<script src="<c:url value="/resources/assets/js/util.js " />"></script>
+				<script src="<c:url value="/resources/assets/js/main.js " />"></script>
 
 
 

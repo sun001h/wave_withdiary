@@ -31,7 +31,14 @@
 </script>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/layout/main_layout.css" />">
-
+<style>
+/*메인세션내부*/
+#content>#main_section>#main_div>#main_section_table {
+	padding-top: 30px;
+	padding-left: 750px;
+	width: 900px;
+}
+</style>
 </head>
 <body>
 	<div id="content">
@@ -114,11 +121,11 @@
 
 		<section id="main_section">
 			<div id="main_div">
-
+		<div id="main_section_table" >
 		<%-- 	<c:if test="${sessionScope.MEMBERCODE !=null}"> --%>
 		<button type="button" id="btnWrite" onclick="location.href='writeForm'">글쓰기</button>
 		<%-- 	</c:if> --%>
-		
+		</div>
 		
 		<!-- 	Carousel -->
 		<section class="carousel">
@@ -141,6 +148,8 @@
 		
 					</div>
 				</article>
+
+
 				
 				
 				</c:forEach>
