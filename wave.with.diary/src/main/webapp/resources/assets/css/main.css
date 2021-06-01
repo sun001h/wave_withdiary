@@ -2933,7 +2933,7 @@ input, select, textarea {
 						line-height: 1;
 						text-transform: none !important;
 						font-family: 'Font Awesome 5 Free';
-						font-weight: 900;
+						font-weight: 500;
 					}
 
 					#navButton .toggle:before {

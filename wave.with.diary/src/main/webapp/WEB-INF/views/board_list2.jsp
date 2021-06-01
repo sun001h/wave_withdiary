@@ -3,6 +3,7 @@
 <%@page import="com.wave.withdiary.file.WDFileUtils"%>
 <%@ page session="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
 	request.setCharacterEncoding("utf-8");
 	WDFileUtils wdfile = new WDFileUtils();
@@ -34,9 +35,9 @@
 <style>
 /*메인세션내부*/
 #content>#main_section>#main_div>#main_section_table {
-	padding-top: 30px;
-	padding-left: 750px;
-	width: 900px;
+ 	padding-top: 15px; 
+	padding-left: 50px;
+	
 }
 </style>
 </head>
