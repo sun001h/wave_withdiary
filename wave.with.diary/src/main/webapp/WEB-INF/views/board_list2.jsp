@@ -125,7 +125,7 @@
 			<div class="reel">
 				<c:forEach var="list" items="${list}">
 				<article>
-					<div>
+					<div cols="100">
 		
 							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a>
 		
