@@ -139,16 +139,16 @@ String study_link = wdfile.study_link;
 							<form action="insert" role="form" method="post">
 								<!-- /.card-header -->
 								<div class="card-body">
-									<div class="form-group">
+<%-- 									<div class="form-group">
 										<label for="exampleInputBorder">작성자</label> <input type="text"
 											value="${member.nickname }"
 											class="form-control form-control-border"
 											id="exampleInputBorder" readonly="readonly">
-									</div>
+									</div> --%>
 									<div class="form-group">
-										<label for="exampleInputBorderWidth2">지출일</label> <input
-											type="text"
-											class="form-control form-control-border border-width-2"
+										<label for="exampleInputBorder">지출일</label> <input type="text"
+											value="${member.nickname }"
+											class="form-control form-control-border"
 											id="datepicker" name="chdate" required="required">
 									</div>
 									<div class="form-group">

@@ -2,6 +2,9 @@ package com.wave.withdiary.board;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.wave.withdiary.member.MemberVO;
 
 
 
@@ -85,11 +90,14 @@ public class BoardController {
 	}	
 	
 	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
-	public String list(Model model) {
+	public String list(Model model, HttpServletRequest request, HttpServletResponse response) {
 		
 		logger.info("글 목록 조회");
+		HttpSession session = request.getSession();
+		MemberVO vo = (MemberVO) session.getAttribute("member");
+		String memberCode = vo.getMemberCode();
 
-		List<BoardVO> list = boardService.listAll();
+		List<BoardVO> list = boardService.listAll(memberCode);
 		model.addAttribute("list", list);
 
 		return "board_list";

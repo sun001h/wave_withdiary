@@ -33,8 +33,8 @@ public class BoardService implements IBoardService {
 	}
 
 	@Override
-	public List<BoardVO> listAll() {
-		return dao.listAll();
+	public List<BoardVO> listAll(String memberCode) {
+		return dao.listAll(memberCode);
 	}
 
 	public void increaseViewcnt(int d_articlenumber) {
