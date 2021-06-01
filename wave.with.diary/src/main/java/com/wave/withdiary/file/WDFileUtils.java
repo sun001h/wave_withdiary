@@ -14,7 +14,7 @@ public class WDFileUtils {
 
 	// 링크 수정해야함!!
 	public String update_link = "member/updateForm2";
-	public String diary_link = "member/updateForm2";
+	public String diary_link = "board/list";
 	public String cash_link = "cash/listpage";
 	public String study_link = "member/updateForm2";
 	
