@@ -157,65 +157,65 @@
 				
 				</c:forEach>
 				
-<!-- 				<article > -->
-<!-- 					<div> -->
+ 				<article >
+				<div> 
 		
-<%-- 							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a> --%>
+							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a>
 		
-<!-- 							<header> -->
-<!-- 								<h3 class="etx"> -->
-<!-- 									<a href="view?d_articlenumber=">제목</a> -->
-<!-- 								</h3> -->
-<!-- 							</header> -->
-<!-- 							<div class="etc">내용<br><br></div> -->
-<!-- 							<p style="text-align: right;"> -->
-<!-- 							2021-05-31 -->
-<!-- 							</p> -->
+						<header> 
+								<h3 class="etx"> 
+								<a href="view?d_articlenumber=">제목</a> 
+							</h3> 
+						</header> 
+						<div class="etc">내용<br><br></div> 
+						<p style="text-align: right;"> 
+						2021-05-31 
+						</p> 
 		
-<!-- 					</div> -->
-<!-- 				</article > -->
+					</div> 
+				</article > 
 
-<!-- 				<article> -->
-<!-- 					<div> -->
+				<article> 
+					<div> 
 		
-<%-- 							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a> --%>
+							<a href="#" class="image featured"><img src="<c:url value="/resources/images/pic01.jpg" />" alt="" /></a>
 		
-<!-- 							<header> -->
-<!-- 								<h3 class="etx"> -->
-<!-- 									<a href="view?d_articlenumber=">제목</a> -->
-<!-- 								</h3> -->
-<!-- 							</header> -->
-<!-- 							<div class="etc">내용<br><br></div> -->
-<!-- 							<p style="text-align: right;"> -->
-<!-- 							2021-05-31 -->
-<!-- 							</p> -->
+							<header> 
+								<h3 class="etx"> 
+ 									<a href="view?d_articlenumber=">제목</a> 
+								</h3>
+							</header>
+							<div class="etc">내용<br><br></div> 
+						<p style="text-align: right;"> 
+						2021-05-31 
+ 							</p> 
 		
-<!-- 					</div> -->
-<!-- 				</article> -->
+					</div>
+				</article>
 				
 			</div>
 		</section>
 
-<!-- 				<table border="1" width="600px"> -->
-<!-- 					<tr> -->
-<!-- 						<th>글번호</th> -->
-<!-- 						<th>제목</th> -->
-<!-- 						<th>회원번호</th> -->
-<!-- 						<th>작성일</th> -->
-<!-- 						<th>조회수</th> -->
-<!-- 					</tr> -->
-<%-- 					<c:forEach var="list" items="${list}"> --%>
-<!-- 						<tr style="text-align: center"> -->
-<%-- 							<td>${list.d_articlenumber}</td> --%>
-<%-- 							<td><a href="view?d_articlenumber=${list.d_articlenumber}">${list.title}</a></td> --%>
-<%-- 							<td>${list.membercode}</td> --%>
-<%-- 							<td><fmt:formatDate value="${list.dateCreated}" --%>
-<!-- 									pattern="yyyy-MM-dd" /></td> -->
-<%-- 			 				<td>${list.viewcnt}</td>  --%>
-<!-- 						</tr> -->
-<%-- 					</c:forEach> --%>
+<%--  				<table border="1" width="600px">
+ 					<tr> 
+ 						<th>글번호</th> 
+ 						<th>제목</th> 
+ 						<th>회원번호</th> 
+ 						<th>작성일</th> 
+ 						<th>조회수</th> 
+ 					</tr> 
+ 					<c:forEach var="list" items="${list}"> 
+ 						<tr style="text-align: center"> 
+ 							<td>${list.d_articlenumber}</td> 
+ 							<td><a href="view?d_articlenumber=${list.d_articlenumber}">${list.title}</a></td> 
+							<td>${list.membercode}</td> 
+							<td><fmt:formatDate value="${list.dateCreated}" >
+									pattern="yyyy-MM-dd" /></td> 
+			 				<td>${list.viewcnt}</td> 
+					</tr> 
+				</c:forEach> 
 
-<!-- 				</table> -->
+				</table>  --%>
 			
 
 

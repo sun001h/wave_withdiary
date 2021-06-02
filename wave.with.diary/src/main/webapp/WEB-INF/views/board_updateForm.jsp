@@ -42,7 +42,7 @@
 							</tr>	
 							<tr>
 								<td>
-									<label for="content">내용</label><textarea id="content" name="content" required="required"><c:out value="${update.content}" /></textarea>
+									<label for="content">내용</label><textarea id="content" name="content" ><c:out value="${update.content}" required="required"/></textarea>
 								</td>
 							</tr>
 							<tr>
