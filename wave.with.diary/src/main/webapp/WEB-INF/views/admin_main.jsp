@@ -29,7 +29,19 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/layout/main_layout.css" />"
 >
-
+<style>
+#calendar {
+    margin: 40px auto;
+}
+#main_div {
+	margin: 10px;
+	width: 930px;
+	height: 580px;
+	background-color: white;
+	border-radius: 10px;
+	text-align: center;
+}
+</style>
 </head>
 <body>
     <div id="content">
@@ -118,7 +130,8 @@
 
         <section id="main_section">
             <div id="main_div">
-
+				<img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F40a26be1-4fa7-4bad-bb98-cf7a5bb8841f%2FIMG_4004.jpg?table=block&id=bf2e7834-07cf-4753-86d6-cf1d3e1b68e9&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=3330&userId=&cache=v2" 
+                    width="627" height="500" id="calendar"/>
             </div>
         </section>
 

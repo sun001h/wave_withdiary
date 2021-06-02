@@ -13,6 +13,8 @@
 	String diary_link = wdfile.diary_link;
 	String cash_link = wdfile.cash_link;
 	String study_link = wdfile.study_link;
+	String logout = wdfile.logout;
+	String friend = wdfile.friend;
 %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -157,7 +159,7 @@ h3 {
 								</td>
 							</c:otherwise>
 							</c:choose>
-							<td class="friend_name">${list.nickname }</td>
+							<td class="friend_name"><a class="friend_link" href="${contextPath}/friend/diary?fcode=${list.memberCode}">${list.nickname }</a></td>
 						</tr>
 					</c:forEach>
                         
@@ -246,6 +248,11 @@ h3 {
                         alt="마이페이지" width="30" height="30" 
                         />
                 </a></p>
+				<p class="item"><a href="${contextPath}/<%=friend %>">
+                    <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff1e81fb3-4de4-44db-9520-23e80e4f5750%2Fsearch.png?table=block&id=9d42d7b3-f4f1-4759-b743-97530e8d47fd&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=970798f8-31fd-4970-8ffd-c1c7f47f39b8&cache=v2" 
+                    alt="친구찾기" width="30" height="30" />
+                </a></p>
+                
                 <p class="item"><a href="${contextPath}/<%=diary_link %>">
                     <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F281cbe2e-ad53-430a-bd66-e9b407a1749f%2Fdiary_(2).png?table=block&id=a65df81c-6382-4ba4-b9ad-f7544896fd87&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
                         alt="다이어리" width="30" height="30" 
@@ -260,6 +267,11 @@ h3 {
                 <p class="item"><a href="${contextPath}/<%=study_link %>">
                     <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe1357e10-c87a-442c-a749-f28e687e9918%2Freading.png?table=block&id=67ad5d48-93b2-42b9-8af9-f9616e336b51&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=&cache=v2"
                         alt="스터디" width="30" height="30" />
+                </a></p>
+                
+				<p class="item"><a href="${contextPath}/<%=logout %>">
+                    <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Faff8ec36-6a4d-4082-ad43-d898e83bbd3d%2Fexit.png?table=block&id=201b2c14-68a3-4e56-a15b-5f7c19f624f2&spaceId=daff88ef-0086-4ee6-aed1-df9fa5e35f0d&width=1020&userId=970798f8-31fd-4970-8ffd-c1c7f47f39b8&cache=v2" 
+                    alt="로그아웃" width="30" height="30" />
                 </a></p>
 
                 <!-- 배경색 바꾸기 -->
