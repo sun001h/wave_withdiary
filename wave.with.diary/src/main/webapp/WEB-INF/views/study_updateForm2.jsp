@@ -184,15 +184,15 @@ form {
 			              <table id="mytable" class="table table-bordred table-striped">        
 			                   <tr>
 			                   <th>과목</th>
-			                   <td><input type="text" name="subject" value="${dto.subject }" /></td>
+			                   <td><input type="text" name="subject" value="${dto.subject }" required="required"/></td>
 			                   </tr>
 			                   <tr>
 			                   <th>공부한 내용</th>
-			                   <td><input type="text" name="content" value="${dto.content }" /> </td>
+			                   <td><input type="text" name="content" value="${dto.content }" required="required"/> </td>
 			                   </tr>
 			                   <tr>
 									<th>공부시간</th>
-									<td><input type="text" class="timepicker" name="studyTime" value="${dto.studyTime }" min="00:00" max="24:00" required /></td>
+									<td><input type="text" class="timepicker" name="studyTime" value="${dto.studyTime }" min="00:00" max="24:00" required="required" /></td>
 							  </tr>
 						</table>
 					<input type="submit" value="작성완료" />

@@ -174,15 +174,15 @@ width:80%;
             	<div id="table_sub">
 				<form action="${contextPath}/study/insertResult" method="post">
 					<div>공부과목 : 
-						<input type="text" name="subject" size="25" placeholder="공부과목을 입력해주세요">
+						<input type="text" name="subject" size="25" placeholder="공부과목을 입력해주세요" required="required">
 					</div>
 					<br>
 					<div>공부한 내용:
-						<input type="text" name="content" size="25" placeholder="내용을 입력해주세요">
+						<input type="text" name="content" size="25" placeholder="내용을 입력해주세요" required="required">
 					</div>
 					<br>
 					<div>공부한 시간:
-						<input type="text" autocomplete="off" class="timepicker" size="25" id="studyTime" name="studyTime" min="00:00" max="24:00" required>
+						<input type="text" autocomplete="off" class="timepicker" size="25" id="studyTime" name="studyTime" min="00:00" max="24:00" required="required">
 					</div>
 					<br>
 						<input type="submit" class="btn btn-secondary mb-3" value="입력완료" />

@@ -134,11 +134,11 @@
 					
 					<input name="title" id="title" size="60" style=" 
 						background: #fafafa;     border: solid 2px #E5E5E5;
-    					border-radius: 0.5em;"placeholder=" 제목을 입력해주세요">
+    					border-radius: 0.5em;"placeholder=" 제목을 입력해주세요" required="required">
 				</div>
 				<div>
 					
-					<textarea name="content" id="content" rows="6" cols="120" style="width:550px;" placeholder="내용을 입력해주세요"></textarea>
+					<textarea name="content" id="content" rows="6" cols="120" style="width:550px;" placeholder="내용을 입력해주세요" required="required"></textarea>
 				</div>
 
 

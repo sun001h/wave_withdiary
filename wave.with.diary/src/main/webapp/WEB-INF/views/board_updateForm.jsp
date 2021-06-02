@@ -37,12 +37,12 @@
 						<tbody>
 							<tr>
 								<td>
-									<label for="title">제목</label><input type="text" id="title" name="title" value="${update.title}"/>
+									<label for="title">제목</label><input type="text" id="title" name="title" value="${update.title}" required="required"/>
 								</td>
 							</tr>	
 							<tr>
 								<td>
-									<label for="content">내용</label><textarea id="content" name="content"><c:out value="${update.content}" /></textarea>
+									<label for="content">내용</label><textarea id="content" name="content" required="required"><c:out value="${update.content}" /></textarea>
 								</td>
 							</tr>
 							<tr>

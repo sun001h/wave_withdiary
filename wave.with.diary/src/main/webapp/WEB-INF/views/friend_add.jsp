@@ -148,7 +148,7 @@ h3 {
                     <br>
                     <table align="center">
                         <tr>
-                            <td colspan="2" align="center"><input type="text" name="email" class="textForm" placeholder="친구 이메일 입력" id="email" /></td>
+                            <td colspan="2" align="center"><input type="text" name="email" class="textForm" placeholder="친구 이메일 입력" id="email" required="required"/></td>
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
